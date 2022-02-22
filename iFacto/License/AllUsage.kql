@@ -1,0 +1,6 @@
+traces
+| where customDimensions.eventId contains "IFC"
+| extend alCompanyName_ = tostring(customDimensions.alCompanyName)
+, alUrl_ = tostring(customDimensions.alUrl)
+| order by timestamp desc 
+| take 100
