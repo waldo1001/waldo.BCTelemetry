@@ -1,0 +1,18 @@
+traces
+| where customDimensions has 'CustomerName'
+| where timestamp > ago(7d) // adjust as needed
+| where operation_Name == 'Long Running Operation (SQL Query)' // do note that in a later version of the schema, this field will not be used (a new field in custom dimensions will be used)
+| extend aadTenantId = tostring( customDimensions.aadTenantId )
+, environmentName = customDimensions.environmentName
+, environmentType = customDimensions.environmentType
+, alMethod = tostring( customDimensions.alMethod )
+, alObjectId = toint( customDimensions.alObjectId )
+, alObjectName = tostring( customDimensions.alObjectName )
+, alObjectType = tostring(customDimensions.alObjectType)
+, executionTime = customDimensions.executionTime
+, executionTimeInMS = toreal(totimespan(customDimensions.executionTime))/10000 //the datatype for executionTime is timespan 
+, extensionName = tostring( customDimensions.extensionName )
+| extend executionTimeInSec = executionTimeInMS / 1000
+| summarize count(), dcount( aadTenantId ), sum( executionTimeInSec ), avg( executionTimeInSec ) by alMethod, alObjectType, alObjectName, extensionName
+| order by avg_executionTimeInSec desc 
+| limit 20

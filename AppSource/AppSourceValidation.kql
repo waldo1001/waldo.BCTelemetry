@@ -1,0 +1,3 @@
+traces
+| where customDimensions.eventId == 'LC0034'
+| order by timestamp desc 
