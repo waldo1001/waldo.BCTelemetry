@@ -1,17 +1,20 @@
 // SQLDeadlocks
 traces
-| where customDimensions has "Customername"
+| where customDimensions has "customername"
 | where timestamp >= ago(30d) // adjust as needed. The value 30 comes from the app configuration
 | where customDimensions has 'RT0028'
 | where customDimensions.eventId == 'RT0028'
 | where isnotempty(customDimensions.aadTenantId) // filter away signal from Docker sandboxes
 | where customDimensions.alObjectId != '0' 
 | where isnotempty(customDimensions.alObjectId)
-| extend TenantId = strcat( customDimensions.aadTenantId), 
-        ObjectType = tostring(customDimensions.alObjectType), 
-        ObjectId = tostring(customDimensions.alObjectId), 
-        ObjectName = tostring(customDimensions.alObjectName), 
-        sqlStatement = tostring(customDimensions.sqlStatement),
-        companyName = tostring(customDimensions.companyName)
-| project timestamp, TenantId,companyName,ObjectType,ObjectId,ObjectName,sqlStatement,customDimensions
-| take 10 
+| extend TenantId = strcat(customDimensions.aadTenantId)
+    , ObjectType = tostring(customDimensions.alObjectType)
+    , ObjectId = tostring(customDimensions.alObjectId)
+    , ObjectName = tostring(customDimensions.alObjectName)
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+    , companyName = tostring(customDimensions.companyName)        
+    , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN") 
+| parse kind=regex sqlStatement with selectPart: string "FROM " tablename: string
+| project timestamp, TenantId, companyName, ObjectType, ObjectId, ObjectName, customDimensions, numberOfJoins, tablename
+| take 100
+
