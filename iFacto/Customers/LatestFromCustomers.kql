@@ -1,0 +1,4 @@
+traces
+| extend Customer = iff(isempty(customDimensions.companyName),customDimensions.aadTenantId,customDimensions.companyName)
+| order by timestamp desc 
+| take 1000

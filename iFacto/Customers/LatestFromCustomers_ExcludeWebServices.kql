@@ -1,0 +1,5 @@
+traces
+| extend Customer = iff(isempty(customDimensions.companyName),customDimensions.aadTenantId,customDimensions.companyName)
+| where customDimensions.eventId !in ('RT0004','RT0008','RT0020','RT0019')
+| order by timestamp desc 
+| take 1000
