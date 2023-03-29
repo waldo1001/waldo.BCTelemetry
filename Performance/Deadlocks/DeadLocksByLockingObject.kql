@@ -1,6 +1,6 @@
 // SQLDeadlocks
 traces
-| where customDimensions has "coeck"
+| where customDimensions has "customername"
 | where timestamp >= ago(30d) // adjust as needed. The value 30 comes from the app configuration
 | where customDimensions has 'RT0028'
 | where customDimensions.eventId == 'RT0028'
