@@ -36,7 +36,5 @@ traces
 | extend splitStacktrace = split(customDimensions.alStackTrace,"\n")
 | extend lengthStacktrace = array_length(splitStacktrace)
 | extend LockingObject = splitStacktrace[0], SourceProcess = splitStacktrace[lengthStacktrace-1]
-| extend tablename2 = tostring(tablename)
-| parse kind=regex tablename2 with selectPart: string ".*" tablename3: string "\\$" space:string
 | project timestamp, TenantId, companyName, ObjectType, ObjectId, ObjectName, operationType, numberOfJoins,LockingObject, SourceProcess, splitStacktrace, customDimensions
 | take 100
