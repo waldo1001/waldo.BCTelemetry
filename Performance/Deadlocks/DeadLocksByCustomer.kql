@@ -16,5 +16,5 @@ traces
     , stackTrace = tostring(customDimensions.alStackTrace)
 | parse kind=regex sqlStatement with selectPart: string "FROM " tablename: string
 | project timestamp, TenantId, companyName, ObjectType, ObjectId, ObjectName, numberOfJoins, stackTrace, sqlStatement, tablename, customDimensions
-| summarize; count = count() by TenantId, companyName
+| summarize count = count() by TenantId, companyName
 
