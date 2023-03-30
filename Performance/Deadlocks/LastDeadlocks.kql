@@ -37,4 +37,5 @@ traces
 | extend lengthStacktrace = array_length(splitStacktrace)
 | extend LockingObject = splitStacktrace[0], SourceProcess = splitStacktrace[lengthStacktrace-1]
 | project timestamp, TenantId, companyName, ObjectType, ObjectId, ObjectName, operationType, numberOfJoins,LockingObject, SourceProcess, splitStacktrace, customDimensions
+| order by timestamp desc 
 | take 100
