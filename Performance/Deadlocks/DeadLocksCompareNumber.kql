@@ -1,0 +1,53 @@
+let CustomerName = "customername";
+let Date1 = tostring("2023-03-30");
+let Date2 = tostring("2023-03-31");
+let TimeFrom = tostring("00:00:00.001");
+let TimeTo = tostring("11:59:59.001");
+let previousFrom = todatetime(strcat(Date1," ",TimeFrom));
+let previousTo =   todatetime(strcat(Date1, " ", TimeTo));
+let NowFrom =      todatetime(strcat(Date2, " ", TimeFrom));
+let NowTo =        todatetime(strcat(Date2, " ", TimeTo));
+let Trace1 = 
+traces
+| where customDimensions has CustomerName
+| where timestamp >= previousFrom and timestamp <= previousTo
+| where customDimensions has 'RT0028'
+| where customDimensions.eventId == 'RT0028'
+| where isnotempty(customDimensions.aadTenantId) // filter away signal from Docker sandboxes
+| where customDimensions.alObjectId != '0' 
+| where isnotempty(customDimensions.alObjectId)
+| extend TenantId = strcat(customDimensions.aadTenantId)
+    , ObjectType = tostring(customDimensions.alObjectType)
+    , ObjectId = tostring(customDimensions.alObjectId)
+    , ObjectName = tostring(customDimensions.alObjectName)
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+    , companyName = tostring(customDimensions.companyName)        
+    , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN") 
+    , stackTrace = tostring(customDimensions.alStackTrace)
+| parse kind=regex sqlStatement with selectPart: string "FROM " tablename: string
+| project timestamp, TenantId, companyName, ObjectType, ObjectId, ObjectName, numberOfJoins, stackTrace, sqlStatement, tablename, customDimensions
+| summarize count = count() by TenantId, companyName
+;
+let Trace2 =
+traces
+| where customDimensions has CustomerName
+| where timestamp >= NowFrom and timestamp <= NowTo
+| where customDimensions has 'RT0028'
+| where customDimensions.eventId == 'RT0028'
+| where isnotempty(customDimensions.aadTenantId) // filter away signal from Docker sandboxes
+| where customDimensions.alObjectId != '0' 
+| where isnotempty(customDimensions.alObjectId)
+| extend TenantId = strcat(customDimensions.aadTenantId)
+    , ObjectType = tostring(customDimensions.alObjectType)
+    , ObjectId = tostring(customDimensions.alObjectId)
+    , ObjectName = tostring(customDimensions.alObjectName)
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+    , companyName = tostring(customDimensions.companyName)        
+    , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN") 
+    , stackTrace = tostring(customDimensions.alStackTrace)
+| parse kind=regex sqlStatement with selectPart: string "FROM " tablename: string
+| project timestamp, TenantId, companyName, ObjectType, ObjectId, ObjectName, numberOfJoins, stackTrace, sqlStatement, tablename, customDimensions
+| summarize count = count() by TenantId, companyName
+;
+Trace1 
+| union Trace2
