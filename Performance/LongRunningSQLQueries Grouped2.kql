@@ -1,0 +1,83 @@
+
+traces
+| where customDimensions has "customername"
+| where timestamp < ago(12h)
+| where customDimensions.eventId == "RT0005"
+| where not (customDimensions has 'Companies') //not interested in "Copy Company" and such
+| where isnotempty(customDimensions.alObjectId)
+| where isnotempty( customDimensions.alStackTrace ) // RT0019 only has stacktrace from 20.1
+     or isnotempty( customDimensions.alJobQueueStacktrace ) // stack trace added in 21.3
+| extend StackTrace = tostring( customDimensions.alStackTrace )
+| extend companyName_ = tostring(customDimensions.companyName)
+    , clientType_ = tostring(customDimensions.clientType)
+    , eventId_ = tostring(customDimensions.eventId)
+    , extensionName_ = tostring(customDimensions.extensionName)
+    , alObjectType_ = tostring(customDimensions.alObjectType)
+    , alObjectId_ = tostring(customDimensions.alObjectId)
+    , alObjectName_ = tostring(customDimensions.alObjectName)
+    , alMethod_ = tostring(customDimensions.alMethod)
+    , sqlStatement_ = tostring(customDimensions.sqlStatement)
+    , exTime = customDimensions.executionTime
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+| extend operationType = case(
+    sqlStatement startswith "UPDATE", "UPDATE"
+    , sqlStatement startswith "DELETE", "DELETE"
+    , sqlStatement startswith "BeginTransaction", "BEGIN_TRANS"
+    , sqlStatement matches regex "INSERT INTO", "INSERT"
+    , sqlStatement startswith "SELECT", "SELECT"
+    , sqlStatement matches regex "IF EXISTS \\(SELECT (.*)\\) SELECT", "SELECT'"
+    , sqlStatement has "SELECT NEXT VALUE FOR", "SELECT_SEQUENCE_VALUE"
+    , sqlStatement has "SELECT @@SPID", "SELECT_SPID"
+    , sqlStatement matches regex "(.*)WITH", "SELECT"
+    , sqlStatement startswith "CREATE TABLE", "CREATE_TABLE"
+    , sqlStatement startswith "ALTER TABLE", "ALTER_TABLE"
+    , sqlStatement startswith "exec sp_rename", "RENAME_TABLE" 
+    , sqlStatement matches regex "(.*)DROP TABLE", "DROP_TABLE"
+    , sqlStatement startswith "SET LOCK_TIMEOUT", "SET_LOCK_TIMEOUT"
+    , sqlStatement has "sp_getapplock", "GET_APP_LOCK"
+    , "UNKNOWN"
+    ) 
+| order by totimespan(exTime) desc
+| extend topOfStackline = extract('AL CallStack: (.+)', 1, StackTrace)
+| extend bottomOfStackline = extract('(.+\\([a-zA-Z]+ \\d+\\)\\..+)\\n?\\z', 1, StackTrace)
+| where not(isempty(topOfStackline))
+| extend topOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, topOfStackline)
+| extend topOfStackLineNumber = extract(' line (\\d+)', 1, topOfStackline)
+| extend topOfStackExtensionName = case (
+    isnotempty(topOfStackLineNumber), extract('line \\d+ - (.+) by', 1, topOfStackline),
+    extract(' - (.+) by', 1, topOfStackline)
+    )
+| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)
+| extend topOfStackWhatWasCalled = case(
+    isnotempty(topOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, topOfStackline),
+    isnotempty(topOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, topOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, topOfStackline)
+    )
+| extend bottomOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, bottomOfStackline)
+| extend bottomOfStackLineNumber = extract(' line (\\d+)', 1, bottomOfStackline)
+| extend bottomOfStackExtensionName = case (
+    isnotempty(bottomOfStackLineNumber), extract('line \\d+ - (.+) by', 1, bottomOfStackline),
+    extract(' - (.+) by', 1, bottomOfStackline)
+    )
+| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)
+| extend bottomOfStackWhatWasCalled = case(
+    isnotempty(bottomOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, bottomOfStackline),
+    isnotempty(bottomOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, bottomOfStackline)
+    )
+| extend SourceProcess = strcat(bottomOfStackWhatWasCalled, " - ", bottomOfStackObjectType, " ", bottomOfStackObjectId, " ", bottomOfStackObjectName, " (", bottomOfStackExtensionName, ")")
+    , SlowPositionInAL = strcat(topOfStackWhatWasCalled, " - ", topOfStackObjectType, " ", topOfStackObjectId, " ", topOfStackObjectName, " (", topOfStackExtensionName, ")")
+| order by totimespan(exTime) desc 
+| project
+    timestamp,
+    exTime,
+    SlowPositionInAL,
+    SourceProcess,
+    operationType,
+    sqlStatement,
+    customDimensions
+| take 10 

@@ -1,0 +1,66 @@
+// stack traces (from Kennie)
+traces
+| where timestamp >= ago(7d)
+| where customDimensions.aadTenantId == 'bla'
+| where customDimensions.environmentName == 'blabla'
+| where customDimensions has 'CL0002' or
+        customDimensions has 'RT0005' or
+        customDimensions has 'RT0012' or
+        customDimensions has 'RT0018' or
+        customDimensions has 'RT0019' or
+        customDimensions has 'RT0030' or
+        customDimensions has 'RT0031' or
+        customDimensions has 'AL0000HE7' // job queue errors
+| where customDimensions.eventId in ( 'CL0002', 'RT0005', 'RT0012', 'RT0018', 'RT0019', 'RT0030', 'RT0031', 'AL0000HE7' )
+| where customDimensions.alObjectId != '0' 
+| where isnotempty(customDimensions.alObjectId)
+| where isnotempty( customDimensions.alStackTrace ) // RT0019 only has stacktrace from 20.1
+     or isnotempty( customDimensions.alJobQueueStacktrace ) // stack trace added in 21.3
+| extend StackTrace = case( 
+    customDimensions.eventId == 'AL0000HE7', tostring( customDimensions.alJobQueueStacktrace ) // stack trace added in 21.3 for job queue errors
+  , tostring( customDimensions.alStackTrace )
+)
+| distinct StackTraceHash = hash_md5( strcat( StackTrace, customDimensions.eventId ) )
+, EventId = tostring( customDimensions.eventId )
+, StackTrace
+| extend fromJobQueue = StackTrace has '(CodeUnit 448).OnRun'
+| extend fromOnCompanyOpen = StackTrace has 'OnCompanyOpen' or StackTrace has 'OnCompanyOpenCompleted' 
+| extend topOfStackline = case(
+    EventId in ('RT0005', 'RT0018' ), extract('AL CallStack: (.+)', 1, StackTrace)
+  , EventId in ('CL0002', 'RT0019', 'RT0012'),             extract('(.+)', 1, StackTrace)
+  , EventId in ('AL0000HE7', 'RT0030', 'RT0031'),           extract('(([^\\\\]+)(\\\\){1})', 1, StackTrace) 
+  , 'Do not get here'
+)
+| extend topOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, topOfStackline )
+| extend topOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, topOfStackline)
+| extend topOfStackLineNumber = extract(' line (\\d+)', 1, topOfStackline )
+| extend topOfStackExtensionName = case (
+  isnotempty( topOfStackLineNumber), extract('line \\d+ - (.+) by', 1, topOfStackline ),
+  extract(' - (.+) by', 1, topOfStackline )
+)
+| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline )
+| extend topOfStackWhatWasCalled = case(
+  isnotempty( topOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, topOfStackline  ),
+  isnotempty( topOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, topOfStackline ),
+  extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, topOfStackline  )
+)
+| extend bottomOfStackline = case(
+    EventId in ('CL0002', 'RT0005', 'RT0012', 'RT0018', 'RT0019' ), extract('(.+\\([a-zA-Z]+ \\d+\\)\\..+)\\n?\\z', 1, StackTrace)
+  , EventId in ('AL0000HE7', 'CL0002', 'RT0030', 'RT0031'), extract('([^\\\\]+)(\\\\)\\z', 1, StackTrace)
+  , 'Do not get here'
+)
+| extend bottomOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, bottomOfStackline )
+| extend bottomOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, bottomOfStackline )
+| extend bottomOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, bottomOfStackline )
+| extend bottomOfStackLineNumber = extract(' line (\\d+)', 1, bottomOfStackline )
+| extend bottomOfStackExtensionName = case (
+  isnotempty( bottomOfStackLineNumber), extract('line \\d+ - (.+) by', 1, bottomOfStackline ),
+  extract(' - (.+) by', 1, bottomOfStackline )
+)
+| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline )
+| extend bottomOfStackWhatWasCalled = case(
+  isnotempty( bottomOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, bottomOfStackline ),
+  isnotempty( bottomOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, bottomOfStackline ),
+  extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, bottomOfStackline )
+)
