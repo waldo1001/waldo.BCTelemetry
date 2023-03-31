@@ -1,7 +1,7 @@
 // SQLDeadlocks
 traces
 | where customDimensions has "customername"
-| where timestamp >= ago(30d) // adjust as needed. The value 30 comes from the app configuration
+| where timestamp >= ago(12h) // adjust as needed. The value 30 comes from the app configuration
 | where customDimensions has 'RT0028'
 | where customDimensions.eventId == 'RT0028'
 | where isnotempty(customDimensions.aadTenantId) // filter away signal from Docker sandboxes
@@ -13,29 +13,76 @@ traces
     , ObjectName = tostring(customDimensions.alObjectName)
     , sqlStatement = tostring(customDimensions.sqlStatement)
     , companyName = tostring(customDimensions.companyName)        
-    , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN") 
+    , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN")
+    , EventId = tostring(customDimensions.eventId)
+    , StackTrace = tostring(customDimensions.alStackTrace)
 | extend operationType = case(
-  sqlStatement startswith "UPDATE", "UPDATE"
-, sqlStatement startswith "DELETE", "DELETE"
-, sqlStatement startswith "BeginTransaction", "BEGIN_TRANS"
-, sqlStatement matches regex "INSERT INTO", "INSERT"
-, sqlStatement startswith "SELECT", "SELECT"
-, sqlStatement matches regex "IF EXISTS \\(SELECT (.*)\\) SELECT", "SELECT'"
-, sqlStatement has "SELECT NEXT VALUE FOR", "SELECT_SEQUENCE_VALUE"
-, sqlStatement has "SELECT @@SPID", "SELECT_SPID"
-, sqlStatement matches regex "(.*)WITH", "SELECT"
-, sqlStatement startswith "CREATE TABLE", "CREATE_TABLE"
-, sqlStatement startswith "ALTER TABLE", "ALTER_TABLE"
-, sqlStatement startswith "exec sp_rename", "RENAME_TABLE" 
-, sqlStatement matches regex "(.*)DROP TABLE", "DROP_TABLE"
-, sqlStatement startswith "SET LOCK_TIMEOUT", "SET_LOCK_TIMEOUT"
-, sqlStatement has "sp_getapplock", "GET_APP_LOCK"
-, "UNKNOWN"
-) 
-| parse kind=regex sqlStatement with selectPart: string "FROM \"SQLDATABASE\".dbo.\"CURRENTCOMPANY\\$" tablename: string "\\$" space:string
-| extend splitStacktrace = split(customDimensions.alStackTrace,"\n")
+    sqlStatement startswith "UPDATE", "UPDATE"
+    , sqlStatement startswith "DELETE", "DELETE"
+    , sqlStatement startswith "BeginTransaction", "BEGIN_TRANS"
+    , sqlStatement matches regex "INSERT INTO", "INSERT"
+    , sqlStatement startswith "SELECT", "SELECT"
+    , sqlStatement matches regex "IF EXISTS \\(SELECT (.*)\\) SELECT", "SELECT'"
+    , sqlStatement has "SELECT NEXT VALUE FOR", "SELECT_SEQUENCE_VALUE"
+    , sqlStatement has "SELECT @@SPID", "SELECT_SPID"
+    , sqlStatement matches regex "(.*)WITH", "SELECT"
+    , sqlStatement startswith "CREATE TABLE", "CREATE_TABLE"
+    , sqlStatement startswith "ALTER TABLE", "ALTER_TABLE"
+    , sqlStatement startswith "exec sp_rename", "RENAME_TABLE" 
+    , sqlStatement matches regex "(.*)DROP TABLE", "DROP_TABLE"
+    , sqlStatement startswith "SET LOCK_TIMEOUT", "SET_LOCK_TIMEOUT"
+    , sqlStatement has "sp_getapplock", "GET_APP_LOCK"
+    , "UNKNOWN"
+    ) 
+| parse kind=regex sqlStatement with selectPart: string "FROM \"SQLDATABASE\".dbo.\"CURRENTCOMPANY\\$" tablename: string "\\$" space: string
+| extend splitStacktrace = split(customDimensions.alStackTrace, "\n")
 | extend lengthStacktrace = array_length(splitStacktrace)
-| extend LockingObject = splitStacktrace[0], SourceProcess = splitStacktrace[lengthStacktrace-1]
-| project timestamp, TenantId, companyName, ObjectType, ObjectId, ObjectName, operationType, numberOfJoins,LockingObject, SourceProcess, splitStacktrace, customDimensions
+| extend
+    topOfStackline = tostring(splitStacktrace[0]),
+    bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])
+| extend topOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, topOfStackline)
+| extend topOfStackLineNumber = extract(' line (\\d+)', 1, topOfStackline)
+| extend topOfStackExtensionName = case (
+    isnotempty(topOfStackLineNumber), extract('line \\d+ - (.+) by', 1, topOfStackline),
+    extract(' - (.+) by', 1, topOfStackline)
+    )
+| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)
+| extend topOfStackWhatWasCalled = case(
+    isnotempty(topOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, topOfStackline),
+    isnotempty(topOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, topOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, topOfStackline)
+    )
+| extend bottomOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, bottomOfStackline)
+| extend bottomOfStackLineNumber = extract(' line (\\d+)', 1, bottomOfStackline)
+| extend bottomOfStackExtensionName = case (
+    isnotempty(bottomOfStackLineNumber), extract('line \\d+ - (.+) by', 1, bottomOfStackline),
+    extract(' - (.+) by', 1, bottomOfStackline)
+    )
+| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)
+| extend bottomOfStackWhatWasCalled = case(
+    isnotempty(bottomOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, bottomOfStackline),
+    isnotempty(bottomOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, bottomOfStackline)
+    )
+| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , " - ", bottomOfStackObjectType, " ", bottomOfStackObjectId, " ", bottomOfStackObjectName, " (", bottomOfStackExtensionName, ")")
+    , LockingObject = strcat(topOfStackWhatWasCalled , " - ", topOfStackObjectType, " ", topOfStackObjectId, " ", topOfStackObjectName, " (", topOfStackExtensionName, ")")
+| project
+    timestamp,
+    TenantId,
+    companyName,
+    ObjectType,
+    ObjectId,
+    ObjectName,
+    operationType,
+    numberOfJoins,
+    LockingObject,
+    SourceProcess,
+    StackTrace,
+    customDimensions
 | summarize count = count() by tostring(LockingObject)
+| order by SourceProcess, ['count'] desc 
 
