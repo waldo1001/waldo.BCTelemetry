@@ -84,5 +84,5 @@ traces
     StackTrace,
     customDimensions
 | summarize count = count() by tostring(LockingObject)
-| order by SourceProcess, ['count'] desc 
+| order by ['count'] desc 
 
