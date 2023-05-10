@@ -1,0 +1,40 @@
+// Last Long running AL methods
+traces
+| where customDimensions has "customername"
+| where timestamp > ago(24h) // adjust as needed
+| where customDimensions has 'RT0018' // performance optimization
+| where customDimensions.eventId == 'RT0018' 
+| where customDimensions.alObjectId > 0 // filter out internal server calls
+| project timestamp = timestamp
+, aadTenantId = customDimensions.aadTenantId
+, environmentName = customDimensions.environmentName
+, environmentType = customDimensions.environmentType
+, companyName = customDimensions.companyName
+, alMethod = customDimensions.alMethod
+, alObjectId = customDimensions.alObjectId
+, alObjectName = customDimensions.alObjectName
+, alObjectType = customDimensions.alObjectType
+, alStackTrace = customDimensions.alStackTrace // use the KQL snippet parseStackTrace to get top/bottom of the stack trace details
+, clientType = customDimensions.clientType
+// exclusiveTime is the execution time of the operation, without the time where AL execution was suspended due to client callback
+, exclusiveTime = customDimensions.exclusiveTime // This dimension was introduced in Business Central 2023 release wave 1, version 22.1. Backported to version 21.6
+, exclusiveTimeInMS = toreal(totimespan(customDimensions.exclusiveTime))/10000 //the datatype for exclusiveTime is timespan 
+// exclusiveTime is the total time of the operation, including wait time due to client callback
+, totalTime = customDimensions.executionTime
+, totalTimeInMS = toreal(totimespan(customDimensions.executionTime))/10000 //the datatype for executionTime is timespan 
+, extensionId = customDimensions.extensionId
+, extensionInfo = customDimensions.extensionInfo // parse this json structure to find out if other extensions is involved
+, extensionName = customDimensions.extensionName
+, extensionPublisher = customDimensions.extensionPublisher
+, extensionVersion = customDimensions.extensionVersion
+, longRunningThreshold = customDimensions.longRunningThreshold
+, longRunningThresholdInMS = toreal(totimespan(customDimensions.longRunningThreshold))/10000 //the datatype for executionTime is timespan 
+, sqlExecutes = customDimensions.sqlExecutes // This dimension was introduced in Business Central 2023 release wave 1, version 22.0
+, sqlRowsRead = customDimensions.sqlRowsRead // This dimension was introduced in Business Central 2023 release wave 1, version 22.0
+, usertelemetryId = case(
+  // user telemetry id was introduced in the platform in version 20.0
+  toint( substring(customDimensions.componentVersion,0,2)) >= 20, user_Id
+, 'N/A'
+)
+| order by timestamp desc 
+| take 100
