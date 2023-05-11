@@ -1,8 +1,7 @@
-// SQLDeadlocks
+// SQLDeadlocks by Source Process
 traces
 | where customDimensions has "customername"
-| where timestamp >= ago(12h) // adjust as needed. The value 30 comes from the app configuration
-| where customDimensions has 'RT0028'
+| where timestamp >= ago(4d) // adjust as needed. The value 30 comes from the app configuration
 | where customDimensions.eventId == 'RT0028'
 | where isnotempty(customDimensions.aadTenantId) // filter away signal from Docker sandboxes
 | where customDimensions.alObjectId != '0' 
@@ -69,7 +68,10 @@ traces
     extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, bottomOfStackline)
     )
 | extend SourceProcess = strcat(bottomOfStackWhatWasCalled , " - ", bottomOfStackObjectType, " ", bottomOfStackObjectId, " ", bottomOfStackObjectName, " (", bottomOfStackExtensionName, ")")
-    , LockingObject = strcat(topOfStackWhatWasCalled , " - ", topOfStackObjectType, " ", topOfStackObjectId, " ", topOfStackObjectName, " (", topOfStackExtensionName, ")")
+    , LockingObject = strcat(topOfStackObjectType, " '", topOfStackObjectName,"'")
+    , LockingObjectId = tostring(topOfStackObjectId)
+    , LockingObjectMethod = tostring(topOfStackWhatWasCalled)
+    , LockingObjectExtension = tostring(topOfStackExtensionName)
 | project
     timestamp,
     TenantId,
@@ -80,9 +82,13 @@ traces
     operationType,
     numberOfJoins,
     LockingObject,
+    LockingObjectId,
+    LockingObjectMethod,
+    LockingObjectExtension,    
     SourceProcess,
     StackTrace,
     customDimensions
-| summarize count = count() by tostring(SourceProcess), tostring(LockingObject)
-| order by SourceProcess, ['count'] desc 
+| summarize count = count() by tostring(SourceProcess), tostring(LockingObjectExtension), tostring(LockingObject), tostring(LockingObjectId), tostring(LockingObjectMethod),tostring(operationType)
+| order by ['count'],SourceProcess desc 
+
 

@@ -1,4 +1,4 @@
-// SQLDeadlocks
+// SQLDeadlocks By Customer
 traces
 | where timestamp >= ago(30d) // adjust as needed. The value 30 comes from the app configuration
 | where customDimensions has 'RT0028'

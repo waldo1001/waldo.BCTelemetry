@@ -1,4 +1,4 @@
-// SQLDeadlocks
+// SQLDeadlocks By Locking Object
 traces
 | where customDimensions has "customername"
 | where timestamp >= ago(12h) // adjust as needed. The value 30 comes from the app configuration
