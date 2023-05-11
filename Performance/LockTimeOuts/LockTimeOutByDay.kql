@@ -1,0 +1,22 @@
+// LockTimeOuts By Day
+traces
+| where customDimensions has "coeck"
+| where timestamp >= ago(30d) // adjust as needed. The value 30 comes from the app configuration
+| where customDimensions has 'RT0012'
+| where customDimensions.eventId == 'RT0012'
+| where isnotempty(customDimensions.aadTenantId) // filter away signal from Docker sandboxes
+| where customDimensions.alObjectId != '0' 
+| where isnotempty(customDimensions.alObjectId)
+| extend TenantId = strcat(customDimensions.aadTenantId)
+    , ObjectType = tostring(customDimensions.alObjectType)
+    , ObjectId = tostring(customDimensions.alObjectId)
+    , ObjectName = tostring(customDimensions.alObjectName)
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+    , companyName = tostring(customDimensions.companyName)        
+    , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN") 
+    , stackTrace = tostring(customDimensions.alStackTrace)
+| extend DayGroup = format_datetime(timestamp,"yyyy-MM-dd")
+| parse kind=regex sqlStatement with selectPart: string "FROM " tablename: string
+| project timestamp, TenantId, companyName, ObjectType, ObjectId, ObjectName, numberOfJoins, stackTrace, sqlStatement, tablename, customDimensions, DayGroup
+| summarize count = count() by DayGroup
+| order by DayGroup desc 
