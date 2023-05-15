@@ -1,0 +1,32 @@
+//Many Joins - By Object
+traces
+// | where customDimensions has "customername"
+| where timestamp >= ago(12h) // adjust as needed. The value 30 comes from the app configuration
+| where isnotempty(customDimensions.sqlStatement)
+| where isnotempty(customDimensions.alStackTrace)
+| extend numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN") 
+| where numberOfJoins > 2 // adjust as needed
+| where not(customDimensions.alObjectType in ("Page"))
+| where customDimensions.sqlStatement startswith "SELECT"
+| parse kind=regex tostring(customDimensions.sqlStatement) with selectPart: string "FROM" rest: string
+| extend numberOfColumnsSelected = countof(selectPart, ",") + 1
+    , eventId = tostring(customDimensions.eventId)
+    , TenantId = strcat(customDimensions.aadTenantId)
+    , ObjectType = tostring(customDimensions.alObjectType)
+    , ObjectId = tostring(customDimensions.alObjectId)
+    , ObjectName = tostring(customDimensions.alObjectName)
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+    , companyName = tostring(customDimensions.companyName)
+    , clientType = tostring(customDimensions.clientType)
+    , StackTrace = tostring(customDimensions.alStackTrace)
+    , executionTime = customDimensions.executionTime
+    , executionTimeInMS = toreal(totimespan(customDimensions.executionTime))/10000
+    , extensionId = customDimensions.extensionId
+    , extensionName = customDimensions.extensionName
+    , extensionPublisher = customDimensions.extensionPublisher
+| extend extensionIdsFromJOIN = tostring( extract_all("JOIN \"SQLDATABASE\"\\.dbo\\.\"CURRENTCOMPANY\\$.+?\\$(\\S+?)\"", sqlStatement))
+| extend tablename = tostring( extract_all("FROM \"SQLDATABASE\"\\.dbo\\.\"CURRENTCOMPANY(\\$.+?)\\$\\S+?\"", sqlStatement)[0])
+| project TenantId, extensionPublisher, extensionName, companyName, numberOfColumnsSelected, numberOfJoins, executionTimeInMS, ObjectType, ObjectId, ObjectName, clientType, StackTrace, eventId, message, tablename, sqlStatement, extensionIdsFromJOIN
+| summarize avgExecutionTime = toint(avg(executionTimeInMS)), avgNumberOfJoins = toint(avg(numberOfJoins)), count = count() by ObjectType, ObjectId,ObjectName, clientType
+| order by ['count'] desc 
+| take 1000
