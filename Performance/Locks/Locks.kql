@@ -1,0 +1,32 @@
+//Source: https://github.com/microsoft/BCTech/blob/master/samples/AppInsights/KQL/Queries/PerformanceTuning/QueriesThatHoldLocks.kql
+//TODO:
+// - add SourceProcess
+// - add LockingObject
+
+traces
+| where customDimensions has 'coeck'
+| where customDimensions has "CSH"
+| where timestamp > ago(12h) // adjust as needed
+    and customDimensions.eventId == 'RT0005'
+| where customDimensions.sqlStatement has 'UPDLOCK'
+| project timestamp = timestamp
+, eventId = customDimensions.eventId 
+, aadTenantId = customDimensions.aadTenantId
+, sqlStatement = tostring(customDimensions.sqlStatement)
+, environmentName = customDimensions.environmentName
+, environmentType = customDimensions.environmentType
+, companyName = customDimensions.companyName
+, extensionId = customDimensions.extensionId
+, extensionPublisher = customDimensions.extensionPublisher
+, extensionName = customDimensions.extensionName
+, extensionVersion = customDimensions.extensionVersion
+, alObjectId = customDimensions.alObjectId
+, alObjectName = customDimensions.alObjectName
+, alObjectType = customDimensions.alObjectType
+, alStackTrace = customDimensions.alStackTrace
+, clientType = customDimensions.clientType
+, executionTime = customDimensions.executionTime
+, executionTimeInMS = toreal(totimespan(customDimensions.executionTime))/10000 //the datatype for executionTime is timespan 
+| order by timestamp desc 
+// | summarize avgExTime = toint(avg(executionTimeInMS)), count = count() by tostring(alStackTrace)
+| take 500
