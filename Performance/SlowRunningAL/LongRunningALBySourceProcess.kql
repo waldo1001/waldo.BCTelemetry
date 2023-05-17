@@ -1,6 +1,6 @@
 // Long running queries by Source Process - still needs some work
 traces
-| where customDimensions has "coeck"
+//| where customDimensions has 'customername'
 | where timestamp >= ago(12h) // adjust as needed. The value 30 comes from the app configuration
 | where customDimensions has 'RT0018'
 | where customDimensions.eventId == 'RT0018'
