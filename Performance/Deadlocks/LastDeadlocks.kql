@@ -14,6 +14,7 @@ traces
     , sqlStatement = tostring(customDimensions.sqlStatement)
     , companyName = tostring(customDimensions.companyName)        
     , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN") 
+    , userId = user_Id
 | extend operationType = case(
     sqlStatement startswith "UPDATE", "UPDATE"
     , sqlStatement startswith "DELETE", "DELETE"
@@ -41,6 +42,7 @@ traces
 | project
     timestamp,
     TenantId,
+    userId,
     companyName,
     ObjectType,
     ObjectId,

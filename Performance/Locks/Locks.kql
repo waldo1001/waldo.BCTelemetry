@@ -11,7 +11,8 @@ traces
 | where customDimensions.sqlStatement has 'UPDLOCK'
 | project timestamp = timestamp
 , eventId = customDimensions.eventId 
-, aadTenantId = customDimensions.aadTenantId
+, TenantId = customDimensions.aadTenantId
+, userId = user_Id
 , sqlStatement = tostring(customDimensions.sqlStatement)
 , environmentName = customDimensions.environmentName
 , environmentType = customDimensions.environmentType

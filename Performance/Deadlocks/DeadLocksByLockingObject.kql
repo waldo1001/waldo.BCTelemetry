@@ -16,6 +16,7 @@ traces
     , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN")
     , EventId = tostring(customDimensions.eventId)
     , StackTrace = tostring(customDimensions.alStackTrace)
+    , userId = user_Id
 | extend operationType = case(
     sqlStatement startswith "UPDATE", "UPDATE"
     , sqlStatement startswith "DELETE", "DELETE"
