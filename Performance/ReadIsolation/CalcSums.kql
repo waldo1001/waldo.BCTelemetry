@@ -1,0 +1,32 @@
+// Any CalcSum that we can find in Telemetry that is locking
+traces
+// | where customDimensions has "customername"
+| where timestamp >= ago(60d) // adjust as needed. The value 30 comes from the app configuration
+| where isnotempty(customDimensions.sqlStatement) 
+| where isnotempty(customDimensions.alStackTrace) // only interested in parts in the code we can change
+| where customDimensions.extensionPublisher <> "Microsoft"
+| where customDimensions.sqlStatement contains "SELECT SUM" //It's an intentional SUM
+    and customDimensions.sqlStatement contains "UPDLOCK"
+    and customDimensions.sqlStatement startswith "SELECT"
+| where not(customDimensions.alObjectType in ("Page"))
+| parse kind=regex tostring(customDimensions.sqlStatement) with selectPart: string "FROM" rest: string
+| extend numberOfColumnsSelected = countof(selectPart, ",") + 1
+    , eventId = tostring(customDimensions.eventId)
+    , TenantId = strcat(customDimensions.aadTenantId)
+    , userId = user_Id
+    , ObjectType = tostring(customDimensions.alObjectType)
+    , ObjectId = tostring(customDimensions.alObjectId)
+    , ObjectName = tostring(customDimensions.alObjectName)
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+    , companyName = tostring(customDimensions.companyName)
+    , clientType = tostring(customDimensions.clientType)
+    , StackTrace = tostring(customDimensions.alStackTrace)
+    , executionTime = customDimensions.executionTime
+    , executionTimeInMS = toreal(totimespan(customDimensions.executionTime))/10000
+    , extensionId = customDimensions.extensionId
+    , extensionName = customDimensions.extensionName
+    , extensionPublisher = customDimensions.extensionPublisher
+| extend extensionIdsFromJOIN = tostring( extract_all("JOIN \"SQLDATABASE\"\\.dbo\\.\"CURRENTCOMPANY\\$.+?\\$(\\S+?)\"", sqlStatement))
+| extend tablename = tostring( extract_all("FROM \"SQLDATABASE\"\\.dbo\\.\"CURRENTCOMPANY(\\$.+?)\\$\\S+?\"", sqlStatement)[0])
+| project TenantId, extensionPublisher, extensionName, companyName, numberOfColumnsSelected, executionTimeInMS, ObjectType, ObjectId, ObjectName, StackTrace, eventId, message, clientType, tablename, sqlStatement, extensionIdsFromJOIN
+| take 1000
