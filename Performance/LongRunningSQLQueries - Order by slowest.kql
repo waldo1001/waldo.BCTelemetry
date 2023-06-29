@@ -1,3 +1,4 @@
+// Slowest running queries (sorted from slowest to faster...)
 
 traces
 | where customDimensions has "customername"
@@ -80,4 +81,4 @@ traces
     operationType,
     sqlStatement,
     customDimensions
-| take 10 
+| take 100

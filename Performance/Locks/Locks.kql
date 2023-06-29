@@ -4,7 +4,7 @@
 // - add LockingObject
 
 traces
-| where customDimensions has 'coeck'
+| where customDimensions has 'customername'
 | where customDimensions has "CSH"
 | where timestamp > ago(12h) // adjust as needed
     and customDimensions.eventId == 'RT0005'
