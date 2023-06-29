@@ -12,6 +12,7 @@ traces
 | extend numberOfColumnsSelected = countof(selectPart, ",") + 1
     , eventId = tostring(customDimensions.eventId)
     , TenantId = strcat(customDimensions.aadTenantId)
+    , userId = user_Id
     , ObjectType = tostring(customDimensions.alObjectType)
     , ObjectId = tostring(customDimensions.alObjectId)
     , ObjectName = tostring(customDimensions.alObjectName)

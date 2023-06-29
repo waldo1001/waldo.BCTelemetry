@@ -5,13 +5,13 @@
 
 traces
 | where customDimensions has 'customername'
-| where customDimensions has "CSH"
 | where timestamp > ago(12h) // adjust as needed
     and customDimensions.eventId == 'RT0005'
 | where customDimensions.sqlStatement has 'UPDLOCK'
 | project timestamp = timestamp
 , eventId = customDimensions.eventId 
-, aadTenantId = customDimensions.aadTenantId
+, TenantId = customDimensions.aadTenantId
+, userId = user_Id
 , sqlStatement = tostring(customDimensions.sqlStatement)
 , environmentName = customDimensions.environmentName
 , environmentType = customDimensions.environmentType

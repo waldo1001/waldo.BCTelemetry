@@ -1,6 +1,6 @@
 // Last LockTimeOuts
 traces
-| where customDimensions has "customername"
+//| where customDimensions has "customername"
 | where timestamp >= ago(4d) // adjust as needed. The value 30 comes from the app configuration
 | where customDimensions has 'RT0012'
 | where customDimensions.eventId == 'RT0012'
@@ -14,6 +14,7 @@ traces
     , sqlStatement = tostring(customDimensions.sqlStatement)
     , companyName = tostring(customDimensions.companyName)        
     , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN") 
+    , userId = user_Id
 | extend operationType = case(
     sqlStatement startswith "UPDATE", "UPDATE"
     , sqlStatement startswith "DELETE", "DELETE"
@@ -41,6 +42,7 @@ traces
 | project
     timestamp,
     TenantId,
+    userId,
     companyName,
     ObjectType,
     ObjectId,
