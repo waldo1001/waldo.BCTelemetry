@@ -1,0 +1,7 @@
+traces
+| where session_Id == '14fcdeb5-a132-4cd0-948d-2838dd0295c3'
+| extend alDurationInMs_ = toint(customDimensions.alDurationInMs)
+, alNoOfSqlStatements_ = toint(customDimensions.alNoOfSqlStatements)
+, alCodeunitName_ = tostring(customDimensions.alCodeunitName)
+, alVersion_ = tostring(customDimensions.alVersion)
+| order by timestamp desc 

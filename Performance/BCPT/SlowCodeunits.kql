@@ -1,0 +1,8 @@
+traces
+| extend alDurationInMs_ = toint(customDimensions.alDurationInMs)
+, alNoOfSqlStatements_ = toint(customDimensions.alNoOfSqlStatements)
+, alCodeunitName_ = tostring(customDimensions.alCodeunitName)
+, alVersion_ = tostring(customDimensions.alVersion)
+| where isnotempty(alCodeunitName_)
+| where alVersion_ == 3
+| order by alDurationInMs_ desc 
