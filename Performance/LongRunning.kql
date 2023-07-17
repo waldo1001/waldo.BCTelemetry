@@ -1,0 +1,95 @@
+//Very long running queries (>100000 ms)
+let MinimumTimeInMS = 100000;
+let TimeAgo=8h;
+let customer='customername';
+let LongRunningStuff = 
+traces
+| where timestamp > ago(TimeAgo)
+| where customDimensions has customer 
+| where isnotempty(customDimensions.executionTime)
+| extend executionTime = customDimensions.executionTime
+, executionTimeInMS = toreal(totimespan(customDimensions.executionTime))/10000 //the datatype for executionTime is timespan 
+, StackTrace = customDimensions.alStackTrace
+, eventId = customDimensions.eventId
+, aadTenantId = customDimensions.aadTenantId
+| where executionTimeInMS > MinimumTimeInMS
+| extend topOfStackline = extract('AL CallStack: (.+)', 1, tostring(StackTrace))
+| extend bottomOfStackline = extract('(.+\\([a-zA-Z]+ \\d+\\)\\..+)\\n?\\z', 1, tostring(StackTrace))
+| extend topOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, topOfStackline)
+| extend topOfStackLineNumber = extract(' line (\\d+)', 1, topOfStackline)
+| extend topOfStackExtensionName = case (
+    isnotempty(topOfStackLineNumber), extract('line \\d+ - (.+) by', 1, topOfStackline),
+    extract(' - (.+) by', 1, topOfStackline)
+    )
+| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)
+| extend topOfStackWhatWasCalled = case(
+    isnotempty(topOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, topOfStackline),
+    isnotempty(topOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, topOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, topOfStackline)
+    )
+| extend bottomOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, bottomOfStackline)
+| extend bottomOfStackLineNumber = extract(' line (\\d+)', 1, bottomOfStackline)
+| extend bottomOfStackExtensionName = case (
+    isnotempty(bottomOfStackLineNumber), extract('line \\d+ - (.+) by', 1, bottomOfStackline),
+    extract(' - (.+) by', 1, bottomOfStackline)
+    )
+| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)
+| extend bottomOfStackWhatWasCalled = case(
+    isnotempty(bottomOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, bottomOfStackline),
+    isnotempty(bottomOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, bottomOfStackline)
+    )
+| extend SourceProcess = strcat(bottomOfStackWhatWasCalled, " - ", bottomOfStackObjectType, " ", bottomOfStackObjectId, " ", bottomOfStackObjectName, " (", bottomOfStackExtensionName, ")")
+    , SlowPositionInAL = strcat(topOfStackWhatWasCalled, " - ", topOfStackObjectType, " ", topOfStackObjectId, " ", topOfStackObjectName, " (", topOfStackExtensionName, ")")
+| where not(isempty(topOfStackline))
+| project timestamp
+, aadTenantId
+, executionTimeInMS
+, SourceProcess
+, SlowPositionInAL
+, eventId
+, message
+, StackTrace
+, customDimensions
+, session_Id
+| order by timestamp desc 
+;
+let AllWithCallStack =
+traces
+| where timestamp > ago(TimeAgo)
+| where customDimensions has customer 
+| where isnotempty(customDimensions.alStackTrace)
+| where customDimensions.eventId !in (
+    'RT0006' //report render
+    , 'RT0019' //web service call
+    , 'RT0005' // Operation exceeded time threshold (SQL query)
+    , 'RT0018' //Operation exceeded time threshold (AL method)
+)
+| extend executionTime = customDimensions.executionTime
+, executionTimeInMS = toreal(totimespan(customDimensions.executionTime))/10000 //the datatype for executionTime is timespan 
+, StackTrace = customDimensions.alStackTrace
+, eventId = customDimensions.eventId
+, aadTenantId = customDimensions.aadTenantId
+, SourceProcess = ''
+, SlowPositionInAL = ''
+| project timestamp
+, aadTenantId
+, executionTimeInMS
+, SourceProcess
+, SlowPositionInAL
+, eventId
+, message
+, StackTrace
+, customDimensions
+, session_Id
+;
+LongRunningStuff
+| union AllWithCallStack
+| order by timestamp desc 
+// LongRunningStuff
+// | join kind=rightouter AllWithCallStack on $left.session_Id == $right.session_Id
+// | order by timestamp desc 

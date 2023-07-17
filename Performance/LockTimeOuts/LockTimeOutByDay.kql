@@ -1,6 +1,6 @@
 // LockTimeOuts By Day
 traces
-//| where customDimensions has 'customername'
+| where customDimensions has "customername"
 | where timestamp >= ago(30d) // adjust as needed. The value 30 comes from the app configuration
 | where customDimensions has 'RT0012'
 | where customDimensions.eventId == 'RT0012'
