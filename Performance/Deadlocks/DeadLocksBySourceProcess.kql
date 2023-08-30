@@ -1,4 +1,5 @@
-// SQLDeadlocks by Source Process
+// DeadLocks - by Source Process
+
 traces
 | where customDimensions has "customername"
 | where timestamp >= ago(4d) // adjust as needed. The value 30 comes from the app configuration
