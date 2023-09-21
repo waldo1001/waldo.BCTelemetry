@@ -1,0 +1,11 @@
+//BCPT - Sub Iteration - Details
+
+traces
+| where customDimensions.eventId == 'AL0000DGF'
+| where customDimensions.alOperation <> 'Scenario'
+| extend DurationInMs = toint(customDimensions.alDurationInMs)
+, NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)
+, CodeunitName = tostring(customDimensions.alCodeunitName)
+, Operation = tostring(customDimensions.alOperation)
+, Version = tostring(customDimensions.alVersion)
+| order by timestamp desc 
