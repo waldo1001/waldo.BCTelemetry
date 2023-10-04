@@ -1,0 +1,22 @@
+// AvgExecutionTime per customer, per object
+
+traces
+// | where customDimensions.aadTenantId == ''
+// | where isnotempty( customDimensions.alStackTrace)
+// | where customDimensions.eventId <> 'RT0018'
+| extend aadTenantId = customDimensions.aadTenantId
+    , executionTime = customDimensions.executionTime
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+    , alObjectName = tostring(customDimensions.alObjectName)
+    , alObjectType = tostring(customDimensions.alObjectType)
+    , alStackTrace = tostring(customDimensions.alStackTrace)
+    , clientType = tostring(customDimensions.clientType)
+    , companyName = tostring(customDimensions.companyName)
+    , component = customDimensions.component
+    , componentVersion = customDimensions.componentVersion
+    , environmentName = tostring(customDimensions.['Environment name'])
+    , environmentType = tostring(customDimensions.environmentType)
+    , executionTimeInMS = toreal(totimespan(customDimensions.executionTime)) / 10000 
+| where isnotempty(executionTime)
+| summarize AvgexecutionTimeInMS = avg(executionTimeInMS),  ; count = count() by tostring(aadTenantId), alObjectType, alObjectName
+

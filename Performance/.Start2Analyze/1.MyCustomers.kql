@@ -1,0 +1,8 @@
+// All customers/companies
+
+traces
+| where isnotempty(customDimensions.companyName)
+| extend companyName = customDimensions.companyName
+    , aadTenantId = customDimensions.aadTenantId
+| summarize; count = count() by tostring(companyName), tostring(aadTenantId)
+
