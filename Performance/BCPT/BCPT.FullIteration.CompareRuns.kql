@@ -1,16 +1,16 @@
 //BCPT - Full Iteration - Compare Runs
-// let SuiteName = 'POS';
+let Suite = 'SuiteName';
 traces
 | where customDimensions.eventId == 'AL0000DGF'
 | where customDimensions.alOperation == 'Scenario'
-// | where customDimensions.alCode == SuiteName
+| where customDimensions.alCode == Suite
 | extend RunId = tostring(customDimensions.alRunID)
-, Suite = tostring(customDimensions.alCode)
-, CodeunitName = tostring(customDimensions.alCodeunitName)
-, Operation = tostring(customDimensions.alOperation)
-, Tag = tostring(customDimensions.alTag)
-, Version = tostring(customDimensions.alVersion)
-, DurationInMs = toint(customDimensions.alDurationInMs)
-, NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)
+    , Suite = tostring(customDimensions.alCode)
+    , CodeunitName = tostring(customDimensions.alCodeunitName)
+    , Operation = tostring(customDimensions.alOperation)
+    , Tag = tostring(customDimensions.alTag)
+    , Version = tostring(customDimensions.alVersion)
+    , DurationInMs = toint(customDimensions.alDurationInMs)
+    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)
 | summarize NoOfIterations = count(), AvgDurations = avg(DurationInMs), AvgNoOfSqlStatements = avg(NoOfSqlStatements) by RunId, Tag, Suite
 
