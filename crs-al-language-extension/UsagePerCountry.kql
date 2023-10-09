@@ -1,0 +1,5 @@
+customEvents
+| extend Country = client_CountryOrRegion
+| summarize; count = count() by Country, name
+| order by ['count'] desc
+
