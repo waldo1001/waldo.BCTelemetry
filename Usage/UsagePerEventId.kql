@@ -1,0 +1,18 @@
+//Usage Per eventId
+
+traces
+| where isnotempty(customDimensions.eventId)
+| where not (customDimensions.eventId startswith "AL")
+| extend eventId = customDimensions.eventId
+    , submsg = iif(substring(message, 0, 4) == "Task", "Task Executed", 
+    iif(customDimensions.eventId == "AL0000JRG", "Job Queue Error",
+    iff(indexof(message, ":") <= 0, message, substring(message, 0, indexof(message, ":")))))
+    , status = iif(customDimensions has "fail", "error",
+    iif(customDimensions has "error", "error",
+    iif(customDimensions has "error", "error",
+    iif(customDimensions has "not succeed", "error",
+    iif(customDimensions has "success", "success",
+    iif(customDimensions has "succeeded", "success",
+    "unknown"))))))
+| summarize count = count() by tostring(eventId), tostring(submsg), status
+| order by ['count'] desc
