@@ -1,7 +1,7 @@
 //Usage By Day
 
 traces
-| where timestamp <= ago(30d)
+| where timestamp >= ago(30d)
 | where isnotempty(customDimensions.eventId)
 | where not (customDimensions.eventId startswith "AL")
 | extend DayGroup = format_datetime(timestamp,"yyyy-MM-dd")
