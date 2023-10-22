@@ -1,0 +1,21 @@
+//BCPT - Full Iteration - AvgNoOfSQLStatements per day
+let Suite = 'BCPT';
+let Date = ago(90d);
+traces
+| where timestamp >= Date
+| where customDimensions.eventId == 'AL0000DGF'
+| where customDimensions.alOperation == 'Scenario' //Full Iteration
+| where customDimensions.alCode == Suite
+| extend RunId = tostring(customDimensions.alRunID)
+    , Suite = tostring(customDimensions.alCode)
+    , CodeunitName = tostring(customDimensions.alCodeunitName)
+    , Operation = tostring(customDimensions.alOperation)
+    , Tag = tostring(customDimensions.alTag)
+    , Version = tostring(customDimensions.alVersion)
+    , DurationInMs = toint(customDimensions.alDurationInMs)
+    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)
+    , Day = format_datetime(timestamp, "yyyy-MM-dd")
+| summarize NoOfIterations = count(), AvgDurations = avg(DurationInMs), AvgNoOfSqlStatements = avg(NoOfSqlStatements) by Day, RunId, Tag, CodeunitName, Suite
+| order by CodeunitName, Day desc 
+| project CodeunitName, Day, toint(AvgNoOfSqlStatements)
+
