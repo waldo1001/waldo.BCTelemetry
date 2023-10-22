@@ -3,16 +3,23 @@
 traces
 | where isnotempty(customDimensions.eventId)
 | where not (customDimensions.eventId startswith "AL")
+| extend submsg = iif(substring(message, 0, 4) == "Task", "Task Executed", 
+                    iif(customDimensions.eventId == "AL0000JRG", "Job Queue Error",
+                        iff(indexof(message, ":") <= 0, message, substring(message, 0, indexof(message, ":")))))
 | extend eventId = customDimensions.eventId
-    , submsg = iif(substring(message, 0, 4) == "Task", "Task Executed", 
-    iif(customDimensions.eventId == "AL0000JRG", "Job Queue Error",
-    iff(indexof(message, ":") <= 0, message, substring(message, 0, indexof(message, ":")))))
-    , status = iif(customDimensions has "fail", "error",
-    iif(customDimensions has "error", "error",
-    iif(customDimensions has "error", "error",
-    iif(customDimensions has "not succeed", "error",
-    iif(customDimensions has "success", "success",
-    iif(customDimensions has "succeeded", "success",
-    "unknown"))))))
+    , status = iif(submsg has "called" 
+                    or submsg has "executed"
+                        or submsg has 'executed'
+                            or submsg has 'succeeded'
+                                or submsg has 'rendered'
+                                    or submsg has 'successfully'
+                                        or submsg has 'taken', "success",
+                    iif(submsg has "error"
+                            or submsg has 'fail'
+                                or submsg has 'failed'
+                                    or submsg has 'deadlock'
+                                        or submsg has 'timed out',"error",
+                        iif(message has 'exceeded', 'too slow',
+                            "unknown")))
 | summarize count = count() by tostring(eventId), tostring(submsg), status
 | order by ['count'] desc

@@ -7,7 +7,7 @@ traces
 | where isnotempty(customDimensions.sqlStatement) 
 | where isnotempty(customDimensions.alStackTrace) // only interested in parts in the code we can change
 | where customDimensions.extensionPublisher <> "Microsoft"
-| where customDimensions.sqlStatement contains "SELECT TOP 1 NULL" //It's an intentional SUM
+| where customDimensions.sqlStatement contains "SELECT TOP 1 NULL"
     and customDimensions.sqlStatement contains "UPDLOCK"
     and customDimensions.sqlStatement startswith "SELECT"
 | where not(customDimensions.alObjectType in ("Page"))

@@ -1,13 +1,11 @@
 //BCPT - Full Iteration - Details
-// let SuiteName = 'POS';
+
 traces
 | where customDimensions.eventId == 'AL0000DGF'
 | where customDimensions.alOperation == 'Scenario'
 // | where customDimensions.alCode == SuiteName
 | extend RunId = tostring(customDimensions.alRunID)
     , Suite = tostring(customDimensions.alCode)
-    , DurationInMs = toint(customDimensions.alDurationInMs)
-    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)
     , CodeunitName = tostring(customDimensions.alCodeunitName)
     , Operation = tostring(customDimensions.alOperation)
     , Tag = tostring(customDimensions.alTag)
@@ -15,4 +13,3 @@ traces
     , DurationInMs = toint(customDimensions.alDurationInMs)
     , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)
 | order by timestamp desc
-
