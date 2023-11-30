@@ -1,0 +1,87 @@
+let BaseApps = 
+traces
+| where customDimensions.alTag == 'BaseAppTests'
+| where customDimensions.eventId == 'AL0000DGF'
+| where customDimensions.alOperation == 'Scenario'
+// | where customDimensions.alCode == SuiteName
+| extend RunId = tostring(customDimensions.alRunID)
+    , Suite = tostring(customDimensions.alCode)
+    , CodeunitName = tostring(customDimensions.alCodeunitName)
+    , Operation = tostring(customDimensions.alOperation)
+    , Tag = tostring(customDimensions.alTag)
+    , Version = tostring(customDimensions.alVersion)
+    , DurationInMs = toint(customDimensions.alDurationInMs)
+    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)
+    , alStatus = tostring(customDimensions.alStatus)
+    , Day = format_datetime(timestamp, "yyyy-MM-dd")
+    , Week = strcat(format_datetime(timestamp, "yyyy"),'-',week_of_year(timestamp))
+| order by timestamp desc
+| summarize count = count(), avgNoOfSqlStatements_Base = avg(NoOfSqlStatements), avgDuration_Base = avg(DurationInMs) by Day, Suite, CodeunitName, Tag, alStatus
+| order by Day, CodeunitName, Tag
+;
+let DistriApps = 
+traces
+| where customDimensions.alTag == 'DistriAppsInstalled'
+| where customDimensions.eventId == 'AL0000DGF'
+| where customDimensions.alOperation == 'Scenario'
+// | where customDimensions.alCode == SuiteName
+| extend RunId = tostring(customDimensions.alRunID)
+    , Suite = tostring(customDimensions.alCode)
+    , CodeunitName = tostring(customDimensions.alCodeunitName)
+    , Operation = tostring(customDimensions.alOperation)
+    , Tag = tostring(customDimensions.alTag)
+    , Version = tostring(customDimensions.alVersion)
+    , DurationInMs = toint(customDimensions.alDurationInMs)
+    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)
+    , alStatus = tostring(customDimensions.alStatus)
+    , Day = format_datetime(timestamp, "yyyy-MM-dd")
+    , Week = strcat(format_datetime(timestamp, "yyyy"),'-',week_of_year(timestamp))
+| order by timestamp desc
+| summarize count = count(), avgNoOfSqlStatements_Distri = avg(NoOfSqlStatements), avgDuration_Distri = avg(DurationInMs) by Day, Suite, CodeunitName, Tag, alStatus
+| order by Day, CodeunitName, Tag
+;
+let DefrancqTests = 
+traces
+| where customDimensions.alTag == 'PTE-Defrancq'
+| where customDimensions.eventId == 'AL0000DGF'
+| where customDimensions.alOperation == 'Scenario'
+// | where customDimensions.alCode == SuiteName
+| extend RunId = tostring(customDimensions.alRunID)
+    , Suite = tostring(customDimensions.alCode)
+    , CodeunitName = tostring(customDimensions.alCodeunitName)
+    , Operation = tostring(customDimensions.alOperation)
+    , Tag = tostring(customDimensions.alTag)
+    , Version = tostring(customDimensions.alVersion)
+    , DurationInMs = toint(customDimensions.alDurationInMs)
+    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)
+    , alStatus = tostring(customDimensions.alStatus)
+    , Day = format_datetime(timestamp, "yyyy-MM-dd")
+    , Week = strcat(format_datetime(timestamp, "yyyy"),'-',week_of_year(timestamp))
+| order by timestamp desc
+| summarize count = count(), avgNoOfSqlStatements_Defrancq = avg(NoOfSqlStatements), avgDuration_Defrancq = avg(DurationInMs) by Day, Suite, CodeunitName, Tag, alStatus
+| order by Day, CodeunitName, Tag
+;
+BaseApps
+| join kind=inner DistriApps on $left.Day == $right.Day, $left.Suite == $right.Suite, $left.CodeunitName == $right.CodeunitName, $left.alStatus == $right.alStatus
+| join kind=inner DefrancqTests on $left.Day == $right.Day, $left.Suite == $right.Suite, $left.CodeunitName == $right.CodeunitName, $left.alStatus == $right.alStatus
+| extend 
+    DistriDurationDiff = (100 * (avgDuration_Distri - avgDuration_Base) / avgDuration_Base)
+    , DistriNoOfSqlStatsDiff = (100 * (avgNoOfSqlStatements_Distri - avgNoOfSqlStatements_Base) / avgNoOfSqlStatements_Base)
+    , DefrancqDurationDiff = (100 * (avgDuration_Defrancq - avgDuration_Base) / avgDuration_Base)
+    , DefrancqNoOfSqlStatsDiff = (100 * (avgNoOfSqlStatements_Defrancq - avgNoOfSqlStatements_Base) / avgNoOfSqlStatements_Base)
+    , DefrancqDistriDurationDiff = (100 * (avgDuration_Defrancq - avgDuration_Distri) / avgDuration_Distri)
+    , DefrancqDistriNoOfSqlStatsDiff = (100 * (avgNoOfSqlStatements_Defrancq - avgNoOfSqlStatements_Distri) / avgNoOfSqlStatements_Distri)
+| project Day
+, Suite
+, CodeunitName
+, alStatus
+, avgDuration_Base
+, avgDuration_Distri
+, avgDuration_Defrancq
+, DistriDurationDiff
+, DefrancqDurationDiff
+, avgNoOfSqlStatements_Base
+, avgNoOfSqlStatements_Distri
+, avgNoOfSqlStatements_Defrancq
+, DistriNoOfSqlStatsDiff
+, DefrancqNoOfSqlStatsDiff

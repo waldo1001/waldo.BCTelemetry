@@ -1,5 +1,4 @@
-//BCPT - Compare Codeunits
-let CodeunitNameFilter = 'Sales';
+//BCPT - Overview Report
 traces
 | where customDimensions.eventId == 'AL0000DGF'
 | where customDimensions.alOperation == 'Scenario'
@@ -15,7 +14,6 @@ traces
     , alStatus = tostring(customDimensions.alStatus)
     , Day = format_datetime(timestamp, "yyyy-MM-dd")
     , Week = strcat(format_datetime(timestamp, "yyyy"),'-',week_of_year(timestamp))
-| where CodeunitName has CodeunitNameFilter
 | order by timestamp desc
 | summarize count = count(), avgNoOfSqlStatements = avg(NoOfSqlStatements), avgDuration = avg(DurationInMs) by Day, CodeunitName, Tag, alStatus
 | order by Day, CodeunitName, Tag

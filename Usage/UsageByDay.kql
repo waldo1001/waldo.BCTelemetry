@@ -1,21 +1,8 @@
 //Usage By Day
 
 traces
-| where timestamp >= ago(30d)
+| where timestamp >= ago(90d)
 | where isnotempty(customDimensions.eventId)
-| where not (customDimensions.eventId startswith "AL")
-| extend DayGroup = format_datetime(timestamp,"yyyy-MM-dd")
-| extend eventId = customDimensions.eventId
-    , submsg = iif(substring(message, 0, 4) == "Task", "Task Executed", 
-    iif(customDimensions.eventId == "AL0000JRG", "Job Queue Error",
-    iff(indexof(message, ":") <= 0, message, substring(message, 0, indexof(message, ":")))))
-    , status = iif(customDimensions has "fail", "error",
-    iif(customDimensions has "error", "error",
-    iif(customDimensions has "error", "error",
-    iif(customDimensions has "not succeed", "error",
-    iif(customDimensions has "success", "success",
-    iif(customDimensions has "succeeded", "success",
-    "unknown"))))))
-| summarize count = count() by DayGroup
-| order by DayGroup desc
-
+| extend day = format_datetime(timestamp,"yyyy-MM-dd")
+| summarize count = count() by day
+| order by day desc
