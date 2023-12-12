@@ -1,0 +1,8 @@
+// Companies
+
+traces
+| where timestamp >= ago(10d)
+| where isnotempty(customDimensions.companyName)
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+| extend companyName = tostring(customDimensions.companyName)
+| summarize by aadTenantId, companyName

@@ -1,0 +1,104 @@
+// Long running SQL queries by Source Process
+
+traces
+| where timestamp >= ago(24d) // adjust as needed. The value 30 comes from the app configuration
+// | where customDimensions.aadTenantId == '<TenantId>'
+// | where customDimensions.alObjectName == 'Item List'
+// | where customDimensions has 'RT0005'
+// | where customDimensions.eventId == 'RT0005'
+| where isnotempty(customDimensions.aadTenantId) // filter away signal from Docker sandboxes
+| where customDimensions.alObjectId != '0' 
+| where isnotempty(customDimensions.alObjectId)
+| where isnotempty(customDimensions.sqlStatement)
+| where isnotempty(customDimensions.executionTime)
+| where isnotempty(customDimensions.alStackTrace)
+| extend TenantId = strcat(customDimensions.aadTenantId)
+    , ObjectType = tostring(customDimensions.alObjectType)
+    , ObjectId = tostring(customDimensions.alObjectId)
+    , ObjectName = tostring(customDimensions.alObjectName)
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+    , companyName = tostring(customDimensions.companyName)        
+    , numberOfJoins = countof(tostring(customDimensions.sqlStatement), "JOIN")
+    , EventId = tostring(customDimensions.eventId)
+    , StackTrace = tostring(customDimensions.alStackTrace)
+    , exclusiveTime = customDimensions.exclusiveTime // This dimension was introduced in Business Central 2023 release wave 1, version 22.1. Backported to version 21.6
+    , exclusiveTimeInMS = toreal(totimespan(customDimensions.exclusiveTime)) / 10000 //the datatype for exclusiveTime is timespan 
+    // exclusiveTime is the total time of the operation, including wait time due to client callback
+    , totalTime = customDimensions.executionTime
+    , totalTimeInMS = toreal(totimespan(customDimensions.executionTime)) / 10000 //the datatype for executionTime is timespan 
+    , Day = format_datetime(timestamp,"yyyy-MM-dd")
+| extend operationType = case(
+    sqlStatement startswith "UPDATE", "UPDATE"
+    , sqlStatement startswith "DELETE", "DELETE"
+    , sqlStatement startswith "BeginTransaction", "BEGIN_TRANS"
+    , sqlStatement matches regex "INSERT INTO", "INSERT"
+    , sqlStatement startswith "SELECT", "SELECT"
+    , sqlStatement matches regex "IF EXISTS \\(SELECT (.*)\\) SELECT", "SELECT'"
+    , sqlStatement has "SELECT NEXT VALUE FOR", "SELECT_SEQUENCE_VALUE"
+    , sqlStatement has "SELECT @@SPID", "SELECT_SPID"
+    , sqlStatement matches regex "(.*)WITH", "SELECT"
+    , sqlStatement startswith "CREATE TABLE", "CREATE_TABLE"
+    , sqlStatement startswith "ALTER TABLE", "ALTER_TABLE"
+    , sqlStatement startswith "exec sp_rename", "RENAME_TABLE" 
+    , sqlStatement matches regex "(.*)DROP TABLE", "DROP_TABLE"
+    , sqlStatement startswith "SET LOCK_TIMEOUT", "SET_LOCK_TIMEOUT"
+    , sqlStatement has "sp_getapplock", "GET_APP_LOCK"
+    , "UNKNOWN"
+    ) 
+| parse kind=regex sqlStatement with selectPart: string "FROM \"SQLDATABASE\".dbo.\"CURRENTCOMPANY\\$" tablename: string "\\$" space: string
+| extend splitStacktrace = split(customDimensions.alStackTrace, "\n")
+| extend lengthStacktrace = array_length(splitStacktrace)
+| extend
+    topOfStackline = tostring(splitStacktrace[0]),
+    bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])
+| extend topOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, topOfStackline)
+| extend topOfStackLineNumber = extract(' line (\\d+)', 1, topOfStackline)
+| extend topOfStackExtensionName = case (
+    isnotempty(topOfStackLineNumber), extract('line \\d+ - (.+) by', 1, topOfStackline),
+    extract(' - (.+) by', 1, topOfStackline)
+    )
+| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)
+| extend topOfStackWhatWasCalled = case(
+    isnotempty(topOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, topOfStackline),
+    isnotempty(topOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, topOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, topOfStackline)
+    )
+| extend bottomOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, bottomOfStackline)
+| extend bottomOfStackLineNumber = extract(' line (\\d+)', 1, bottomOfStackline)
+| extend bottomOfStackExtensionName = case (
+    isnotempty(bottomOfStackLineNumber), extract('line \\d+ - (.+) by', 1, bottomOfStackline),
+    extract(' - (.+) by', 1, bottomOfStackline)
+    )
+| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)
+| extend bottomOfStackWhatWasCalled = case(
+    isnotempty(bottomOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, bottomOfStackline),
+    isnotempty(bottomOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, bottomOfStackline)
+    )
+| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , " - ", bottomOfStackObjectType, " ", bottomOfStackObjectId, " ", bottomOfStackObjectName, " (", bottomOfStackExtensionName, ")")
+    , LockingObject = strcat(topOfStackObjectType, " '", topOfStackObjectName,"'")
+    , LockingObjectId = tostring(topOfStackObjectId)
+    , LockingObjectMethod = tostring(topOfStackWhatWasCalled)
+    , LockingObjectExtension = tostring(topOfStackExtensionName)
+| project
+timestamp,
+TenantId,
+companyName,
+ObjectType,
+ObjectId,
+ObjectName,
+operationType,
+numberOfJoins,
+LockingObject,
+SourceProcess,
+StackTrace,
+customDimensions,
+exclusiveTimeInMS,
+totalTimeInMS,
+Day
+| summarize avgExTime = round(avg(totalTimeInMS),0), count = count() by Day, companyName
+| order by companyName, Day desc 
