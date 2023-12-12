@@ -1,4 +1,4 @@
-// Long running SQL queries by Source Process
+<<// Long running SQL queries by Source Process
 
 traces
 //| where customDimensions has 'customername'
@@ -48,7 +48,7 @@ traces
 | extend lengthStacktrace = array_length(splitStacktrace)
 | extend
     topOfStackline = tostring(splitStacktrace[0]),
-    bottomOfStackline = tostring(splitStacktrace[lengthStacktrace] - 1)])
+    bottomOfStackline = tostring(splitStacktrace[lengthStacktrace] - 1)
 | extend topOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, topOfStackline)
 | extend topOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, topOfStackline)
 | extend topOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, topOfStackline)
@@ -97,3 +97,4 @@ totalTimeInMS
 | summarize count = count(), avgTotalTimeInMS = toint(avg(totalTimeInMS)), avg(exclusiveTimeInMS) by tostring(SourceProcess)
 | order by ['count'] desc
 
+>>
