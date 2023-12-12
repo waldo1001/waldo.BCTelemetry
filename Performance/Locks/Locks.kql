@@ -1,32 +1,68 @@
+//Queries that hold locks
 //Source: https://github.com/microsoft/BCTech/blob/master/samples/AppInsights/KQL/Queries/PerformanceTuning/QueriesThatHoldLocks.kql
-//TODO:
-// - add SourceProcess
-// - add LockingObject
 
+let MinimumTimeInMS = 1000; // adjust as needed
 traces
-| where customDimensions has 'customername'
-| where timestamp > ago(12h) // adjust as needed
+// | where customDimensions has 'customername'
+| where timestamp > ago(3d) // adjust as needed
     and customDimensions.eventId == 'RT0005'
 | where customDimensions.sqlStatement has 'UPDLOCK'
+| extend splitStacktrace = split(customDimensions.alStackTrace, "\n")
+| extend lengthStacktrace = array_length(splitStacktrace)
+| extend
+    topOfStackline = tostring(splitStacktrace[2]),
+    bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])
+| extend topOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, topOfStackline)
+| extend topOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, topOfStackline)
+| extend topOfStackLineNumber = extract(' line (\\d+)', 1, topOfStackline)
+| extend topOfStackExtensionName = case (
+    isnotempty(topOfStackLineNumber), extract('line \\d+ - (.+) by', 1, topOfStackline),
+    extract(' - (.+) by', 1, topOfStackline)
+    )
+| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)
+| extend topOfStackWhatWasCalled = case(
+    isnotempty(topOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, topOfStackline),
+    isnotempty(topOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, topOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, topOfStackline)
+    )
+| extend bottomOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, bottomOfStackline)
+| extend bottomOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, bottomOfStackline)
+| extend bottomOfStackLineNumber = extract(' line (\\d+)', 1, bottomOfStackline)
+| extend bottomOfStackExtensionName = case (
+    isnotempty(bottomOfStackLineNumber), extract('line \\d+ - (.+) by', 1, bottomOfStackline),
+    extract(' - (.+) by', 1, bottomOfStackline)
+    )
+| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)
+| extend bottomOfStackWhatWasCalled = case(
+    isnotempty(bottomOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, bottomOfStackline),
+    isnotempty(bottomOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, bottomOfStackline)
+    )
+| extend SourceProcess = strcat(bottomOfStackWhatWasCalled, " - ", bottomOfStackObjectType, " ", bottomOfStackObjectId, " ", bottomOfStackObjectName, " (", bottomOfStackExtensionName, ")")
+    , LockingObject = strcat(topOfStackWhatWasCalled, " - ", topOfStackObjectType, " ", topOfStackObjectId, " ", topOfStackObjectName, " (", topOfStackExtensionName, ")")
 | project timestamp = timestamp
-, eventId = customDimensions.eventId 
-, TenantId = customDimensions.aadTenantId
-, userId = user_Id
-, sqlStatement = tostring(customDimensions.sqlStatement)
-, environmentName = customDimensions.environmentName
-, environmentType = customDimensions.environmentType
-, companyName = customDimensions.companyName
-, extensionId = customDimensions.extensionId
-, extensionPublisher = customDimensions.extensionPublisher
-, extensionName = customDimensions.extensionName
-, extensionVersion = customDimensions.extensionVersion
-, alObjectId = customDimensions.alObjectId
-, alObjectName = customDimensions.alObjectName
-, alObjectType = customDimensions.alObjectType
-, alStackTrace = customDimensions.alStackTrace
-, clientType = customDimensions.clientType
-, executionTime = customDimensions.executionTime
-, executionTimeInMS = toreal(totimespan(customDimensions.executionTime))/10000 //the datatype for executionTime is timespan 
+    , message = message
+    , eventId = customDimensions.eventId 
+    , TenantId = customDimensions.aadTenantId
+    , userId = user_Id
+    , sqlStatement = tostring(customDimensions.sqlStatement)
+    , environmentName = customDimensions.environmentName
+    , environmentType = customDimensions.environmentType
+    , companyName = customDimensions.companyName
+    , extensionId = customDimensions.extensionId
+    , extensionPublisher = customDimensions.extensionPublisher
+    , extensionName = customDimensions.extensionName
+    , extensionVersion = customDimensions.extensionVersion
+    , alObjectId = customDimensions.alObjectId
+    , alObjectName = customDimensions.alObjectName
+    , alObjectType = customDimensions.alObjectType
+    , alStackTrace = customDimensions.alStackTrace
+    , clientType = customDimensions.clientType
+    , executionTime = customDimensions.executionTime
+    , executionTimeInMS = toreal(totimespan(customDimensions.executionTime)) / 10000 //the datatype for executionTime is timespan 
+| where executionTimeInMS >= MinimumTimeInMS
 | order by timestamp desc 
 // | summarize avgExTime = toint(avg(executionTimeInMS)), count = count() by tostring(alStackTrace)
 | take 500
