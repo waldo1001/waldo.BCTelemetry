@@ -1,0 +1,18 @@
+let readuncommitted =
+traces
+| where customDimensions.sqlStatement contains "READUNCOMMITTED"
+| extend sqlStatement = customDimensions.sqlStatement
+| extend ReadType = 'ReadUncommitted'
+| project timestamp, ReadType, sqlStatement
+;
+let readcommitted =
+traces
+| where customDimensions.sqlStatement contains "READCOMMITTED"
+| extend sqlStatement = customDimensions.sqlStatement
+| extend ReadType = 'ReadCommitted'
+| project timestamp, ReadType, sqlStatement
+;
+readcommitted
+| union readuncommitted
+| summarize count() by ReadType
+;
