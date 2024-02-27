@@ -1,0 +1,32 @@
+//v1
+source
+| where tostring(Properties.eventId) !in ("RT0004", "RT0020", "RT0008")
+
+//v2
+source
+| where tostring(Properties.eventId) !in (
+    "RT0004"   //Authorization Succeeded (Open Company)
+    , "RT0020" //Authentication with web service key succeeded
+    )
+| where ( // No SOAP at all
+    tostring(Properties.eventId) <> "RT0008" //Web service called ({category of request}): {endpoint}
+    or 
+    tostring(Message) startswith "Web service called (SOAP)"
+    )
+| where (  // Only API calls for selected companies
+    tostring(Properties.eventId) <> "RT0008"  //Web service called ({category of request}): {endpoint}
+    or
+    tostring(Properties.aadTenantId) in (
+    "ade5cbd5-d30f-43ae-9d8f-2dfd1a27f858",  
+    "35cca09d-896a-4186-afc6-8aefa7cef75f"    
+    )
+    )
+| where ( // RT0030 - Error dialogs with empty text (not really errors)
+    tostring(Properties.eventId) <> 'RT0030' 
+    or 
+    tostring(Message) !startswith "Error dialog shown:" 
+    or 
+    Properties has "alErrorMessage"
+    ) 
+
+

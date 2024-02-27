@@ -1,0 +1,41 @@
+// All extension installations
+traces
+| where customDimensions.eventId == 'LC0010'
+| extend extensionId = tostring(customDimensions.extensionId)
+    , extensionName = tostring(customDimensions.extensionName)
+    , extensionPublisher = tostring(customDimensions.extensionPublisher)
+    , aadTenantId = tostring(customDimensions.aadTenantId)
+    , environmentType = tostring(customDimensions.environmentType)
+    ,  extensionVersion = tostring(customDimensions.extensionVersion)
+| take 10 
+
+
+// All extension installations by tenant
+traces
+| where timestamp >= ago(90d)
+| where customDimensions.eventId in ('LC0010')
+| where customDimensions.aadTenantId <> 'common'
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+    , extensionId = tostring(customDimensions.extensionId)
+    , extensionName = tostring(customDimensions.extensionName)
+    , extensionPublisher = tostring(customDimensions.extensionPublisher)
+    , environmentType = tostring(customDimensions.environmentType)
+    , extensionVersion = tostring(customDimensions.extensionVersion)
+    , extensionPublishedAs = tostring(customDimensions.extensionPublishedAs)
+| summarize count() by aadTenantId
+
+
+//latest versions per tenant per app
+traces
+| where timestamp >= ago(90d)
+| where customDimensions.eventId == 'LC0010'
+| where isnotempty(customDimensions.extensionName)
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+    , extensionId = tostring(customDimensions.extensionId)
+    , extensionName = tostring(customDimensions.extensionName)
+    , extensionPublisher = tostring(customDimensions.extensionPublisher)
+    , environmentType = tostring(customDimensions.environmentType)
+    , extensionVersion = tostring(customDimensions.extensionVersion)
+    , extensionPublishedAs = tostring(customDimensions.extensionPublishedAs)
+| summarize max(extensionVersion) by extensionName, aadTenantId
+| order by extensionName, aadTenantId

@@ -1,8 +1,9 @@
-<<// Long running SQL queries by Source Process
+// Long running SQL queries by Source Process
 
 traces
-//| where customDimensions has 'customername'
-| where timestamp >= ago(12h) // adjust as needed. The value 30 comes from the app configuration
+| where timestamp >= ago(24d) // adjust as needed. The value 30 comes from the app configuration
+// | where customDimensions.aadTenantId == '<TenantId>'
+// | where customDimensions.alObjectName == 'Item List'
 // | where customDimensions has 'RT0005'
 // | where customDimensions.eventId == 'RT0005'
 | where isnotempty(customDimensions.aadTenantId) // filter away signal from Docker sandboxes
@@ -25,6 +26,7 @@ traces
     // exclusiveTime is the total time of the operation, including wait time due to client callback
     , totalTime = customDimensions.executionTime
     , totalTimeInMS = toreal(totimespan(customDimensions.executionTime)) / 10000 //the datatype for executionTime is timespan 
+    , Day = format_datetime(timestamp,"yyyy-MM-dd")
 | extend operationType = case(
     sqlStatement startswith "UPDATE", "UPDATE"
     , sqlStatement startswith "DELETE", "DELETE"
@@ -54,31 +56,34 @@ traces
 | extend topOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, topOfStackline)
 | extend topOfStackLineNumber = extract(' line (\\d+)', 1, topOfStackline)
 | extend topOfStackExtensionName = case (
-isnotempty(topOfStackLineNumber), extract('line \\d+ - (.+) by', 1, topOfStackline),
-extract(' - (.+) by', 1, topOfStackline)
-)
+    isnotempty(topOfStackLineNumber), extract('line \\d+ - (.+) by', 1, topOfStackline),
+    extract(' - (.+) by', 1, topOfStackline)
+    )
 | extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)
 | extend topOfStackWhatWasCalled = case(
-isnotempty(topOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, topOfStackline),
-isnotempty(topOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, topOfStackline),
-extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, topOfStackline)
-)
+    isnotempty(topOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, topOfStackline),
+    isnotempty(topOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, topOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, topOfStackline)
+    )
 | extend bottomOfStackObjectName = extract('\\\"?([^\\\"]+)\\\"?\\([a-zA-Z]+ \\d+\\)', 1, bottomOfStackline)
 | extend bottomOfStackObjectType = extract('\\(([a-zA-Z]+) \\d+\\)', 1, bottomOfStackline)
 | extend bottomOfStackObjectId = extract('\\([a-zA-Z]+ (\\d+)\\)', 1, bottomOfStackline)
 | extend bottomOfStackLineNumber = extract(' line (\\d+)', 1, bottomOfStackline)
 | extend bottomOfStackExtensionName = case (
-isnotempty(bottomOfStackLineNumber), extract('line \\d+ - (.+) by', 1, bottomOfStackline),
-extract(' - (.+) by', 1, bottomOfStackline)
-)
+    isnotempty(bottomOfStackLineNumber), extract('line \\d+ - (.+) by', 1, bottomOfStackline),
+    extract(' - (.+) by', 1, bottomOfStackline)
+    )
 | extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)
 | extend bottomOfStackWhatWasCalled = case(
-isnotempty(bottomOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, bottomOfStackline),
-isnotempty(bottomOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),
-extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, bottomOfStackline)
-)
-| extend SourceProcess = strcat(bottomOfStackWhatWasCalled, " - ", bottomOfStackObjectType, " ", bottomOfStackObjectId, " ", bottomOfStackObjectName, " (", bottomOfStackExtensionName, ")")
-, LockingObject = strcat(topOfStackWhatWasCalled, " - ", topOfStackObjectType, " ", topOfStackObjectId, " ", topOfStackObjectName, " (", topOfStackExtensionName, ")")
+    isnotempty(bottomOfStackLineNumber), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) line', 1, bottomOfStackline),
+    isnotempty(bottomOfStackExtensionName), extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),
+    extract('\\\"?[^\\\"]+\\\"?\\([a-zA-Z]+ \\d+\\).(.+)', 1, bottomOfStackline)
+    )
+| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , " - ", bottomOfStackObjectType, " ", bottomOfStackObjectId, " ", bottomOfStackObjectName, " (", bottomOfStackExtensionName, ")")
+    , LockingObject = strcat(topOfStackObjectType, " '", topOfStackObjectName,"'")
+    , LockingObjectId = tostring(topOfStackObjectId)
+    , LockingObjectMethod = tostring(topOfStackWhatWasCalled)
+    , LockingObjectExtension = tostring(topOfStackExtensionName)
 | project
 timestamp,
 TenantId,
@@ -93,8 +98,7 @@ SourceProcess,
 StackTrace,
 customDimensions,
 exclusiveTimeInMS,
-totalTimeInMS
-| summarize count = count(), avgTotalTimeInMS = toint(avg(totalTimeInMS)), avg(exclusiveTimeInMS) by tostring(SourceProcess)
-| order by ['count'] desc
-
->>
+totalTimeInMS,
+Day
+| summarize avgExTime = round(avg(totalTimeInMS),0), count = count() by Day, companyName
+| order by companyName, Day desc 

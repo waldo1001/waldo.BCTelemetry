@@ -1,0 +1,13 @@
+// Companies
+
+traces
+| where customDimensions.aadTenantId <> 'common'
+| where timestamp >= ago(10d)
+| where isnotempty(customDimensions.companyName)
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+| extend companyName = tostring(customDimensions.companyName)
+| extend environmentName = tostring(customDimensions.environmentName)
+| extend EnvironmentType = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),'OnPrem','SaaS')
+| extend IsSaas = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),false,true)
+| summarize by aadTenantId, companyName, environmentName, EnvironmentType, IsSaas
+| where environmentName !in ('QA','TRAINING')

@@ -1,7 +1,7 @@
 // Slowest running queries (sorted from slowest to faster...)
 
 traces
-| where customDimensions has "customername"
+// | where customDimensions has "customername"
 | where timestamp < ago(12h)
 | where customDimensions.eventId == "RT0005"
 | where not (customDimensions has 'Companies') //not interested in "Copy Company" and such
@@ -18,7 +18,8 @@ traces
     , alObjectName_ = tostring(customDimensions.alObjectName)
     , alMethod_ = tostring(customDimensions.alMethod)
     , sqlStatement_ = tostring(customDimensions.sqlStatement)
-    , exTime = customDimensions.executionTime
+    , executionTime = customDimensions.executionTime
+    , executionTimeInMS = toreal(totimespan(customDimensions.executionTime))/10000 
     , sqlStatement = tostring(customDimensions.sqlStatement)
 | extend operationType = case(
     sqlStatement startswith "UPDATE", "UPDATE"
@@ -38,7 +39,7 @@ traces
     , sqlStatement has "sp_getapplock", "GET_APP_LOCK"
     , "UNKNOWN"
     ) 
-| order by totimespan(exTime) desc
+| order by totimespan(executionTime) desc
 | extend topOfStackline = extract('AL CallStack: (.+)', 1, StackTrace)
 | extend bottomOfStackline = extract('(.+\\([a-zA-Z]+ \\d+\\)\\..+)\\n?\\z', 1, StackTrace)
 | where not(isempty(topOfStackline))
@@ -72,12 +73,12 @@ traces
     )
 | extend SourceProcess = strcat(bottomOfStackWhatWasCalled, " - ", bottomOfStackObjectType, " ", bottomOfStackObjectId, " ", bottomOfStackObjectName, " (", bottomOfStackExtensionName, ")")
     , SlowPositionInAL = strcat(topOfStackWhatWasCalled, " - ", topOfStackObjectType, " ", topOfStackObjectId, " ", topOfStackObjectName, " (", topOfStackExtensionName, ")")
-| order by totimespan(exTime) desc 
+| order by totimespan(executionTime) desc 
 | project
     timestamp,
-    exTime,
-    SlowPositionInAL,
+    executionTimeInMS,
     SourceProcess,
+    SlowPositionInAL,
     operationType,
     sqlStatement,
     customDimensions
