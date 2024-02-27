@@ -1,0 +1,21 @@
+// Performance outgoing calls to Azure Function
+
+traces
+| where timestamp >= ago(90d)
+| where customDimensions.eventId == "RT0019" //Outgoing Web service requests
+| where customDimensions.alObjectId == "2038895" //Get Lic. Info Azure LYCIFC
+| extend CompanyName = tostring(customDimensions.companyName)
+    , Url = tostring(customDimensions.alUrl)
+    , totalTime = customDimensions.totalTime
+    , totalTimeInMS = toreal(totimespan(customDimensions.totalTime))/10000 //the datatype for executionTime is timespan     
+    , Day = format_datetime(timestamp, "yyyy-MM-dd")
+| order by timestamp desc 
+| project timestamp
+    , Day
+    , CompanyName
+    , Url
+    , totalTime
+    , totalTimeInMS
+    , customDimensions
+| summarize AvgtotalTimeInMS = round(avg(totalTimeInMS),0), count = count() by Day
+| order by Day desc

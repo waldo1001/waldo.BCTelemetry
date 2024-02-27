@@ -1,7 +1,6 @@
-// Long running SQL queries by Source Process
+// Long running SQL queries - Base query
 
 traces
-//| where customDimensions has 'customername'
 | where timestamp >= ago(12h) // adjust as needed. The value 30 comes from the app configuration
 // | where customDimensions has 'RT0005'
 // | where customDimensions.eventId == 'RT0005'
