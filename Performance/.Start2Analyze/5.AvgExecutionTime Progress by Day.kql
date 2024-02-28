@@ -20,6 +20,6 @@ traces
     , executionTimeInMS = toreal(totimespan(customDimensions.executionTime)) / 10000 
 | where isnotempty(executionTime)
 | extend DayGroup = format_datetime(timestamp, "yyyy-MM-dd")
-| summarize AvgexecutionTimeInMS = avg(executionTimeInMS),  ; count = count() by DayGroup
+| summarize AvgexecutionTimeInMS = avg(executionTimeInMS),  count = count() by DayGroup
 | order by DayGroup desc
 

@@ -17,6 +17,6 @@ traces
     , environmentType = tostring(customDimensions.environmentType)
     , executionTimeInMS = toreal(totimespan(customDimensions.executionTime)) / 10000 
 | where isnotempty(executionTime)
-| summarize AvgexecutionTimeInMS = avg(executionTimeInMS),  ; count = count() by alObjectType, alObjectName
+| summarize AvgexecutionTimeInMS = avg(executionTimeInMS),  count = count() by alObjectType, alObjectName
 | take 10
 
