@@ -1,3 +1,8 @@
 traces
 | where customDimensions.eventId == 'LC0034'
 | order by timestamp desc 
+
+traces
+| where customDimensions has "LC0034"
+| where customDimensions.diagnosticMessage != ''
+| summarize count() by diagnosticMessage = tostring(customDimensions.diagnosticMessage), version = tostring(customDimensions.version)
