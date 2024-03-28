@@ -1,0 +1,9 @@
+// Overview per day
+
+traces
+| where customDimensions.aadTenantId == 'xyz'
+| where customDimensions.eventId in ("ALIFCFLT0001","ALIFCFLT0002","ALIFCFLT0003")
+| extend Day = format_datetime(timestamp,"yyyy-MM-dd")
+| extend Hour = format_datetime(timestamp,"HH")
+| extend Duration = toint(customDimensions.alDurationMs)
+| summarize count = count(), avgDuration = toint(avg(Duration)) by message, Day, Hour
