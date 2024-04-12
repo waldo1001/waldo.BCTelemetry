@@ -6,3 +6,17 @@ traces
 | where customDimensions has "LC0034"
 | where customDimensions.diagnosticMessage != ''
 | summarize count() by diagnosticMessage = tostring(customDimensions.diagnosticMessage), version = tostring(customDimensions.version)
+
+// Installations of preview version
+traces
+| where timestamp >= ago(10d)
+| where customDimensions has "Preview"
+| where customDimensions.eventId in ( "LC0010", "LC0022")
+| where customDimensions.extensionAvailability == "Preview"
+| project aadTenantId = customDimensions.aadTenantId
+, operationType = iif(customDimensions.eventId == "LC0010","Install","Upgrade")
+, environmentName = customDimensions.environmentName
+, extensionName = customDimensions.extensionName
+, extensionVersion = customDimensions.extensionVersion
+, extensionVersionFrom = customDimensions.extensionVersionFrom
+, result = customDimensions.result
