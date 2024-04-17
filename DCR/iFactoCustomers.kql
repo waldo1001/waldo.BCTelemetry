@@ -13,13 +13,11 @@ source
     or 
     tostring(Message) startswith "Web service called (SOAP)"
     )
-| where (  // Only API calls for selected companies
-    tostring(Properties.eventId) <> "RT0008"  //Web service called ({category of request}): {endpoint}
     or
     tostring(Properties.aadTenantId) in (
-    "ade5cbd5-d30f-43ae-9d8f-2dfd1a27f858",  
-    "35cca09d-896a-4186-afc6-8aefa7cef75f"    
-    )
+    "ade5cbd5-d30f-43ae-9d8f-2dfd1a27f858",  // xyz
+    "35cca09d-896a-4186-afc6-8aefa7cef75f",    // xyz
+    "engels.be" //xyz
     )
 | where ( // RT0030 - Error dialogs with empty text (not really errors)
     tostring(Properties.eventId) <> 'RT0030' 
@@ -28,5 +26,4 @@ source
     or 
     Properties has "alErrorMessage"
     ) 
-
 
