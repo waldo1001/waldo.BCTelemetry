@@ -1,0 +1,36 @@
+//first attempt
+
+traces
+| where customDimensions contains "retention"
+| extend aadTenantId_ = tostring(customDimensions.aadTenantId)
+    , eventId = tostring(customDimensions.eventId)
+    , environmentName = tostring(customDimensions.environmentName)
+    , companyName = tostring(customDimensions.alCompanyName)
+    , submsg = iif(substring(message, 0, 4) == "Task", "Task Executed", 
+                    iif(customDimensions.eventId == "AL0000JRG", "Job Queue Error",
+                        iff(indexof(message, ":") <= 0, message, substring(message, 0, indexof(message, ":")))))
+| extend status = iif(submsg has "called" 
+                or submsg has "executed"
+                    or submsg has 'executed'
+                        or submsg has 'succeeded'
+                            or submsg has 'rendered'
+                                or submsg has 'successfully'
+                                    or submsg has 'taken'
+                                        or submsg has 'enqueued'
+                                            or submsg has 'finished'
+                                                or submsg has 'Logged'
+                                                    or submsg has 'started'
+                                                        or submsg has 'rescheduled'
+                                                            or submsg has 'applied'
+                                                                or submsg has 'Used', 
+                                        "success",
+                iif(submsg has "error"
+                        or submsg has 'fail'
+                            or submsg has 'failed'
+                                or submsg has 'deadlock'
+                                    or submsg has 'timed out'
+                                        or submsg has 'cancelled',"error",
+                    iif(message has 'exceeded', 'too slow',
+                        "unknown")))
+// | summarize count() by aadTenantId_, companyName, eventId, message
+| take 100
