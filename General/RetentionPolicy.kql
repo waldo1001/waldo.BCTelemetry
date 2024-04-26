@@ -1,3 +1,133 @@
+//Different eventIds:
+// - AL0000D3L: Retention policy log entry logged
+// - AL0000D6H: Records deleted using retention policy
+// - AL0000D6I: First retention policy enabled on company
+// - AL0000D6J: Last retention policy disabled on company
+
+
+// Retention Policies still running by "Last policy disabled" check
+traces
+| where timestamp >= ago(90d)
+| where customDimensions.eventId == 'AL0000D6J'
+
+// Retention Policies finally running by "First policy enabled" check
+traces
+| where timestamp >= ago(90d)
+| where customDimensions.eventId == 'AL0000D6I'
+
+//Running policies - details
+traces
+| where timestamp >= ago(10d)
+| where customDimensions.eventId == 'AL0000D6H'
+| extend tableName = tostring(customDimensions.alTableName)
+, aadTenantId = tostring(customDimensions.aadTenantId)
+, companyName = tostring(customDimensions.alCompanyName)
+, TableNo = tostring(customDimensions.alTableNo)
+, TenantHash = hash_md5( strcat(
+  customDimensions.aadTenantId
+, customDimensions.environmentName
+, customDimensions.alCompanyName
+) )
+
+//Overview all companies with Retention Policies enabled
+// Which Retention Policies are running?
+traces
+| where timestamp >= ago(10d)
+| where customDimensions.eventId == 'AL0000D6H'
+| extend tableName = tostring(customDimensions.alTableName)
+, aadTenantId = tostring(customDimensions.aadTenantId)
+, companyName = tostring(customDimensions.alCompanyName)
+, TableNo = tostring(customDimensions.alTableNo)
+, TenantHash = hash_md5( strcat(
+  customDimensions.aadTenantId
+, customDimensions.environmentName
+, customDimensions.alCompanyName
+) )
+| summarize by tableName,  companyName, aadTenantId
+| summarize count() by companyName, aadTenantId
+
+
+//Not all of them are logged this way.
+//So: also read from Log
+traces
+| where customDimensions.eventId == 'AL0000D3L'
+| extend LogEntry = tostring(customDimensions.alLogEntry)
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+, environmentName = tostring(customDimensions.environmentName)
+, companyName = tostring(customDimensions.alCompanyName)
+, TableNo = extract(".*[table ID] ([0-9]*), ([^,]*)",1,tostring(customDimensions.alLogEntry))
+, tableName = extract(".*[table ID] ([0-9]*), ([^,]*)",2,tostring(customDimensions.alLogEntry))
+| where isnotempty(TableNo)
+| summarize by tableName, companyName, aadTenantId, environmentName
+| summarize count() by aadTenantId, environmentName, companyName
+
+
+
+
+
+
+
+//All companies, with info on running retention policieslet TimeAgo = 10d;
+let TimeAgo = 10d;
+let ExecutedRetentionPoliciesFromDeletedRecords = 
+traces
+| where timestamp >= ago(TimeAgo)
+| where customDimensions.eventId == 'AL0000D6H'
+| extend tableName = tostring(customDimensions.alTableName)
+, aadTenantId = tostring(customDimensions.aadTenantId)
+, environmentName = tostring(customDimensions.environmentName)
+, companyName = tostring(customDimensions.alCompanyName)
+, TableNo = tostring(customDimensions.alTableNo)
+| summarize by tableName, companyName, aadTenantId, environmentName
+| summarize count() by aadTenantId, environmentName, companyName
+;
+let ExecutedRetentionPoliciesFromLog =
+traces
+| where timestamp >= ago(TimeAgo)
+| where customDimensions.eventId == 'AL0000D3L'
+| extend LogEntry = tostring(customDimensions.alLogEntry)
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+, environmentName = tostring(customDimensions.environmentName)
+, companyName = tostring(customDimensions.alCompanyName)
+, TableNo = extract(".*[table ID] ([0-9]*), ([^,]*)",1,tostring(customDimensions.alLogEntry))
+, tableName = extract(".*[table ID] ([0-9]*), ([^,]*)",2,tostring(customDimensions.alLogEntry))
+| where isnotempty(TableNo)
+| summarize by tableName, companyName, aadTenantId, environmentName
+| summarize count() by aadTenantId, environmentName, companyName
+;
+let ExecutedRetentionPolicies =
+ExecutedRetentionPoliciesFromDeletedRecords
+| union ExecutedRetentionPoliciesFromLog
+| summarize count = max(count_) by aadTenantId, environmentName, companyName
+;
+let AllCustomers = 
+traces
+| where isnotempty(customDimensions.environmentType)
+| where timestamp >= ago(10d)
+| where isnotempty(customDimensions.companyName)
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+| extend companyName = tostring(customDimensions.companyName)
+| extend environmentName = tostring(customDimensions.environmentName)
+| extend IsSaas  = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),false,true)
+| extend environmentType = iff(tobool(IsSaas),tostring(customDimensions.environmentType), 
+                                iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),'OnPrem','SaaS'))
+, BCVersion = tostring(customDimensions.componentVersion)
+| where environmentType == 'Production'
+    or (environmentName !contains 'TEST'
+    and environmentName !contains 'QA'
+    and environmentName !contains 'TRAINING')
+| summarize by aadTenantId, companyName, environmentName, environmentType, IsSaas, BCVersion
+;
+AllCustomers
+| join kind=leftouter ExecutedRetentionPolicies on $left.environmentName == $right.environmentName, $left.companyName == $right.companyName
+| project aadTenantId,environmentName,companyName,['count'], IsSaas, environmentType, BCVersion
+// | where companyName contains "Vero"
+
+
+
+
+
+
 //first attempt
 
 traces
@@ -34,3 +164,4 @@ traces
                         "unknown")))
 // | summarize count() by aadTenantId_, companyName, eventId, message
 | take 100
+

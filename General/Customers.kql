@@ -1,13 +1,23 @@
 // Companies
 
 traces
-| where customDimensions.aadTenantId <> 'common'
+// | where customDimensions.aadTenantId == 'fe201484-0d8e-4a67-b2e3-347b992beaec'
+| where isnotempty(customDimensions.environmentType)
 | where timestamp >= ago(10d)
 | where isnotempty(customDimensions.companyName)
 | extend aadTenantId = tostring(customDimensions.aadTenantId)
 | extend companyName = tostring(customDimensions.companyName)
 | extend environmentName = tostring(customDimensions.environmentName)
-| extend EnvironmentType = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),'OnPrem','SaaS')
-| extend IsSaas = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),false,true)
-| summarize by aadTenantId, companyName, environmentName, EnvironmentType, IsSaas
-| where environmentName !in ('QA','TRAINING')
+| extend IsSaas  = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),false,true)
+| extend environmentType = iff(tobool(IsSaas),tostring(customDimensions.environmentType), 
+                                iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),'OnPrem','SaaS'))
+, TenantHash = hash_md5( strcat(
+  customDimensions.aadTenantId
+, customDimensions.environmentName
+, customDimensions.alCompanyName
+) )
+| where environmentType == 'Production'
+    or (environmentName !contains 'TEST'
+    and environmentName !contains 'QA'
+    and environmentName !contains 'TRAINING')
+| summarize by aadTenantId, companyName, environmentName, environmentType, IsSaas
