@@ -1,0 +1,12 @@
+// requestQueueTime by Hour
+traces
+| where timestamp >= ago(10d)
+// | where customDimensions.aadTenantId == 'customerGuid'
+| where isnotempty( customDimensions.requestQueueTime)
+| extend eventId = tostring(customDimensions.eventId)
+    , requestQueueTimeInMS = toint(totimespan(customDimensions.requestQueueTime))/10000 
+    , aadTenantId = tostring(customDimensions.aadTenantId)
+    , DayHour = format_datetime(timestamp,"yyyy-MM-dd HH")
+| where requestQueueTimeInMS > 1
+| summarize count() by DayHour
+| order by DayHour desc 

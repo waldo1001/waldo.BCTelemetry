@@ -1,0 +1,30 @@
+let TimeAgo = 10d;
+let companies = 
+traces
+| where timestamp >= ago(TimeAgo)
+| where isnotempty(customDimensions.environmentType)
+    and isnotempty(customDimensions.companyName)
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+| extend companyName = tostring(customDimensions.companyName)
+| extend environmentName = tostring(customDimensions.environmentName)
+| extend IsSaas  = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),false,true)
+| extend environmentType = iff(tobool(IsSaas),tostring(customDimensions.environmentType), 
+                                iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),'OnPrem','SaaS'))
+| where environmentType == 'Production'
+    or (environmentName !contains 'TEST'
+    and environmentName !contains 'QA'
+    and environmentName !contains 'TRAINING')
+| summarize by aadTenantId, companyName, environmentName, environmentType, IsSaas
+;
+// By Customer
+traces
+| where timestamp >= ago(TimeAgo)
+| where isnotempty( customDimensions.requestQueueTime)
+| extend eventId = tostring(customDimensions.eventId)
+    , requestQueueTimeInMS = toint(totimespan(customDimensions.requestQueueTime))/10000 
+    , aadTenantId = tostring(customDimensions.aadTenantId)
+| where requestQueueTimeInMS > 1
+| summarize numberOfOccurences = count() by aadTenantId
+| join kind=inner companies on $left.aadTenantId == $right.aadTenantId
+| project aadTenantId, companyName, numberOfOccurences
+| order by aadTenantId
