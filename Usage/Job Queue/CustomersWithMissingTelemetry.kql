@@ -1,0 +1,57 @@
+let TimeAgo = 10d;
+let companies = 
+traces
+| where timestamp >= ago(TimeAgo)
+| where isnotempty(customDimensions.environmentType)
+    and isnotempty(customDimensions.companyName)
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+| extend companyName = tostring(customDimensions.companyName)
+| extend environmentName = tostring(customDimensions.environmentName)
+| extend IsSaas  = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),false,true)
+| extend environmentType = iff(tobool(IsSaas),tostring(customDimensions.environmentType), 
+                                iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),'OnPrem','SaaS'))
+| where environmentType == 'Production'
+    or (environmentName !contains 'TEST'
+    and environmentName !contains 'QA'
+    and environmentName !contains 'TRAINING')
+| where companyName !contains "CRONUS"
+    and companyName !contains "My "
+    and companyName !contains "DEFAULT"
+    and companyName !contains "test"
+| summarize by aadTenantId, companyName, environmentName, environmentType, IsSaas
+;
+// By Customer
+traces
+| where timestamp >= ago(TimeAgo)
+| where isnotempty( customDimensions.aadTenantId)
+| where customDimensions.eventId == 'AL0000E26'
+| extend eventId = tostring(customDimensions.eventId)
+    , aadTenantId = tostring(customDimensions.aadTenantId)
+| summarize numberOfOccurences = count() by aadTenantId
+| join kind=rightouter companies on $left.aadTenantId == $right.aadTenantId
+| project aadTenantId1, companyName, numberOfOccurences
+| order by numberOfOccurences asc 
+
+
+// When OnPrem, aadTenantid might be different on NAS instance then on Client instance
+let TimeAgo = 1d;
+let companies = 
+traces
+| where timestamp >= ago(TimeAgo)
+| where isnotempty(customDimensions.companyName)
+| extend companyName = tostring(customDimensions.companyName)
+| summarize by companyName
+;
+// By Customer
+traces
+| where timestamp >= ago(TimeAgo)
+| where isnotempty( customDimensions.aadTenantId)
+    and isnotempty( customDimensions.alCompany)
+| where customDimensions.eventId == 'AL0000E26'
+| extend eventId = tostring(customDimensions.eventId)
+    , aadTenantId = tostring(customDimensions.aadTenantId)
+    , companyName = tostring(customDimensions.alCompany)
+| summarize numberOfOccurences = count() by aadTenantId, companyName
+| join kind=rightouter companies on $left.companyName == $right.companyName
+| project companyName1, numberOfOccurences
+| order by numberOfOccurences asc 
