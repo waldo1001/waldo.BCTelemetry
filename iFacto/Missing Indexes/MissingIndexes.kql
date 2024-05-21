@@ -1,0 +1,15 @@
+// Missing Indexes
+
+traces
+| where customDimensions contains "ALIFCTLM0001"
+| extend eventId = tostring(customDimensions.eventId)
+    , CompanyName = tostring(customDimensions.alCompany)
+    , TableName = tostring(customDimensions.alTableName)
+    , EqualityColumns = tostring(customDimensions.alEqualityColumns)
+    , InequalityColumns = tostring(customDimensions.alInequalityColumns)
+    , IncludeColumns = tostring(customDimensions.alIncludeColumns)
+| where CompanyName !contains "CRONUS"
+| where CompanyName !contains "My Company"
+| summarize count_ = count() by TableName,EqualityColumns,InequalityColumns,IncludeColumns
+| order by TableName,EqualityColumns,InequalityColumns,IncludeColumns
+| project count_, TableName,EqualityColumns,InequalityColumns,IncludeColumns
