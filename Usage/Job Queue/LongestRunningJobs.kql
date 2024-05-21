@@ -1,0 +1,14 @@
+// Longest running Jobs 
+let TimeAgo = 1d;
+let MinimumOccured = 80;
+traces
+| where timestamp >= ago(TimeAgo)
+| where customDimensions.eventId == 'AL0000E26'
+| extend Company = tostring(customDimensions.alCompany)
+    , JobQueueCompanyName = tostring(customDimensions.alJobQueueCompanyName)
+    , JobQueueIsRecurring = tostring(customDimensions.alJobQueueIsRecurring)
+    , JobQueueObjectId = tostring(customDimensions.alJobQueueObjectId)
+    , JobQueueExecutionTimeInMs = toint(customDimensions.alJobQueueExecutionTimeInMs)
+| summarize count(), avgJobQueueExecutionTimeInMs = toint(avg(JobQueueExecutionTimeInMs)) by JobQueueObjectId, Company
+| where count_ > MinimumOccured
+| order by avgJobQueueExecutionTimeInMs desc 
