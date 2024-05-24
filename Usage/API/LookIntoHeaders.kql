@@ -1,0 +1,11 @@
+//Analyze Accept-Language header
+
+traces
+| extend aadTenantId = tostring(customDimensions.aadTenantId)
+| extend endpoint = tostring(customDimensions.endpoint)
+| extend httpHeaders = customDimensions.httpHeaders
+| extend httpHeadersTmp =  tostring( httpHeaders)
+| extend httpHeadersJSON = parse_json(httpHeadersTmp)
+| extend AcceptLanguage = tostring( httpHeadersJSON.['Accept-Language'] )
+| where isnotempty(AcceptLanguage)
+| summarize by aadTenantId, endpoint, AcceptLanguage
