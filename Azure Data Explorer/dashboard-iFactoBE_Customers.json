@@ -4033,27 +4033,11 @@
     "dataSources": [
         {
             "id": "05ae5610-5603-45ac-9458-616539c1c150",
-            "name": "AI-CustomerNST",
+            "name": "AI-Datasource",
             "scopeId": "kusto",
             "clusterUri": "https://ade.applicationinsights.io/subscriptions/a8341168-f467-4146-ba71-5e2e523dccb5",
-            "database": "AI-CustomerNST",
+            "database": "AI-customerNST",
             "kind": "manual-kusto"
-        },
-        {
-            "id": "d1beef7f-3df5-4cb4-b1bd-dfa9e1c8ee0d",
-            "kind": "manual-kusto",
-            "scopeId": "kusto",
-            "name": "AI-DistriApps",
-            "clusterUri": "https://ade.applicationinsights.io/subscriptions/a8341168-f467-4146-ba71-5e2e523dccb5",
-            "database": "AI-DistriApps"
-        },
-        {
-            "id": "9b59ad62-82a8-43d2-afbd-0ec79d1e313c",
-            "kind": "manual-kusto",
-            "scopeId": "kusto",
-            "name": "AI-BCPT",
-            "clusterUri": "https://ade.applicationinsights.io/subscriptions/a8341168-f467-4146-ba71-5e2e523dccb5",
-            "database": "AI-BCPT-NST"
         }
     ],
     "pages": [
@@ -4194,7 +4178,7 @@
         {
             "dataSource": {
                 "kind": "inline",
-                "dataSourceId": "d1beef7f-3df5-4cb4-b1bd-dfa9e1c8ee0d"
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
             "text": "//Get CodeunitNames\nlet codeunitNames = \n    traces\n    | where timestamp between (_startTime .. _endTime)\n    | where customDimensions has 'ALIFCTST0002' //Full Codeunit Run\n    | extend codeunitName = tostring(customDimensions.alName)\n        , codeunitId = tostring(customDimensions.alCodeunitId)\n    | summarize by codeunitId, codeunitName;\n//TelemetryOnTests - Overview\nlet Tests = \n    traces\n    | where timestamp between (_startTime .. _endTime)\n    | where tostring(customDimensions.eventId) in (\"ALIFCTST0001\", \"ALIFCTST0002\", \"ALIFCTST0003\")\n    | extend\n        timestamp = timestamp\n        , eventId = customDimensions.eventId\n        , TestSuiteName = tostring(customDimensions.alTestSuiteName)\n        , codeunitId = tostring(customDimensions.alCodeunitId)\n        , MethodName = tostring(customDimensions.alMethodName)\n        , StartTime = tostring(customDimensions.alStartTime)\n        , EndTime = tostring(customDimensions.alEndTime)\n        , NoOfReads = tostring(customDimensions.alNoOfReads)\n        , NoOfSqlStatements = tostring(customDimensions.alNoOfSQLStatements)\n        , DurationMs = tostring(customDimensions.alDurationMs)\n        , Result = tostring(customDimensions.alResult)\n    | order by timestamp desc\n    | take 10000;\ncodeunitNames\n| join kind = rightouter Tests on $left.codeunitId == $right.codeunitId\n| project\n        timestamp,\n        eventId,\n        TestSuiteName,\n        codeunitId,\n        codeunitName,\n        MethodName,\n        StartTime,\n        EndTime,\n        Result,\n        NoOfReads,\n        NoOfSqlStatements,\n        DurationMs",
             "id": "0f7c5281-3a86-49c7-8223-8f80724a6ae3",
@@ -4206,7 +4190,7 @@
         {
             "dataSource": {
                 "kind": "inline",
-                "dataSourceId": "d1beef7f-3df5-4cb4-b1bd-dfa9e1c8ee0d"
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
             "text": "//Get CodeunitNames\nlet codeunitNames = \n    traces\n    | where timestamp between (_startTime .. _endTime)\n    | where customDimensions has 'ALIFCTST0002' //Full Codeunit Run\n    | extend codeunitName = tostring(customDimensions.alName)\n        , codeunitId = tostring(customDimensions.alCodeunitId)\n    | summarize by codeunitId, codeunitName;\n//Take first 2 days of the period\nlet BeginningOfPeriod = \n    traces\n    | where timestamp between (_startTime .. _startTime + 2d)\n    | where tostring(customDimensions.eventId) == \"ALIFCTST0003\" //One function (method)\n    | extend CodeunitName = tostring(customDimensions.alName)\n        , codeunitId = tostring(customDimensions.alCodeunitId)\n        , MethodName = tostring(customDimensions.alMethodName)\n        , NoOfSqlStatements = toint(customDimensions.alNoOfSQLStatements)\n    | join kind = leftouter codeunitNames on $left.codeunitId == $right.codeunitId\n    | extend FQMethod = strcat(codeunitName,'.',MethodName)\n    | where FQMethod contains _MessageFilter or message  contains _MessageFilter\n    | summarize avgNoOfSqlStatements=avg(NoOfSqlStatements) by FQMethod;\n//Then take last 2 days of the period\nlet EndOfPeriod = \n    traces\n    | where timestamp between (_endTime - 2d .. _endTime)\n    | where tostring(customDimensions.eventId) == \"ALIFCTST0003\"\n    | extend CodeunitName = tostring(customDimensions.alName)\n        , codeunitId = tostring(customDimensions.alCodeunitId)\n        , MethodName = tostring(customDimensions.alMethodName)\n        , NoOfSqlStatements = toint(customDimensions.alNoOfSQLStatements)\n    | join kind = leftouter codeunitNames on $left.codeunitId == $right.codeunitId\n    | extend FQMethod = strcat(codeunitName,'.',MethodName)\n    | where FQMethod contains _MessageFilter or message  contains _MessageFilter\n    | summarize avgNoOfSqlStatements=avg(NoOfSqlStatements) by FQMethod;\n//calculate difference, and take top 10 of the methods\nlet Difference = \n    BeginningOfPeriod\n    | join kind=leftouter EndOfPeriod on $left.FQMethod == $right.FQMethod\n    | extend Difference =  avgNoOfSqlStatements1 - avgNoOfSqlStatements\n    | order by Difference desc\n    | take 10;\n//Result, getting methods only\ntraces\n| where timestamp between (_startTime .. _endTime)\n| where tostring(customDimensions.eventId) == \"ALIFCTST0003\"\n| extend\n    codeunitId = tostring(customDimensions.alCodeunitId)\n    , MethodName = tostring(customDimensions.alMethodName)\n    , NoOfSqlStatements = toint(customDimensions.alNoOfSQLStatements)\n| join kind = leftouter codeunitNames on $left.codeunitId == $right.codeunitId\n| extend FQMethod = strcat(codeunitName,'.',MethodName)\n| join kind=rightouter Difference on $left.FQMethod == $right.FQMethod\n| project timestamp, FQMethod, NoOfSqlStatements\n| summarize avgNoOfSqlStatements=avg(NoOfSqlStatements) by bin(timestamp, 1d), FQMethod\n| order by FQMethod",
             "id": "7ab0d9af-5add-4026-8124-333757a4cff5",
@@ -4733,7 +4717,7 @@
         {
             "dataSource": {
                 "kind": "inline",
-                "dataSourceId": "9b59ad62-82a8-43d2-afbd-0ec79d1e313c"
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
             "text": "traces\n| where timestamp >= ago(30d)\n| where customDimensions has 'AL0000DGF'\n| where customDimensions.alTag has_any (_BCPTTag)\n| where customDimensions has _codeunitName\n| where customDimensions.alOperation == 'Scenario'\n| where customDimensions.alStatus == 'Success'\n| extend RunId = tostring(customDimensions.alRunID)\n    , Suite = tostring(customDimensions.alCode)\n    , CodeunitName = tostring(customDimensions.alCodeunitName)\n    , Operation = tostring(customDimensions.alOperation)\n    , Tag = iif(customDimensions.alTag contains_cs \"PTE\", \"PTE\", \n                iif(customDimensions.alTag contains \"Focus\", \"CustSpecific\"\n                    , tostring(customDimensions.alTag)))\n    , Version = tostring(customDimensions.alVersion)\n    , DurationInMs = toint(customDimensions.alDurationInMs)\n    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)\n    , alStatus = tostring(customDimensions.alStatus)\n    , alMessage = tostring(customDimensions.alMessage)\n    , Week = strcat(format_datetime(timestamp, \"yyyy\"),'-',week_of_year(timestamp))\n| order by timestamp desc\n| summarize count = count(), avgNoOfSqlStatements = toint(avg(NoOfSqlStatements)), avgDuration = toint(avg(DurationInMs)) by bin(timestamp, 1d), CodeunitName, Tag\n| order by timestamp, Tag, CodeunitName\n",
             "id": "63e17c65-a174-4ab4-a710-dd2a9884c97b",
@@ -4745,7 +4729,7 @@
         {
             "dataSource": {
                 "kind": "inline",
-                "dataSourceId": "9b59ad62-82a8-43d2-afbd-0ec79d1e313c"
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
             "text": "traces\n| where timestamp >= ago(30d)\n| where customDimensions has 'AL0000DGF'\n| where customDimensions.alTag has_any (_BCPTTag)\n| where customDimensions has _codeunitName\n| where customDimensions.alOperation == 'Scenario'\n| where customDimensions.alStatus == 'Success'\n| extend RunId = tostring(customDimensions.alRunID)\n    , Suite = tostring(customDimensions.alCode)\n    , CodeunitName = tostring(customDimensions.alCodeunitName)\n    , Operation = tostring(customDimensions.alOperation)    \n    , Tag = iif(customDimensions.alTag contains_cs \"PTE\", \"PTE\", \n                iif(customDimensions.alTag contains \"Focus\", \"CustSpecific\"\n                    , tostring(customDimensions.alTag)))\n    , Version = tostring(customDimensions.alVersion)\n    , DurationInMs = toint(customDimensions.alDurationInMs)\n    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)\n    , alStatus = tostring(customDimensions.alStatus)\n    , alMessage = tostring(customDimensions.alMessage)\n    , Week = strcat(format_datetime(timestamp, \"yyyy\"),'-',week_of_year(timestamp))\n| order by timestamp desc\n| summarize count = count(), avgDuration = toint(avg(DurationInMs)) by bin(timestamp, 1d), CodeunitName, Tag\n| order by timestamp, Tag, CodeunitName\n",
             "id": "1a13ae89-57f0-4163-aa0b-56e633177fa5",
@@ -4757,7 +4741,7 @@
         {
             "dataSource": {
                 "kind": "inline",
-                "dataSourceId": "9b59ad62-82a8-43d2-afbd-0ec79d1e313c"
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
             "text": "traces\n| where timestamp between (_startTime .. _endTime)\n| where customDimensions has 'AL0000DGF'\n| where customDimensions.alTag has_any (_BCPTTag)\n| where customDimensions has _codeunitName\n| where customDimensions.alOperation == 'Scenario'\n| where customDimensions.alStatus == 'Error'\n| extend RunId = tostring(customDimensions.alRunID)\n    , Suite = tostring(customDimensions.alCode)\n    , CodeunitName = tostring(customDimensions.alCodeunitName)\n    , Operation = tostring(customDimensions.alOperation)\n    , Tag = iif(customDimensions.alTag contains_cs \"PTE\", \"PTE\", \n                iif(customDimensions.alTag contains \"Focus\", \"CustSpecific\"\n                    , tostring(customDimensions.alTag)))\n    , Version = tostring(customDimensions.alVersion)\n    , DurationInMs = toint(customDimensions.alDurationInMs)\n    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)\n    , alStatus = tostring(customDimensions.alStatus)\n    , alMessage = tostring(customDimensions.alMessage)\n    , Week = strcat(format_datetime(timestamp, \"yyyy\"),'-',week_of_year(timestamp))\n| order by timestamp desc\n| summarize count = count(), avgNoOfSqlStatements = toint(avg(NoOfSqlStatements)), avgDuration = toint(avg(DurationInMs)) by bin(timestamp, 1d), CodeunitName, Tag\n| order by timestamp, Tag, CodeunitName\n",
             "id": "be6b924f-0baf-470b-bf9c-e588034ba173",
@@ -4771,7 +4755,7 @@
         {
             "dataSource": {
                 "kind": "inline",
-                "dataSourceId": "9b59ad62-82a8-43d2-afbd-0ec79d1e313c"
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
             "text": "traces\n| where timestamp between (_startTime .. _endTime)\n| where customDimensions has 'AL0000DGF'\n| where customDimensions.alTag has_any (_BCPTTag)\n| where customDimensions has _codeunitName\n| where customDimensions.alOperation == 'Scenario'\n| where customDimensions.alStatus == 'Error'\n| extend RunId = tostring(customDimensions.alRunID)\n    , Suite = tostring(customDimensions.alCode)\n    , CodeunitName = tostring(customDimensions.alCodeunitName)\n    , Operation = tostring(customDimensions.alOperation)\n    , Tag = iif(customDimensions.alTag contains_cs \"PTE\", \"PTE\", \n                iif(customDimensions.alTag contains \"Focus\", \"CustSpecific\"\n                    , tostring(customDimensions.alTag)))\n    , Version = tostring(customDimensions.alVersion)\n    , DurationInMs = toint(customDimensions.alDurationInMs)\n    , NoOfSqlStatements = toint(customDimensions.alNoOfSqlStatements)\n    , alStatus = tostring(customDimensions.alStatus)\n    , alMessage = tostring(customDimensions.alMessage)\n    , Week = strcat(format_datetime(timestamp, \"yyyy\"),'-',week_of_year(timestamp))\n| order by timestamp desc\n| project Tag, CodeunitName, alMessage, DurationInMs, NoOfSqlStatements",
             "id": "0195295a-7522-4600-9f66-984061f75c40",
@@ -5156,7 +5140,7 @@
         {
             "dataSource": {
                 "kind": "inline",
-                "dataSourceId": "d1beef7f-3df5-4cb4-b1bd-dfa9e1c8ee0d"
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
             "text": "//Get CodeunitNames\nlet codeunitNames = \n    traces\n    | where timestamp between (_startTime .. _endTime)\n    | where customDimensions has 'ALIFCTST0002' //Full Codeunit Run\n    | extend codeunitName = tostring(customDimensions.alName)\n        , codeunitId = tostring(customDimensions.alCodeunitId)\n    | summarize by codeunitId, codeunitName;\n//Take first 2 days of the period\nlet BeginningOfPeriod = \n    traces\n    | where timestamp between (_startTime .. _startTime + 2d)\n    | where tostring(customDimensions.eventId) == \"ALIFCTST0003\" //One function (method)\n    | extend CodeunitName = tostring(customDimensions.alName)\n        , codeunitId = tostring(customDimensions.alCodeunitId)\n        , MethodName = tostring(customDimensions.alMethodName)\n        , NoOfSqlStatements = toint(customDimensions.alNoOfSQLStatements)\n        , DurationMs = toint(customDimensions.alDurationMs)\n    | join kind = leftouter codeunitNames on $left.codeunitId == $right.codeunitId\n    | extend FQMethod = strcat(codeunitName,'.',MethodName)\n    | where FQMethod contains _MessageFilter or message  contains _MessageFilter\n    | summarize avgDurationMs=avg(DurationMs) by FQMethod;\n//Then take last 2 days of the period\nlet EndOfPeriod = \n    traces\n    | where timestamp between (_endTime - 2d .. _endTime)\n    | where tostring(customDimensions.eventId) == \"ALIFCTST0003\"\n    | extend CodeunitName = tostring(customDimensions.alName)\n        , codeunitId = tostring(customDimensions.alCodeunitId)\n        , MethodName = tostring(customDimensions.alMethodName)\n        , NoOfSqlStatements = toint(customDimensions.alNoOfSQLStatements)\n        , DurationMs = toint(customDimensions.alDurationMs)\n    | join kind = leftouter codeunitNames on $left.codeunitId == $right.codeunitId\n    | extend FQMethod = strcat(codeunitName,'.',MethodName)\n    | where FQMethod contains _MessageFilter or message  contains _MessageFilter\n    | summarize avgDurationMs=avg(DurationMs) by FQMethod;\n//calculate difference, and take top 10 of the methods\nlet Difference = \n    BeginningOfPeriod\n    | join kind=leftouter EndOfPeriod on $left.FQMethod == $right.FQMethod\n    | extend Difference =  avgDurationMs1 - avgDurationMs\n    | order by Difference desc\n    | take 10;\n//Result, getting methods only\ntraces\n| where timestamp between (_startTime .. _endTime)\n| where tostring(customDimensions.eventId) == \"ALIFCTST0003\"\n| extend\n    codeunitId = tostring(customDimensions.alCodeunitId)\n    , MethodName = tostring(customDimensions.alMethodName)\n    , NoOfSqlStatements = toint(customDimensions.alNoOfSQLStatements)\n    , DurationMs = toint(customDimensions.alDurationMs)\n| join kind = leftouter codeunitNames on $left.codeunitId == $right.codeunitId\n| extend FQMethod = strcat(codeunitName,'.',MethodName)\n| join kind=rightouter Difference on $left.FQMethod == $right.FQMethod\n| project timestamp, FQMethod, DurationMs\n| summarize avgDurationMs=avg(DurationMs) by bin(timestamp, 1d), FQMethod\n| order by FQMethod",
             "id": "25f17751-f5dc-4dab-bd5a-d7d1b2245651",
@@ -5414,7 +5398,7 @@
         {
             "dataSource": {
                 "kind": "inline",
-                "dataSourceId": "9b59ad62-82a8-43d2-afbd-0ec79d1e313c"
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
             "text": "traces\n| where customDimensions has 'AL0000DGF'\n| where customDimensions.eventId == 'AL0000DGF'\n| where customDimensions.alOperation == 'Scenario'\n| extend CodeunitName = tostring(customDimensions.alCodeunitName)\n| summarize by CodeunitName\n",
             "id": "4c19c0ce-09a4-47c7-8c4d-a348af93b96a",
@@ -5423,7 +5407,7 @@
         {
             "dataSource": {
                 "kind": "inline",
-                "dataSourceId": "9b59ad62-82a8-43d2-afbd-0ec79d1e313c"
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
             "text": "traces\n| where customDimensions has 'AL0000DGF'\n| where customDimensions.eventId == 'AL0000DGF'\n| extend tag = iif(customDimensions.alTag contains_cs \"PTE\", \"PTE\", \n                iif(customDimensions.alTag contains \"Focus\", \"CustSpecific\"\n                    , tostring(customDimensions.alTag)))\n| summarize by tag",
             "id": "131192bf-b588-4e2a-95f1-851f8c5b2686",
