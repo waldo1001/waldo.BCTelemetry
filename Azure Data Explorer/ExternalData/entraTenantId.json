@@ -1,6 +1,6 @@
 [
     {
         "entraTenantId": "a3aee5b-dce4-456c-8449-c513ca453f3",
-        "tenantDescription": "This JSON File should be filled with all TenantIds and their descriptions."
+        "tenantDescription": "Replace me with a json-file that contains the TenantIds and Descriptions from your customers.  More info: https://www.waldo.be"
     }
 ]
