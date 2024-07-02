@@ -892,87 +892,87 @@
     {
         "eventId": "LC0155",
         "eventArea": "Environment",
-        "eventDescription": "Environment app '{extensionName}' hotfix to version {extensionDestinationVersion} scheduled for environment: {environmentName}"
+        "eventDescription": "Environment app hotfix scheduled for environment: {environmentName}"
     },
     {
         "eventId": "LC0156",
         "eventArea": "Environment",
-        "eventDescription": "Environment app '{extensionName}' hotfix to version {extensionDestinationVersion} scheduling failed for environment: {environmentName}"
+        "eventDescription": "Environment app hotfix scheduling failed for environment: {environmentName}"
     },
     {
         "eventId": "LC0157",
         "eventArea": "Environment",
-        "eventDescription": "Environment app '{extensionName}' hotfix to version {extensionDestinationVersion} was cancelled for environment: {environmentName}"
+        "eventDescription": "Environment app hotfix was cancelled for environment: {environmentName}"
     },
     {
         "eventId": "LC0158",
         "eventArea": "Environment",
-        "eventDescription": "Environment app '{extensionName}' hotfix to version {extensionDestinationVersion} started for environment: {environmentName}"
+        "eventDescription": "Environment app hotfix started for environment: {environmentName}"
     },
     {
         "eventId": "LC0159",
         "eventArea": "Environment",
-        "eventDescription": "Environment app '{extensionName}' hotfix to version {extensionDestinationVersion} applied successfully for environment: {environmentName}"
+        "eventDescription": "Environment app hotfix applied successfully for environment: {environmentName}"
     },
     {
         "eventId": "LC0160",
         "eventArea": "Environment",
-        "eventDescription": "Environment app '{extensionName}' hotfix to version {extensionDestinationVersion} failed for environment: {environmentName}"
+        "eventDescription": "Environment app hotfix failed for environment: {environmentName}"
     },
     {
         "eventId": "LC0161",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionName} install to version {extensionDestinationVersion} scheduled for environment: {environmentName}"
+        "eventDescription": "Environment app install scheduled for environment"
     },
     {
         "eventId": "LC0162",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionId}, version {extensionDestinationVersion} installation scheduling failed for environment: {environmentName}"
+        "eventDescription": "Environment app installation scheduling failed for environment"
     },
     {
         "eventId": "LC0163",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionId}, version {extensionDestinationVersion} installation started for environment: {environmentName}"
+        "eventDescription": "Environment app installation started for environment"
     },
     {
         "eventId": "LC0164",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionName}, version {extensionVersion} installation succeeded for environment: {environmentName}"
+        "eventDescription": "Environment app installation succeeded for environment"
     },
     {
         "eventId": "LC0165",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionName}, version {extensionDestinationVersion} installation failed for environment: {environmentName}"
+        "eventDescription": "Environment app installation failed for environment"
     },
     {
         "eventId": "LC0166",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionName}, version {extensionDestinationVersion} installation/update requires automatically installing a new dependency app dependencyExtensionName}, version {dependencyExtensionDestinationVersion} for environment: {environmentName}"
+        "eventDescription": "Environment app installation/update requires automatically installing a new dependency app for environment"
     },
     {
         "eventId": "LC0167",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionName} update to version {extensionDestinationVersion} scheduled for environment: {environmentName}"
+        "eventDescription": "Environment app update scheduled for environment"
     },
     {
         "eventId": "LC0168",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionId} update to version {extensionDestinationVersion} scheduling failed for environment: {environmentName}"
+        "eventDescription": "Environment app update scheduling failed for environment"
     },
     {
         "eventId": "LC0169",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionId} update to version {extensionDestinationVersion} started for environment:  {environmentName}"
+        "eventDescription": "Environment app update started for environment"
     },
     {
         "eventId": "LC0170",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionId} update to version {extensionDestinationVersion} succeeded for environment: {environmentName}"
+        "eventDescription": "Environment app update succeeded for environment"
     },
     {
         "eventId": "LC0171",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionId} update to version {extensionDestinationVersion} failed for environment: {environmentName}"
+        "eventDescription": "Environment app update failed for environment"
     },
     {
         "eventId": "LC0173",
@@ -982,7 +982,7 @@
     {
         "eventId": "LC0174",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Environment app {extensionId} uninstall scheduling failed for environment: {environmentName}"
+        "eventDescription": "Environment app uninstall scheduling failed for environment: {environmentName}"
     },
     {
         "eventId": "LC0175",
