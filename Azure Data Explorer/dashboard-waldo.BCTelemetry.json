@@ -1,7 +1,7 @@
 {
     "$schema": "https://dataexplorer.azure.com/static/d/schema/52/dashboard.json",
     "id": "01e92ba5-117b-496c-ad7e-37f2eacc037b",
-    "eTag": "669f07c8-593c-48a4-bf6b-73b0d820e282",
+    "eTag": "832c0514-97fb-45c1-9a4a-3a071a9ffd58",
     "schema_version": "52",
     "title": "waldo's BCTelemetry Dashboard",
     "tiles": [
@@ -99,7 +99,7 @@
             "pageId": "767419b8-bb1b-4f95-9790-6e9f47cae7a1",
             "layout": {
                 "x": 0,
-                "y": 23,
+                "y": 17,
                 "width": 5,
                 "height": 10
             },
@@ -1465,7 +1465,7 @@
             "pageId": "767419b8-bb1b-4f95-9790-6e9f47cae7a1",
             "layout": {
                 "x": 0,
-                "y": 33,
+                "y": 49,
                 "width": 21,
                 "height": 5
             },
@@ -2065,14 +2065,14 @@
         },
         {
             "id": "51faf9f2-29fc-41aa-9e41-5ca887283ac2",
-            "title": "Base Query (last 100)",
+            "title": "Last traces (last 1000)",
             "visualType": "table",
             "pageId": "767419b8-bb1b-4f95-9790-6e9f47cae7a1",
             "layout": {
                 "x": 0,
-                "y": 17,
-                "width": 21,
-                "height": 6
+                "y": 27,
+                "width": 24,
+                "height": 10
             },
             "queryRef": {
                 "kind": "query",
@@ -2401,7 +2401,7 @@
             "pageId": "2da8380b-5d1b-4b0f-9c49-97c4b310e564",
             "layout": {
                 "x": 0,
-                "y": 74,
+                "y": 70,
                 "width": 21,
                 "height": 9
             },
@@ -2577,7 +2577,7 @@
             "pageId": "2da8380b-5d1b-4b0f-9c49-97c4b310e564",
             "layout": {
                 "x": 0,
-                "y": 61,
+                "y": 57,
                 "width": 21,
                 "height": 13
             },
@@ -2694,7 +2694,7 @@
             "pageId": "767419b8-bb1b-4f95-9790-6e9f47cae7a1",
             "layout": {
                 "x": 5,
-                "y": 23,
+                "y": 17,
                 "width": 16,
                 "height": 10
             },
@@ -2716,14 +2716,14 @@
         },
         {
             "id": "e3b4085d-108b-4781-bf26-c83188326b98",
-            "title": "Per SourceObject, Per hour",
+            "title": "TotalTime, Per SourceObject, Per hour",
             "visualType": "stackedcolumn",
             "pageId": "2da8380b-5d1b-4b0f-9c49-97c4b310e564",
             "layout": {
                 "x": 0,
                 "y": 45,
                 "width": 21,
-                "height": 16
+                "height": 12
             },
             "queryRef": {
                 "kind": "query",
@@ -2752,6 +2752,7 @@
                 "verticalLine": "",
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
+                "legendLocation": "bottom",
                 "crossFilter": [],
                 "drillthrough": []
             }
@@ -3655,7 +3656,7 @@
             "pageId": "767419b8-bb1b-4f95-9790-6e9f47cae7a1",
             "layout": {
                 "x": 10,
-                "y": 38,
+                "y": 37,
                 "width": 14,
                 "height": 12
             },
@@ -3682,7 +3683,7 @@
             "pageId": "767419b8-bb1b-4f95-9790-6e9f47cae7a1",
             "layout": {
                 "x": 0,
-                "y": 38,
+                "y": 37,
                 "width": 5,
                 "height": 12
             },
@@ -3709,7 +3710,7 @@
             "pageId": "767419b8-bb1b-4f95-9790-6e9f47cae7a1",
             "layout": {
                 "x": 5,
-                "y": 38,
+                "y": 37,
                 "width": 5,
                 "height": 12
             },
@@ -3727,6 +3728,178 @@
                 "drillthrough": [],
                 "table__renderLinks": [],
                 "colorRules": []
+            }
+        },
+        {
+            "id": "c57bcb82-541e-455d-b5d7-f12a538f9989",
+            "title": "AvgElapsedTime By SourceProcess Per Hour",
+            "visualType": "line",
+            "pageId": "142b6efb-d730-4b92-a9f1-c8311c35f795",
+            "layout": {
+                "x": 0,
+                "y": 67,
+                "width": 21,
+                "height": 13
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "97248546-ead0-41cd-a549-5b11f357c15e"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "legendLocation": "bottom",
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": null,
+                "seriesColumns": null,
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": []
+            }
+        },
+        {
+            "id": "0bf9cd74-3778-4ccb-8807-82d8a5ea9879",
+            "title": "Extension Lifecycle (Last 1000)",
+            "visualType": "table",
+            "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
+            "layout": {
+                "x": 7,
+                "y": 0,
+                "width": 17,
+                "height": 9
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "6f51e34f-3605-4dcb-90c5-e86bc0de8ac6"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "099637f7-dcd7-4137-b4bd-dd70aa3d7ded",
+            "title": "Extension Lifecycle (Overview)",
+            "visualType": "table",
+            "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
+            "layout": {
+                "x": 0,
+                "y": 0,
+                "width": 7,
+                "height": 18
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "62f1a28d-0550-49a5-8d6d-bb3400508200"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "dd47e62a-9455-4a9a-9aed-48fff7687ad3",
+            "title": "Fails (Last 1000)",
+            "visualType": "table",
+            "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
+            "layout": {
+                "x": 7,
+                "y": 9,
+                "width": 17,
+                "height": 9
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "3708a55c-05f0-4c85-82b1-e8f5304567a0"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "8f3be1a4-6465-4635-b78e-e3595292ecb5",
+            "title": "Extension Lifecycle events in time",
+            "visualType": "column",
+            "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
+            "layout": {
+                "x": 0,
+                "y": 18,
+                "width": 24,
+                "height": 9
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "b634fa6e-6e9e-4d4f-9d38-6e21d18e04ff"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": false,
+                "legendLocation": "bottom",
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": [
+                    "count_"
+                ],
+                "seriesColumns": [
+                    "tenantDescription",
+                    "status"
+                ],
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": []
             }
         }
     ],
@@ -3784,11 +3957,7 @@
                 "kind": "all"
             },
             "showOnPages": {
-                "kind": "selection",
-                "pageIds": [
-                    "e0ea770f-baf5-47a6-88b1-1cb0ec5dce59",
-                    "767419b8-bb1b-4f95-9790-6e9f47cae7a1"
-                ]
+                "kind": "all"
             }
         },
         {
@@ -3832,31 +4001,6 @@
                 "pageIds": [
                     "767419b8-bb1b-4f95-9790-6e9f47cae7a1"
                 ]
-            }
-        },
-        {
-            "kind": "string",
-            "id": "89494460-b823-402b-a4b8-19b08049e258",
-            "displayName": "entraTenantId",
-            "description": "entraTenantId",
-            "variableName": "_entraTenantId",
-            "selectionType": "array",
-            "includeAllOption": true,
-            "defaultValue": {
-                "kind": "all"
-            },
-            "dataSource": {
-                "kind": "query",
-                "columns": {
-                    "value": "entraTenantId"
-                },
-                "queryRef": {
-                    "kind": "query",
-                    "queryId": "1af6d35a-92af-4520-a929-26af2d29ea09"
-                }
-            },
-            "showOnPages": {
-                "kind": "all"
             }
         },
         {
@@ -3924,6 +4068,31 @@
                 "pageIds": [
                     "9c16317e-23f7-4e29-8a61-dfae292ea6d0"
                 ]
+            }
+        },
+        {
+            "kind": "string",
+            "id": "89494460-b823-402b-a4b8-19b08049e258",
+            "displayName": "entraTenantId",
+            "description": "entraTenantId",
+            "variableName": "_entraTenantId",
+            "selectionType": "array",
+            "includeAllOption": true,
+            "defaultValue": {
+                "kind": "all"
+            },
+            "dataSource": {
+                "kind": "query",
+                "columns": {
+                    "value": "entraTenantId"
+                },
+                "queryRef": {
+                    "kind": "query",
+                    "queryId": "1af6d35a-92af-4520-a929-26af2d29ea09"
+                }
+            },
+            "showOnPages": {
+                "kind": "all"
             }
         },
         {
@@ -4152,6 +4321,10 @@
         {
             "name": "Analyze Usages",
             "id": "e0ea770f-baf5-47a6-88b1-1cb0ec5dce59"
+        },
+        {
+            "name": "Apps",
+            "id": "a0f75fcf-eb7d-4d83-a807-2527c0f75471"
         },
         {
             "name": "Performance",
@@ -4922,7 +5095,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\r\n| order by timestamp desc \r\n| take 100",
+            "text": "allTraces\r\n| order by timestamp desc \r\n| take 1000",
             "id": "b0978deb-57be-4dbc-b046-99270661f15c",
             "usedVariables": [
                 "allTraces"
@@ -5020,7 +5193,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where eventId == 'RT0018'\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n//SourceProcess = bottom, SlowObject = Top\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| project timestamp\n    , eventId\n    , message\n    , componentVersion\n    , tenantDescription\n    // , companyName\n    , extensionName\n    , extensionPublisher\n    , splitStacktrace\n    , SourceProcess\n    , SlowObject\n    , alObjectType\n    , alObjectName\n    , alObjectId\n    , elapsedTimeInMS\n    , customDimensions\n    , sqlStatement\n| order by timestamp desc \n| take 1000",
+            "text": "allTraces\n| where eventId == 'RT0018'\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n//SourceProcess = bottom, SlowObject = Top\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| project timestamp\n    , eventId\n    , message\n    , componentVersion\n    , tenantDescription\n    // , companyName\n    , extensionName\n    , extensionPublisher\n    , splitStacktrace\n    , SourceProcess\n    , SlowObject\n    , alObjectType\n    , alObjectName\n    , alObjectId\n    , elapsedTimeInMS\n    , customDimensions\n    , sqlStatement\n| order by timestamp desc \n| take 2000",
             "id": "4b0ba2cd-8808-4ee0-8643-3d7731814f4c",
             "usedVariables": [
                 "_SlowObjectFilter",
@@ -5433,6 +5606,63 @@
             ]
         },
         {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    // , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n//SourceProcess = bottom, SlowObject = Top\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize avgElapsedtime = avg(elapsedTimeInMS) by  bin(timestamp, 1h),SourceProcess",
+            "id": "97248546-ead0-41cd-a549-5b11f357c15e",
+            "usedVariables": [
+                "_SlowObjectFilter",
+                "_sourceObjectFilter",
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where eventArea == 'Extension Lifecycle'\n| extend extensionDestinationVersion = tostring(customDimensions.extensionDestinationVersion)\n| extend status = iif(message contains \"fail\",\"Fail\",\"Success\")\n| order by timestamp desc \n| project timestamp, tenantDescription, eventDescription, status, extensionName, extensionPublisher, extensionDestinationVersion, customDimensions\n| take 1000\n\n",
+            "id": "6f51e34f-3605-4dcb-90c5-e86bc0de8ac6",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where eventArea == 'Extension Lifecycle'\n| extend extensionDestinationVersion = tostring(customDimensions.extensionDestinationVersion)\n| extend status = iif(message contains \"fail\",\"Fail\",\"Success\")\n| order by timestamp desc \n| summarize count() by tenantDescription, eventId, status\n\n",
+            "id": "62f1a28d-0550-49a5-8d6d-bb3400508200",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where eventArea == 'Extension Lifecycle'\n| extend extensionDestinationVersion = tostring(customDimensions.extensionDestinationVersion)\n| extend status = iif(message contains \"fail\",\"Fail\",\"Success\")\n| where status == \"Fail\"\n| order by timestamp desc \n| project timestamp, tenantDescription, eventDescription, status, extensionName, extensionPublisher, extensionDestinationVersion, customDimensions\n| take 1000\n\n",
+            "id": "3708a55c-05f0-4c85-82b1-e8f5304567a0",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where eventArea == 'Extension Lifecycle'\n| extend status = iif(message contains \"fail\",\"Fail\",\"Success\")\n| summarize count() by bin(timestamp,12h), eventDescription, status, tenantDescription\n\n",
+            "id": "b634fa6e-6e9e-4d4f-9d38-6e21d18e04ff",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
             "id": "b19a2b7f-6d08-4f7f-b3ed-ce290cb93d82",
             "dataSource": {
                 "kind": "inline",
@@ -5480,18 +5710,6 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "traces\n| where timestamp between (_startTime .. _endTime)\n| where isnotempty(customDimensions.aadTenantId)\n| extend entraTenantId = tostring(customDimensions.aadTenantId)\n| summarize by entraTenantId\n| project entraTenantId",
-            "id": "1af6d35a-92af-4520-a929-26af2d29ea09",
-            "usedVariables": [
-                "_endTime",
-                "_startTime"
-            ]
-        },
-        {
-            "dataSource": {
-                "kind": "inline",
-                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
-            },
             "text": "traces\n| where customDimensions.extensionPublisher <> 'Microsoft'\n| where isnotempty(customDimensions.extensionName)\n| extend extensionName = tostring(customDimensions.extensionName)\n| summarize by extensionName",
             "id": "2fdf22eb-61c7-4964-bc7e-49c7eb81c9c8",
             "usedVariables": []
@@ -5504,6 +5722,18 @@
             "text": "traces\n| where isnotempty(customDimensions.extensionPublisher)\n| extend extensionPublisher = tostring(customDimensions.extensionPublisher)\n| summarize by extensionPublisher",
             "id": "79f1960d-e4a0-4ed3-8aca-fc0ec2aa2399",
             "usedVariables": []
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "traces\n| where timestamp between (_startTime .. _endTime)\n| where isnotempty(customDimensions.aadTenantId)\n| extend entraTenantId = tostring(customDimensions.aadTenantId)\n| summarize by entraTenantId\n| project entraTenantId",
+            "id": "1af6d35a-92af-4520-a929-26af2d29ea09",
+            "usedVariables": [
+                "_endTime",
+                "_startTime"
+            ]
         },
         {
             "dataSource": {
