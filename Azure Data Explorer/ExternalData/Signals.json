@@ -392,72 +392,72 @@
     {
         "eventId": "LC0010",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension installed successfully: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension installed successfully: ({extensionId})"
     },
     {
         "eventId": "LC0011",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension failed to install: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension failed to install: ({extensionId})"
     },
     {
         "eventId": "LC0012",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension synchronized successfully: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId}"
+        "eventDescription": "Extension synchronized successfully: ({extensionId}"
     },
     {
         "eventId": "LC0013",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension failed to synchronize: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension failed to synchronize: ({extensionId})"
     },
     {
         "eventId": "LC0014",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension published successfully: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension published successfully: ({extensionId})"
     },
     {
         "eventId": "LC0015",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension failed to publish: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension failed to publish: ({extensionId})"
     },
     {
         "eventId": "LC0016",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension un-installed successfully: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension un-installed successfully: ({extensionId})"
     },
     {
         "eventId": "LC0017",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension failed to un-install: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension failed to un-install: ({extensionId})"
     },
     {
         "eventId": "LC0018",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension unpublished successfully: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension unpublished successfully: ({extensionId})"
     },
     {
         "eventId": "LC0019",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension failed to un-publish: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension failed to un-publish: ({extensionId})"
     },
     {
         "eventId": "LC0020",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension compiled successfully: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension compiled successfully: ({extensionId})"
     },
     {
         "eventId": "LC0021",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension failed to compile: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension failed to compile: ({extensionId})"
     },
     {
         "eventId": "LC0022",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension updated successfully: {extensionName} version {extensionVersion} by {extensionPublisher}"
+        "eventDescription": "Extension updated successfully"
     },
     {
         "eventId": "LC0023",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Extension failed to update: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension failed to update: ({extensionId})"
     },
     {
         "eventId": "LC0024",
@@ -472,12 +472,12 @@
     {
         "eventId": "LC0026",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Dependent Extension installed successfully: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Dependent Extension installed successfully: ({extensionId})"
     },
     {
         "eventId": "LC0027",
         "eventArea": "Extension Lifecycle",
-        "eventDescription": "Dependent extension un-installed successfully: {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Dependent extension un-installed successfully: ({extensionId})"
     },
     {
         "eventId": "LC0028",
@@ -502,17 +502,17 @@
     {
         "eventId": "LC0032",
         "eventArea": "AppSource Submission",
-        "eventDescription": "Extension validation started: version {version}, country/region {countryRegion} for extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension validation started: version {version}, country/region {countryRegion} for extensio: ({extensionId})"
     },
     {
         "eventId": "LC0033",
         "eventArea": "AppSource Submission",
-        "eventDescription": "Extension validation completed successfully: version {version}, country/region {countryRegion} for extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension validation completed successfully: version {version}, country/region {countryRegion} for extensio: ({extensionId})"
     },
     {
         "eventId": "LC0034",
         "eventArea": "AppSource Submission",
-        "eventDescription": "Validation diagnostic reported: version {version}, country/region {countryRegion} for extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Validation diagnostic reported: version {version}, country/region {countryRegion} for extensio: ({extensionId})"
     },
     {
         "eventId": "LC0035",
@@ -527,7 +527,7 @@
     {
         "eventId": "LC0037",
         "eventArea": "AppSource Submission",
-        "eventDescription": "Extension validation completed with failures: version {version}, country-region {countryRegion} for extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension validation completed with failures: version {version}, country-region {countryRegion} for extensio: ({extensionId})"
     },
     {
         "eventId": "LC0038",
@@ -632,122 +632,122 @@
     {
         "eventId": "LC0100",
         "eventArea": "Environment",
-        "eventDescription": "Environment update available for scheduling: {environmentName} to version {destinationVersion}."
+        "eventDescription": "Environment update available for scheduling."
     },
     {
         "eventId": "LC0101",
         "eventArea": "Environment",
-        "eventDescription": "Environment update scheduled: {environmentName} to version {destinationVersion}, update on or after date: {registeredForUpdateOnOrAfterDateUtc}"
+        "eventDescription": "Environment update scheduled, update on or after date"
     },
     {
         "eventId": "LC0102",
         "eventArea": "Environment",
-        "eventDescription": "Environment update missed: {environmentName} to version {destinationVersion}"
+        "eventDescription": "Environment update missed"
     },
     {
         "eventId": "LC0103",
         "eventArea": "Environment",
-        "eventDescription": "Environment update postponed: {environmentName} to version {destinationVersion}"
+        "eventDescription": "Environment update postponed"
     },
     {
         "eventId": "LC0104",
         "eventArea": "Environment",
-        "eventDescription": "Environment update resumed: {environmentName} to version {destinationVersion}"
+        "eventDescription": "Environment update resumed"
     },
     {
         "eventId": "LC0105",
         "eventArea": "Environment",
-        "eventDescription": "Environment update started: {environmentName} to version {destinationVersion}"
+        "eventDescription": "Environment update started"
     },
     {
         "eventId": "LC0106",
         "eventArea": "Environment",
-        "eventDescription": "Environment updated successfully: {environmentName} to version {destinationVersion}"
+        "eventDescription": "Environment updated successfully"
     },
     {
         "eventId": "LC0107",
         "eventArea": "Environment",
-        "eventDescription": "Environment failed to update: {environmentName} to version {destinationVersion}"
+        "eventDescription": "Environment failed to update"
     },
     {
         "eventId": "LC0110",
         "eventArea": "Environment",
-        "eventDescription": "Environment restart operation initiated: {environmentName}"
+        "eventDescription": "Environment restart operation initiated"
     },
     {
         "eventId": "LC0111",
         "eventArea": "Environment",
-        "eventDescription": "Environment restarted successfully: {environmentName}"
+        "eventDescription": "Environment restarted successfully"
     },
     {
         "eventId": "LC0112",
         "eventArea": "Environment",
-        "eventDescription": "Environment restart operation failed: {environmentName}"
+        "eventDescription": "Environment restart operation failed"
     },
     {
         "eventId": "LC0113",
         "eventArea": "Environment",
-        "eventDescription": "Environment start operation initiated: {environmentName}"
+        "eventDescription": "Environment start operation initiated"
     },
     {
         "eventId": "LC0114",
         "eventArea": "Environment",
-        "eventDescription": "Environment started successfully: {environmentName}"
+        "eventDescription": "Environment started successfully"
     },
     {
         "eventId": "LC0115",
         "eventArea": "Environment",
-        "eventDescription": "Environment start operation failed: {environmentName}"
+        "eventDescription": "Environment start operation failed"
     },
     {
         "eventId": "LC0116",
         "eventArea": "Environment",
-        "eventDescription": "Environment stop operation initiated: {environmentName}"
+        "eventDescription": "Environment stop operation initiated"
     },
     {
         "eventId": "LC0117",
         "eventArea": "Environment",
-        "eventDescription": "Environment stopped successfully: {environmentName}"
+        "eventDescription": "Environment stopped successfully"
     },
     {
         "eventId": "LC0118",
         "eventArea": "Environment",
-        "eventDescription": "Environment stop operation failed: {environmentName}"
+        "eventDescription": "Environment stop operation failed"
     },
     {
         "eventId": "LC0119",
         "eventArea": "Environment",
-        "eventDescription": "Environment copy operation started on source: {environmentName} to {destinationEnvironmentName}"
+        "eventDescription": "Environment copy operation started on source"
     },
     {
         "eventId": "LC0120",
         "eventArea": "Environment",
-        "eventDescription": "Environment copied successfully: {environmentName} to {destinationEnvironmentName}"
+        "eventDescription": "Environment copied successfully"
     },
     {
         "eventId": "LC0121",
         "eventArea": "Environment",
-        "eventDescription": "Environment copy operation failed on source: {environmentName} to {destinationEnvironmentName}"
+        "eventDescription": "Environment copy operation failed on source"
     },
     {
         "eventId": "LC0122",
         "eventArea": "Environment",
-        "eventDescription": "Environment copy operation started on destination: {environmentName} from {sourceEnvironmentName}"
+        "eventDescription": "Environment copy operation started on destination"
     },
     {
         "eventId": "LC0123",
         "eventArea": "Environment",
-        "eventDescription": "Environment copied successfully to destination: {environmentName} from {sourceEnvironmentName}"
+        "eventDescription": "Environment copied successfully to destination"
     },
     {
         "eventId": "LC0124",
         "eventArea": "Environment",
-        "eventDescription": "Environment copy operation failed on destination: {environmentName} from {sourceEnvironmentName}"
+        "eventDescription": "Environment copy operation failed on destination"
     },
     {
         "eventId": "LC0125",
         "eventArea": "Environment",
-        "eventDescription": "Environment point-in-time restore operation started on source: {environmentName} to {destinationEnvironmentName}"
+        "eventDescription": "Environment point-in-time restore operation started on source"
     },
     {
         "eventId": "LC0126",
@@ -762,17 +762,17 @@
     {
         "eventId": "LC0128",
         "eventArea": "Environment",
-        "eventDescription": "Environment point-in-time restore operation started on destination: {environmentName} from {sourceEnvironmentName}"
+        "eventDescription": "Environment point-in-time restore operation started on destination"
     },
     {
         "eventId": "LC0129",
         "eventArea": "Environment",
-        "eventDescription": "Environment point-in-time restored successfully to destination: {environmentName} from {sourceEnvironmentName}"
+        "eventDescription": "Environment point-in-time restored successfully to destination"
     },
     {
         "eventId": "LC0130",
         "eventArea": "Environment",
-        "eventDescription": "Environment point-in-time restore operation failed on destination: {environmentName} from {sourceEnvironmentName}"
+        "eventDescription": "Environment point-in-time restore operation failed on destination"
     },
     {
         "eventId": "LC0131",
@@ -1057,22 +1057,22 @@
     {
         "eventId": "LC0204",
         "eventArea": "Per-tenant extension",
-        "eventDescription": "Extension validation started: extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension validation started: extension."
     },
     {
         "eventId": "LC0205",
         "eventArea": "Per-tenant extension",
-        "eventDescription": "Extension validation completed successfully: extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension validation completed successfully: extension."
     },
     {
         "eventId": "LC0206",
         "eventArea": "Per-tenant extension",
-        "eventDescription": "Extension validation completed with failures: extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension validation completed with failures: extension."
     },
     {
         "eventId": "LC0210",
         "eventArea": "Per-tenant extension",
-        "eventDescription": "Validation diagnostic reported: extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Validation diagnostic reported: extension."
     },
     {
         "eventId": "LC0220",
@@ -1082,17 +1082,17 @@
     {
         "eventId": "LC0224",
         "eventArea": "Environment validation",
-        "eventDescription": "Extension validation started: extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension validation started: extension."
     },
     {
         "eventId": "LC0225",
         "eventArea": "Environment validation",
-        "eventDescription": "Extension validation completed successfully: extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension validation completed successfully: extension."
     },
     {
         "eventId": "LC0226",
         "eventArea": "Environment validation",
-        "eventDescription": "Extension validation completed with failures: extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Extension validation completed with failures: extension."
     },
     {
         "eventId": "LC0222",
@@ -1107,7 +1107,7 @@
     {
         "eventId": "LC0227",
         "eventArea": "Environment validation",
-        "eventDescription": "Validation diagnostic reported: extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})"
+        "eventDescription": "Validation diagnostic reported: extension."
     },
     {
         "eventId": "CL0001",
