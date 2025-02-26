@@ -1,8 +1,8 @@
 {
-    "$schema": "https://dataexplorer.azure.com/static/d/schema/54/dashboard.json",
+    "$schema": "https://dataexplorer.azure.com/static/d/schema/60/dashboard.json",
     "id": "01e92ba5-117b-496c-ad7e-37f2eacc037b",
-    "eTag": "7ee75636-cfba-4d9a-b363-b6323843bc3e",
-    "schema_version": "54",
+    "eTag": "a237cc40-71d8-4271-8285-6ab604b0e58c",
+    "schema_version": "60",
     "title": "waldo's BCTelemetry Dashboard",
     "tiles": [
         {
@@ -243,7 +243,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -307,7 +315,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 0,
-                "y": 38,
+                "y": 49,
                 "width": 12,
                 "height": 9
             },
@@ -341,7 +349,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -464,7 +480,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -846,7 +870,15 @@
                 "drillthroughDisabled": false,
                 "legendLocation": "bottom",
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -972,14 +1004,14 @@
         },
         {
             "id": "c54267c7-cd9f-4d7d-ace5-07c4f51753b6",
-            "title": "Last Lock Timeouts",
+            "title": "Lock Timeouts details (Last 100)",
             "visualType": "table",
             "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
             "layout": {
                 "x": 0,
                 "y": 3,
                 "width": 15,
-                "height": 7
+                "height": 13
             },
             "queryRef": {
                 "kind": "query",
@@ -1030,9 +1062,9 @@
             "visualType": "stackedcolumn",
             "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
             "layout": {
-                "x": 0,
+                "x": 15,
                 "y": 10,
-                "width": 24,
+                "width": 9,
                 "height": 6
             },
             "queryRef": {
@@ -1066,7 +1098,15 @@
                 "drillthroughDisabled": false,
                 "legendLocation": "bottom",
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1076,7 +1116,7 @@
             "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
             "layout": {
                 "x": 0,
-                "y": 16,
+                "y": 22,
                 "width": 13,
                 "height": 12
             },
@@ -1103,7 +1143,7 @@
             "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
             "layout": {
                 "x": 13,
-                "y": 16,
+                "y": 22,
                 "width": 11,
                 "height": 12
             },
@@ -1220,7 +1260,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1262,7 +1310,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1331,7 +1387,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1375,7 +1439,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1447,7 +1519,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1492,7 +1572,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1548,7 +1636,7 @@
         },
         {
             "id": "58c00ae2-bd81-4052-a198-b2f3d7c1ed2c",
-            "title": "Last Slow SQL Calls (Top 1000) (SourceProcess, SlowObject)",
+            "title": "Last Slow SQL Calls (Top 100)",
             "visualType": "table",
             "pageId": "142b6efb-d730-4b92-a9f1-c8311c35f795",
             "layout": {
@@ -1581,7 +1669,7 @@
             "layout": {
                 "x": 0,
                 "y": 15,
-                "width": 11,
+                "width": 14,
                 "height": 13
             },
             "queryRef": {
@@ -1611,6 +1699,7 @@
                 "pie__orderBy": "size",
                 "pie__kind": "pie",
                 "pie__topNSlices": null,
+                "legendLocation": "bottom",
                 "crossFilter": [],
                 "drillthrough": []
             }
@@ -1621,7 +1710,7 @@
             "visualType": "table",
             "pageId": "142b6efb-d730-4b92-a9f1-c8311c35f795",
             "layout": {
-                "x": 11,
+                "x": 14,
                 "y": 15,
                 "width": 10,
                 "height": 13
@@ -1685,7 +1774,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1732,7 +1829,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1778,7 +1883,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1847,7 +1960,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -1992,7 +2113,7 @@
             "layout": {
                 "x": 0,
                 "y": 26,
-                "width": 21,
+                "width": 24,
                 "height": 8
             },
             "queryRef": {
@@ -2035,7 +2156,15 @@
                         "disabled": false
                     }
                 ],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -2045,7 +2174,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 12,
-                "y": 63,
+                "y": 74,
                 "width": 12,
                 "height": 11
             },
@@ -2119,6 +2248,7 @@
                 "pie__orderBy": "size",
                 "pie__kind": "pie",
                 "pie__topNSlices": null,
+                "legendLocation": "bottom",
                 "crossFilter": [],
                 "drillthrough": []
             }
@@ -2159,6 +2289,7 @@
                 "pie__orderBy": "size",
                 "pie__kind": "pie",
                 "pie__topNSlices": null,
+                "legendLocation": "bottom",
                 "crossFilter": [],
                 "drillthrough": []
             }
@@ -2205,7 +2336,15 @@
                 "drillthroughDisabled": false,
                 "legendLocation": "bottom",
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -2506,7 +2645,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -2579,7 +2726,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -2649,7 +2804,15 @@
                 "drillthroughDisabled": false,
                 "legendLocation": "bottom",
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -2659,7 +2822,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 0,
-                "y": 47,
+                "y": 58,
                 "width": 12,
                 "height": 8
             },
@@ -2695,7 +2858,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -2817,7 +2988,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3023,7 +3202,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3033,7 +3220,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 0,
-                "y": 55,
+                "y": 66,
                 "width": 12,
                 "height": 8
             },
@@ -3069,7 +3256,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3079,7 +3274,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 12,
-                "y": 38,
+                "y": 49,
                 "width": 12,
                 "height": 9
             },
@@ -3113,7 +3308,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3123,7 +3326,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 12,
-                "y": 47,
+                "y": 58,
                 "width": 12,
                 "height": 8
             },
@@ -3159,7 +3362,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3169,7 +3380,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 12,
-                "y": 55,
+                "y": 66,
                 "width": 12,
                 "height": 8
             },
@@ -3205,7 +3416,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3215,7 +3434,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 0,
-                "y": 8,
+                "y": 19,
                 "width": 24,
                 "height": 10
             },
@@ -3249,7 +3468,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3259,7 +3486,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 0,
-                "y": 18,
+                "y": 29,
                 "width": 24,
                 "height": 10
             },
@@ -3293,7 +3520,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3303,7 +3538,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 0,
-                "y": 63,
+                "y": 74,
                 "width": 12,
                 "height": 11
             },
@@ -3348,7 +3583,7 @@
             "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
             "layout": {
                 "x": 0,
-                "y": 28,
+                "y": 39,
                 "width": 24,
                 "height": 10
             },
@@ -3382,7 +3617,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3426,7 +3669,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3470,7 +3721,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3582,56 +3841,13 @@
             }
         },
         {
-            "id": "c57bcb82-541e-455d-b5d7-f12a538f9989",
-            "title": "AvgElapsedTime By SourceProcess Per Hour",
-            "visualType": "line",
-            "pageId": "142b6efb-d730-4b92-a9f1-c8311c35f795",
-            "layout": {
-                "x": 0,
-                "y": 80,
-                "width": 21,
-                "height": 13
-            },
-            "queryRef": {
-                "kind": "query",
-                "queryId": "97248546-ead0-41cd-a549-5b11f357c15e"
-            },
-            "visualOptions": {
-                "multipleYAxes": {
-                    "base": {
-                        "id": "-1",
-                        "label": "",
-                        "columns": [],
-                        "yAxisMaximumValue": null,
-                        "yAxisMinimumValue": null,
-                        "yAxisScale": "linear",
-                        "horizontalLines": []
-                    },
-                    "additional": [],
-                    "showMultiplePanels": false
-                },
-                "hideLegend": true,
-                "legendLocation": "bottom",
-                "xColumnTitle": "",
-                "xColumn": null,
-                "yColumns": null,
-                "seriesColumns": null,
-                "xAxisScale": "linear",
-                "verticalLine": "",
-                "crossFilterDisabled": false,
-                "drillthroughDisabled": false,
-                "crossFilter": [],
-                "drillthrough": []
-            }
-        },
-        {
             "id": "0bf9cd74-3778-4ccb-8807-82d8a5ea9879",
             "title": "Extension Lifecycle (Last 1000)",
             "visualType": "table",
             "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
             "layout": {
                 "x": 7,
-                "y": 0,
+                "y": 7,
                 "width": 17,
                 "height": 9
             },
@@ -3658,7 +3874,7 @@
             "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
             "layout": {
                 "x": 0,
-                "y": 0,
+                "y": 7,
                 "width": 7,
                 "height": 18
             },
@@ -3685,7 +3901,7 @@
             "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
             "layout": {
                 "x": 7,
-                "y": 9,
+                "y": 16,
                 "width": 17,
                 "height": 9
             },
@@ -3712,7 +3928,7 @@
             "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
             "layout": {
                 "x": 0,
-                "y": 18,
+                "y": 25,
                 "width": 24,
                 "height": 9
             },
@@ -3750,13 +3966,21 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
             "id": "8f8321e4-d8b7-47bc-b273-62cd0ac85629",
-            "title": "avgElapsedTime, Per hour, per customer",
-            "visualType": "stackedcolumn",
+            "title": "avgElapsedTime, Per 3 hours, per customer",
+            "visualType": "column",
             "pageId": "142b6efb-d730-4b92-a9f1-c8311c35f795",
             "layout": {
                 "x": 0,
@@ -3783,6 +4007,7 @@
                     "showMultiplePanels": false
                 },
                 "hideLegend": true,
+                "legendLocation": "bottom",
                 "xColumnTitle": "",
                 "xColumn": null,
                 "yColumns": null,
@@ -3793,9 +4018,16 @@
                 "verticalLine": "",
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
-                "legendLocation": "bottom",
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -3865,7 +4097,15 @@
                 "drillthroughDisabled": false,
                 "legendLocation": "bottom",
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -4048,7 +4288,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -4093,18 +4341,26 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
             "id": "feeb01db-dde2-434a-8943-73932095805c",
-            "title": "Lock Snapshot Overview",
+            "title": "Count per Table Lock (and type)",
             "visualType": "table",
             "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
             "layout": {
                 "x": 0,
-                "y": 28,
-                "width": 12,
+                "y": 46,
+                "width": 15,
                 "height": 7
             },
             "queryRef": {
@@ -4220,7 +4476,15 @@
                 "crossFilterDisabled": false,
                 "drillthroughDisabled": false,
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -4307,7 +4571,15 @@
                 "drillthroughDisabled": false,
                 "legendLocation": "bottom",
                 "crossFilter": [],
-                "drillthrough": []
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
             }
         },
         {
@@ -4345,7 +4617,7 @@
             "layout": {
                 "x": 0,
                 "y": 0,
-                "width": 23,
+                "width": 24,
                 "height": 3
             },
             "markdownText": "# Retention Policies\n\n",
@@ -4359,7 +4631,7 @@
             "layout": {
                 "x": 0,
                 "y": 3,
-                "width": 23,
+                "width": 24,
                 "height": 8
             },
             "queryRef": {
@@ -4385,7 +4657,7 @@
             "pageId": "92a3dce1-1ae3-468d-a470-e98907971cf7",
             "layout": {
                 "x": 0,
-                "y": 0,
+                "y": 8,
                 "width": 24,
                 "height": 3
             },
@@ -4399,7 +4671,7 @@
             "pageId": "92a3dce1-1ae3-468d-a470-e98907971cf7",
             "layout": {
                 "x": 12,
-                "y": 3,
+                "y": 11,
                 "width": 12,
                 "height": 9
             },
@@ -4426,7 +4698,7 @@
             "pageId": "92a3dce1-1ae3-468d-a470-e98907971cf7",
             "layout": {
                 "x": 0,
-                "y": 3,
+                "y": 11,
                 "width": 12,
                 "height": 9
             },
@@ -4453,7 +4725,7 @@
             "pageId": "92a3dce1-1ae3-468d-a470-e98907971cf7",
             "layout": {
                 "x": 6,
-                "y": 12,
+                "y": 20,
                 "width": 18,
                 "height": 10
             },
@@ -4480,7 +4752,7 @@
             "pageId": "92a3dce1-1ae3-468d-a470-e98907971cf7",
             "layout": {
                 "x": 0,
-                "y": 12,
+                "y": 20,
                 "width": 6,
                 "height": 10
             },
@@ -4507,7 +4779,7 @@
             "pageId": "92a3dce1-1ae3-468d-a470-e98907971cf7",
             "layout": {
                 "x": 9,
-                "y": 22,
+                "y": 30,
                 "width": 9,
                 "height": 7
             },
@@ -4534,7 +4806,7 @@
             "pageId": "92a3dce1-1ae3-468d-a470-e98907971cf7",
             "layout": {
                 "x": 0,
-                "y": 22,
+                "y": 30,
                 "width": 9,
                 "height": 7
             },
@@ -4556,13 +4828,13 @@
         },
         {
             "id": "cab02c26-4255-4f04-89ec-6d093dbcbc05",
-            "title": "Lock Snapshot Overview",
+            "title": "Count per stacktrace",
             "visualType": "table",
             "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
             "layout": {
-                "x": 12,
-                "y": 28,
-                "width": 12,
+                "x": 15,
+                "y": 46,
+                "width": 9,
                 "height": 7
             },
             "queryRef": {
@@ -4589,7 +4861,7 @@
             "layout": {
                 "x": 0,
                 "y": 11,
-                "width": 23,
+                "width": 11,
                 "height": 8
             },
             "queryRef": {
@@ -4630,8 +4902,8 @@
             "layout": {
                 "x": 0,
                 "y": 3,
-                "width": 23,
-                "height": 8
+                "width": 24,
+                "height": 14
             },
             "queryRef": {
                 "kind": "query",
@@ -4656,7 +4928,7 @@
             "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
             "layout": {
                 "x": 0,
-                "y": 27,
+                "y": 34,
                 "width": 24,
                 "height": 3
             },
@@ -4670,7 +4942,7 @@
             "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
             "layout": {
                 "x": 0,
-                "y": 38,
+                "y": 45,
                 "width": 24,
                 "height": 8
             },
@@ -4697,7 +4969,7 @@
             "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
             "layout": {
                 "x": 9,
-                "y": 30,
+                "y": 37,
                 "width": 15,
                 "height": 8
             },
@@ -4724,7 +4996,7 @@
             "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
             "layout": {
                 "x": 0,
-                "y": 46,
+                "y": 53,
                 "width": 24,
                 "height": 8
             },
@@ -4751,13 +5023,860 @@
             "pageId": "a0f75fcf-eb7d-4d83-a807-2527c0f75471",
             "layout": {
                 "x": 0,
-                "y": 30,
+                "y": 37,
                 "width": 9,
                 "height": 8
             },
             "queryRef": {
                 "kind": "query",
                 "queryId": "7c4ebec2-e163-48b3-968d-31f065e36747"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "bde74edb-912d-42e8-838c-4501bd698d6b",
+            "title": "AvgExecutionTime per hour, per endpoint",
+            "visualType": "stackedcolumn",
+            "pageId": "8fb4147d-b1b9-4d4b-b062-6fcb44fd87ed",
+            "layout": {
+                "x": 0,
+                "y": 49,
+                "width": 24,
+                "height": 8
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "b12fb281-9fac-4881-a19e-15af69700849"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": null,
+                "seriesColumns": [
+                    "endpoint",
+                    "tenantDescription"
+                ],
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "legendLocation": "bottom",
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "f2f3e19a-70d2-455f-b446-b7bfab790150",
+            "title": "Count, Per SourceObject, Per hour",
+            "visualType": "stackedcolumn",
+            "pageId": "2da8380b-5d1b-4b0f-9c49-97c4b310e564",
+            "layout": {
+                "x": 0,
+                "y": 79,
+                "width": 21,
+                "height": 12
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "35e1ae29-3692-48b1-ab2e-8c639eac7104"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "xColumnTitle": "",
+                "xColumn": "timestamp",
+                "yColumns": null,
+                "seriesColumns": null,
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "legendLocation": "bottom",
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "8fbb0f85-40dd-4ff0-918f-4bd8cc300809",
+            "title": "AvgTime, Per SourceObject, Per hour",
+            "visualType": "column",
+            "pageId": "2da8380b-5d1b-4b0f-9c49-97c4b310e564",
+            "layout": {
+                "x": 0,
+                "y": 91,
+                "width": 21,
+                "height": 12
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "5942b83f-de64-4960-b3c0-471170339111"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "legendLocation": "bottom",
+                "xColumnTitle": "",
+                "xColumn": "timestamp",
+                "yColumns": null,
+                "seriesColumns": null,
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "2a3ce569-506f-4ac5-b0c3-65ba1002bfce",
+            "title": "Used Apps at Customers",
+            "visualType": "table",
+            "pageId": "e0ea770f-baf5-47a6-88b1-1cb0ec5dce59",
+            "layout": {
+                "x": 0,
+                "y": 55,
+                "width": 9,
+                "height": 7
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "1e0bb7a9-5441-4e88-8365-913d8027e73d"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "0d1035f9-820f-4c52-8b7c-d754a9ca7952",
+            "title": "Raw data - Last entries",
+            "visualType": "table",
+            "pageId": "92a3dce1-1ae3-468d-a470-e98907971cf7",
+            "layout": {
+                "x": 0,
+                "y": 37,
+                "width": 24,
+                "height": 17
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "bbc5099c-b14d-4e54-aaa3-f9b679d9603e"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "28808c42-9acb-4264-925c-155dbea7330a",
+            "title": "Summery of the differents statuses of job queues",
+            "visualType": "table",
+            "pageId": "38519c26-c531-413e-ba44-989a36547d93",
+            "layout": {
+                "x": 0,
+                "y": 0,
+                "width": 20,
+                "height": 7
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "8145cc87-908c-4657-af3f-5c8a738a951e"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "1a812e4f-982d-4b03-aa2a-3b201464271d",
+            "title": "Inactive Job Queues",
+            "visualType": "table",
+            "pageId": "38519c26-c531-413e-ba44-989a36547d93",
+            "layout": {
+                "x": 0,
+                "y": 7,
+                "width": 9,
+                "height": 7
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "87b7d2f8-dde0-41b2-83e7-c4ab117d232f"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "bf3a318b-bd78-4682-b2aa-a66bbd7df955",
+            "title": "Avg processing time for Job Queues",
+            "visualType": "table",
+            "pageId": "38519c26-c531-413e-ba44-989a36547d93",
+            "layout": {
+                "x": 9,
+                "y": 7,
+                "width": 11,
+                "height": 7
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "cf42eed6-133d-4402-96ba-c4be86292877"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "37cba54c-22b0-4d43-85b2-124e8b822394",
+            "title": "Failed Job Queue Entries and the reason for it",
+            "visualType": "table",
+            "pageId": "38519c26-c531-413e-ba44-989a36547d93",
+            "layout": {
+                "x": 0,
+                "y": 14,
+                "width": 20,
+                "height": 7
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "285cd3d0-0d8f-4bd2-9b17-d6277545cb54"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "b4a0c751-871e-45cb-8355-cb689f511224",
+            "title": "Scheduled Environment Updates",
+            "visualType": "table",
+            "pageId": "92a3dce1-1ae3-468d-a470-e98907971cf7",
+            "layout": {
+                "x": 0,
+                "y": 2,
+                "width": 24,
+                "height": 7
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "2abb5755-ccc2-46b0-b322-fa0fdc04ecfb"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "ae182a37-76b8-46be-b07a-27f1dfaddb59",
+            "title": "Outgoing API's per endpoint per hour",
+            "visualType": "column",
+            "pageId": "6651f51d-54d7-49a6-beb6-9e76c6b5333d",
+            "layout": {
+                "x": 0,
+                "y": 34,
+                "width": 24,
+                "height": 7
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "c286083d-559b-4e83-a6ec-99144997f030"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": false,
+                "legendLocation": "bottom",
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": null,
+                "seriesColumns": null,
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "1dc95cc7-8ae2-42ac-b4b0-4d0488d60586",
+            "title": "AvgNoOfSqlStatements per Tenant.Message per hour",
+            "visualType": "line",
+            "pageId": "e057b00e-7fd8-476e-a00c-3421e7656af8",
+            "layout": {
+                "x": 0,
+                "y": 9,
+                "width": 24,
+                "height": 10
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "29bc714e-918a-48fd-aed2-419402e575ad"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "xColumnTitle": "",
+                "xColumn": "timestamp",
+                "yColumns": [
+                    "avgNoSqlStatements"
+                ],
+                "seriesColumns": null,
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "legendLocation": "bottom",
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "209c9739-cbd8-4a14-88a3-a15d425b7163",
+            "title": "Lock Timeouts by hour",
+            "visualType": "stackedcolumn",
+            "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
+            "layout": {
+                "x": 0,
+                "y": 16,
+                "width": 24,
+                "height": 6
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "ded4b26f-83e2-4bc8-9956-655b5e3300b7"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": null,
+                "seriesColumns": [
+                    "tenantDescription"
+                ],
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "legendLocation": "bottom",
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "e86b93a8-d4c2-4fe6-a810-940ac54bb1e3",
+            "title": "Overview Retention Policies per customer",
+            "visualType": "table",
+            "pageId": "7b7f2b6b-e03e-40f6-bddf-70404b6529a8",
+            "layout": {
+                "x": 0,
+                "y": 19,
+                "width": 23,
+                "height": 8
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "08e7cacf-71ac-4927-ac9c-438d55bfd12a"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "c77f8240-a3fb-45c5-ba95-4c1d7a6521bf",
+            "title": "Lock Snapshot details (last 100)",
+            "visualType": "table",
+            "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
+            "layout": {
+                "x": 0,
+                "y": 36,
+                "width": 24,
+                "height": 10
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "9b006a62-69d4-4c4d-a6b2-943cb7895561"
+            },
+            "visualOptions": {
+                "table__enableRenderLinks": true,
+                "colorRulesDisabled": true,
+                "colorStyle": "light",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "table__renderLinks": [],
+                "colorRules": []
+            }
+        },
+        {
+            "id": "e4549d99-fe20-465b-b5bc-4c13ab4c3524",
+            "title": "AvgExecutionTime per hour, per endpoint",
+            "visualType": "column",
+            "pageId": "8fb4147d-b1b9-4d4b-b062-6fcb44fd87ed",
+            "layout": {
+                "x": 0,
+                "y": 57,
+                "width": 24,
+                "height": 8
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "fec3e770-e41e-4fc1-a287-d738d4e563ce"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "legendLocation": "bottom",
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": null,
+                "seriesColumns": [
+                    "endpoint",
+                    "tenantDescription"
+                ],
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "c63312dc-77e9-43b1-9df9-ff31db219ec9",
+            "title": "Job queues statuses per hour",
+            "visualType": "stackedcolumn",
+            "pageId": "38519c26-c531-413e-ba44-989a36547d93",
+            "layout": {
+                "x": 0,
+                "y": 21,
+                "width": 20,
+                "height": 13
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "6cf67486-f9a4-47c6-b8ba-0bf27e37d861"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": false,
+                "legendLocation": "bottom",
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": null,
+                "seriesColumns": null,
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "f4635686-6e25-47cd-8619-51f10a598aad",
+            "title": "Avg Processing time per hour per Job",
+            "visualType": "stackedcolumn",
+            "pageId": "38519c26-c531-413e-ba44-989a36547d93",
+            "layout": {
+                "x": 0,
+                "y": 34,
+                "width": 20,
+                "height": 7
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "1f8c63b9-4045-40ae-b34d-77fb3ff4dcf9"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "legendLocation": "bottom",
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": null,
+                "seriesColumns": null,
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "0c89c601-017b-4902-843b-0d51b46d10f5",
+            "title": "AvgTime, Per Customer, Per 3 Hours",
+            "visualType": "column",
+            "pageId": "2da8380b-5d1b-4b0f-9c49-97c4b310e564",
+            "layout": {
+                "x": 0,
+                "y": 103,
+                "width": 21,
+                "height": 13
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "695ba804-52f3-49f8-b5cd-e9f41bf3c6d9"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "legendLocation": "bottom",
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": null,
+                "seriesColumns": null,
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "crossFilter": [],
+                "drillthrough": []
+            }
+        },
+        {
+            "id": "bc56df1a-2c1c-4750-ac2f-9ffd4537bd60",
+            "title": "Sessions per ClientType, Per Hour",
+            "visualType": "stackedcolumn",
+            "pageId": "e0ea770f-baf5-47a6-88b1-1cb0ec5dce59",
+            "layout": {
+                "x": 0,
+                "y": 45,
+                "width": 21,
+                "height": 10
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "43af85e9-b3d0-44ac-a125-89c684f6b07e"
+            },
+            "visualOptions": {
+                "multipleYAxes": {
+                    "base": {
+                        "id": "-1",
+                        "label": "",
+                        "columns": [],
+                        "yAxisMaximumValue": null,
+                        "yAxisMinimumValue": null,
+                        "yAxisScale": "linear",
+                        "horizontalLines": []
+                    },
+                    "additional": [],
+                    "showMultiplePanels": false
+                },
+                "hideLegend": true,
+                "xColumnTitle": "",
+                "xColumn": null,
+                "yColumns": null,
+                "seriesColumns": null,
+                "xAxisScale": "linear",
+                "verticalLine": "",
+                "crossFilterDisabled": false,
+                "drillthroughDisabled": false,
+                "legendLocation": "bottom",
+                "crossFilter": [],
+                "drillthrough": [],
+                "selectedDataOnLoad": {
+                    "all": true,
+                    "limit": 10
+                },
+                "dataPointsTooltip": {
+                    "all": false,
+                    "limit": 1
+                }
+            }
+        },
+        {
+            "id": "3e2b346f-fcde-4995-96d0-0e5d63033015",
+            "title": "Lock Snapshot Overview",
+            "visualType": "markdownCard",
+            "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
+            "layout": {
+                "x": 0,
+                "y": 34,
+                "width": 24,
+                "height": 2
+            },
+            "markdownText": "What is causing the lock?",
+            "visualOptions": {}
+        },
+        {
+            "id": "8ca30199-86f3-42dd-99ca-e63674514516",
+            "title": "Lock Snapshot Overview",
+            "visualType": "table",
+            "pageId": "9986d334-d966-4ec6-a436-4e6e6228711d",
+            "layout": {
+                "x": 0,
+                "y": 53,
+                "width": 24,
+                "height": 10
+            },
+            "queryRef": {
+                "kind": "query",
+                "queryId": "a1a55452-a416-48af-887b-3edb086faba2"
             },
             "visualOptions": {
                 "table__enableRenderLinks": true,
@@ -5232,6 +6351,10 @@
             "id": "839e9b74-183b-4d7c-9c62-05d466a8379d"
         },
         {
+            "name": "Job Queues",
+            "id": "38519c26-c531-413e-ba44-989a36547d93"
+        },
+        {
             "name": "Performance",
             "id": "edd38efc-357f-4074-87bc-ae13ab32e97a"
         },
@@ -5665,7 +6788,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "// Lock Timeouts - Last ones\r\nallTraces\r\n| where eventId == 'RT0012'\r\n| where customDimensions.alObjectId != '0' \r\n| where isnotempty(customDimensions.alObjectId)\r\n| extend ObjectType = tostring(customDimensions.alObjectType)\r\n    , ObjectId = tostring(customDimensions.alObjectId)\r\n    , ObjectName = tostring(customDimensions.alObjectName)\r\n    , sqlStatement = tostring(customDimensions.sqlStatement)\r\n    // , companyName = tostring(customDimensions.companyName)        \r\n    , numberOfJoins = countof(tostring(customDimensions.sqlStatement), \"JOIN\") \r\n    , userId = user_Id\r\n| extend operationType = case(\r\n    sqlStatement startswith \"UPDATE\", \"UPDATE\"\r\n    , sqlStatement startswith \"DELETE\", \"DELETE\"\r\n    , sqlStatement startswith \"BeginTransaction\", \"BEGIN_TRANS\"\r\n    , sqlStatement matches regex \"INSERT INTO\", \"INSERT\"\r\n    , sqlStatement startswith \"SELECT\", \"SELECT\"\r\n    , sqlStatement matches regex \"IF EXISTS \\\\(SELECT (.*)\\\\) SELECT\", \"SELECT'\"\r\n    , sqlStatement has \"SELECT NEXT VALUE FOR\", \"SELECT_SEQUENCE_VALUE\"\r\n    , sqlStatement has \"SELECT @@SPID\", \"SELECT_SPID\"\r\n    , sqlStatement matches regex \"(.*)WITH\", \"SELECT\"\r\n    , sqlStatement startswith \"CREATE TABLE\", \"CREATE_TABLE\"\r\n    , sqlStatement startswith \"ALTER TABLE\", \"ALTER_TABLE\"\r\n    , sqlStatement startswith \"exec sp_rename\", \"RENAME_TABLE\" \r\n    , sqlStatement matches regex \"(.*)DROP TABLE\", \"DROP_TABLE\"\r\n    , sqlStatement startswith \"SET LOCK_TIMEOUT\", \"SET_LOCK_TIMEOUT\"\r\n    , sqlStatement has \"sp_getapplock\", \"GET_APP_LOCK\"\r\n    , \"UNKNOWN\"\r\n    ) \r\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\r\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\r\n| extend lengthStacktrace = array_length(splitStacktrace)\r\n| extend\r\n    LockingObject = splitStacktrace[0],\r\n    SourceProcess = splitStacktrace[lengthStacktrace - 1]\r\n| where SourceProcess contains _sourceObjectFilter\r\n| where LockingObject contains _SlowObjectFilter\r\n| project\r\n    timestamp,\r\n    tenantDescription,\r\n    userId,\r\n    // companyName,\r\n    ObjectType,\r\n    ObjectId,\r\n    ObjectName,\r\n    numberOfJoins,\r\n    LockingObject,\r\n    SourceProcess,\r\n    operationType,\r\n    sqlStatement,\r\n    splitStacktrace,\r\n    customDimensions\r\n| order by timestamp desc \r\n\r\n",
+            "text": "// Lock Timeouts - Last ones\r\nallTraces\r\n| where eventId == 'RT0012'\r\n| where customDimensions.alObjectId != '0' \r\n| where isnotempty(customDimensions.alObjectId)\r\n| extend ObjectType = tostring(customDimensions.alObjectType)\r\n    , ObjectId = tostring(customDimensions.alObjectId)\r\n    , ObjectName = tostring(customDimensions.alObjectName)\r\n    , sqlStatement = tostring(customDimensions.sqlStatement)\r\n    // , companyName = tostring(customDimensions.companyName)        \r\n    , numberOfJoins = countof(tostring(customDimensions.sqlStatement), \"JOIN\") \r\n    , userId = user_Id\r\n| extend operationType = case(\r\n    sqlStatement startswith \"UPDATE\", \"UPDATE\"\r\n    , sqlStatement startswith \"DELETE\", \"DELETE\"\r\n    , sqlStatement startswith \"BeginTransaction\", \"BEGIN_TRANS\"\r\n    , sqlStatement matches regex \"INSERT INTO\", \"INSERT\"\r\n    , sqlStatement startswith \"SELECT\", \"SELECT\"\r\n    , sqlStatement matches regex \"IF EXISTS \\\\(SELECT (.*)\\\\) SELECT\", \"SELECT'\"\r\n    , sqlStatement has \"SELECT NEXT VALUE FOR\", \"SELECT_SEQUENCE_VALUE\"\r\n    , sqlStatement has \"SELECT @@SPID\", \"SELECT_SPID\"\r\n    , sqlStatement matches regex \"(.*)WITH\", \"SELECT\"\r\n    , sqlStatement startswith \"CREATE TABLE\", \"CREATE_TABLE\"\r\n    , sqlStatement startswith \"ALTER TABLE\", \"ALTER_TABLE\"\r\n    , sqlStatement startswith \"exec sp_rename\", \"RENAME_TABLE\" \r\n    , sqlStatement matches regex \"(.*)DROP TABLE\", \"DROP_TABLE\"\r\n    , sqlStatement startswith \"SET LOCK_TIMEOUT\", \"SET_LOCK_TIMEOUT\"\r\n    , sqlStatement has \"sp_getapplock\", \"GET_APP_LOCK\"\r\n    , \"UNKNOWN\"\r\n    ) \r\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\r\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\r\n| extend lengthStacktrace = array_length(splitStacktrace)\r\n| extend\r\n    LockingObject = splitStacktrace[0],\r\n    SourceProcess = splitStacktrace[lengthStacktrace - 1]\r\n| where SourceProcess contains _sourceObjectFilter\r\n| where LockingObject contains _SlowObjectFilter\r\n| project\r\n    timestamp,\r\n    tenantDescription,\r\n    userId,\r\n    // companyName,\r\n    ObjectType,\r\n    ObjectId,\r\n    ObjectName,\r\n    numberOfJoins,\r\n    LockingObject,\r\n    SourceProcess,\r\n    operationType,\r\n    sqlStatement,\r\n    splitStacktrace,\r\n    customDimensions\r\n| order by timestamp desc \r\n| take 100\r\n\r\n",
             "id": "bde82600-5be6-4e68-a44c-de60b58b693b",
             "usedVariables": [
                 "_SlowObjectFilter",
@@ -5801,7 +6924,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "let TempAllTraces = \n    traces\n    | extend aadTenantId = tostring(customDimensions.aadTenantId)\n    , componentVersion = tostring(customDimensions.componentVersion)\n    , environmentType = tostring(customDimensions.environmentType)\n    | where isnotempty( componentVersion)\n    | where isnotempty( environmentType)\n    | where environmentType <> 'Sandbox'\n    | summarize componentVersion = max(componentVersion) by aadTenantId, environmentType\n    ;\nentraTenantIdDescriptions\n| join kind=leftouter TempAllTraces on $left.entraTenantId == $right.aadTenantId\n| project aadTenantId, tenantDescription, componentVersion",
+            "text": "let TempAllTraces = \n    traces\n    | extend aadTenantId = tostring(customDimensions.aadTenantId)\n    , componentVersion = tostring(customDimensions.componentVersion)\n    , environmentType = tostring(customDimensions.environmentType)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , extensionVersion = tostring(customDimensions.extensionVersion)\n    | where isnotempty( componentVersion)\n    | where isnotempty( environmentType)\n    | where environmentType <> 'Sandbox'\n    | where extensionPublisher == 'Microsoft'\n    | summarize componentVersion = max(componentVersion), appVersion = max(extensionVersion) by aadTenantId, environmentType\n    ;\nentraTenantIdDescriptions\n| join kind=leftouter TempAllTraces on $left.entraTenantId == $right.aadTenantId\n| project aadTenantId, tenantDescription, componentVersion, appVersion",
             "id": "4e8d2e2b-15d8-462d-b2e4-1e525eb95e4a",
             "usedVariables": [
                 "entraTenantIdDescriptions"
@@ -5848,11 +6971,9 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    // , extensionName = tostring(customDimensions.extensionName)\n    // , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n//SourceProcess = bottom, SlowObject = Top\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| project timestamp\n    , eventId\n    , message\n    , componentVersion\n    , tenantDescription\n    // , companyName\n    , extensionName\n    , extensionPublisher\n    , splitStacktrace\n    , SourceProcess\n    , SlowObject\n    , alObjectType\n    , alObjectName\n    , alObjectId\n    , elapsedTimeInMS\n    , customDimensions\n    , sqlStatement\n| order by timestamp desc \n| take 1000",
+            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionName = tostring(customDimensions.extensionName)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| project timestamp\n    , eventId\n    , message\n    , componentVersion\n    , tenantDescription\n    , companyName\n    , extensionName\n    , extensionPublisher\n    , splitStacktrace\n    , alObjectType\n    , alObjectName\n    , alObjectId\n    , elapsedTimeInMS\n    , customDimensions\n    , sqlStatement\n| order by timestamp desc \n| take 100",
             "id": "5557b35e-e902-4c32-8f2b-040a5435d58c",
             "usedVariables": [
-                "_SlowObjectFilter",
-                "_sourceObjectFilter",
                 "allTraces"
             ]
         },
@@ -5861,7 +6982,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement)\n| where isnotempty( customDimensions.alStackTrace)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n    , componentVersion = tostring(customDimensions.componentVersion)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| project timestamp\n    , eventId\n    , message\n    , componentVersion\n    , tenantDescription\n    // , companyName\n    , extensionName\n    , extensionPublisher\n    , splitStacktrace\n    , SourceProcess\n    , SlowObject\n    , alObjectType\n    , alObjectName\n    , alObjectId\n    , elapsedTimeInMS\n    , customDimensions\n    , sqlStatement\n| summarize count(), avg(elapsedTimeInMS) by SlowObject",
+            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement)\n| where isnotempty( customDimensions.alStackTrace)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n    , componentVersion = tostring(customDimensions.componentVersion)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend SourceProcess = strcat(bottomOfStackline)\n    , SlowObject = split(replace_string(topOfStackline,'AL CallStack: ',''),'line')[0]\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter| project timestamp\n    , eventId\n    , message\n    , componentVersion\n    , tenantDescription\n    // , companyName\n    , extensionName\n    , extensionPublisher\n    , splitStacktrace\n    , SourceProcess\n    , SlowObject\n    , alObjectType\n    , alObjectName\n    , alObjectId\n    , elapsedTimeInMS\n    , customDimensions\n    , sqlStatement\n| summarize count(), avg(elapsedTimeInMS) by SlowObject",
             "id": "cb28ebf5-5d02-43e0-b736-1404e21b4c4f",
             "usedVariables": [
                 "_SlowObjectFilter",
@@ -5874,7 +6995,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement)\n| where isnotempty( customDimensions.alStackTrace)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n    , componentVersion = tostring(customDimensions.componentVersion)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize count(), toint(avg(elapsedTimeInMS)) by SlowObject\n| order by count_ desc ",
+            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement)\n| where isnotempty( customDimensions.alStackTrace)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n    , componentVersion = tostring(customDimensions.componentVersion)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend SourceProcess = strcat(bottomOfStackline)\n    , SlowObject = split(replace_string(topOfStackline,'AL CallStack: ',''),'line')[0]\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize count(), toint(avg(elapsedTimeInMS)) by SlowObject\n| order by count_ desc ",
             "id": "2b7d4cc1-a871-49d4-b915-2b3db3f99815",
             "usedVariables": [
                 "_SlowObjectFilter",
@@ -6021,7 +7142,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    // , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n//SourceProcess = bottom, SlowObject = Top\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize avgElapsedtime = avg(elapsedTimeInMS) by SourceProcess",
+            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    // , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend SourceProcess = replace_string(bottomOfStackline,'AL CallStack: ','')\n    , SlowObject = split(replace_string(topOfStackline,'AL CallStack: ',''),'line')[0]\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize avgElapsedtime = avg(elapsedTimeInMS) by SourceProcess",
             "id": "5c947609-8f50-4cd5-840a-511cc0c33b41",
             "usedVariables": [
                 "_SlowObjectFilter",
@@ -6034,7 +7155,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    // , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n//SourceProcess = bottom, SlowObject = Top\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize avgElapsedtime = avg(elapsedTimeInMS) by SlowObject",
+            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    // , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend SourceProcess = replace_string(bottomOfStackline,'AL CallStack: ','')\n    , SlowObject = split(replace_string(topOfStackline,'AL CallStack: ',''),'line')[0]\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize avgElapsedtime = avg(elapsedTimeInMS) by SlowObject",
             "id": "2c87ced3-5ea0-4e8c-936b-fd1f015e7e28",
             "usedVariables": [
                 "_SlowObjectFilter",
@@ -6047,11 +7168,9 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n//SourceProcess = bottom, SlowObject = Top\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| project timestamp\n    , eventId\n    , message\n    , componentVersion\n    , tenantDescription\n    // , companyName\n    , extensionName\n    , extensionPublisher\n    , splitStacktrace\n    , SourceProcess\n    , SlowObject\n    , alObjectType\n    , alObjectName\n    , alObjectId\n    , elapsedTimeInMS\n    , customDimensions\n    , sqlStatement\n| summarize avg(elapsedTimeInMS) by bin(timestamp, 1d), tenantDescription",
+            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| summarize avg(elapsedTimeInMS) by bin(timestamp, 1d), tenantDescription",
             "id": "5fbdc066-e7ff-49e8-9523-e4affafac505",
             "usedVariables": [
-                "_SlowObjectFilter",
-                "_sourceObjectFilter",
                 "allTraces"
             ]
         },
@@ -6444,7 +7563,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where isnotempty( componentVersion)\n| where isnotempty( environmentType)\n| where isnotempty( companyName)\n| where companyName contains _CompanyFilter\n| where environmentType <> 'Sandbox'\n| summarize componentVersion = max(componentVersion) by aadTenantId,tenantDescription, environmentType, companyName\n| project companyName, tenantDescription, componentVersion, aadTenantId",
+            "text": "allTraces\n| where isnotempty( componentVersion)\n| where isnotempty( environmentType)\n| where isnotempty( companyName)\n| where companyName contains _CompanyFilter\n| where environmentType <> 'Sandbox'\n| where extensionPublisher == 'Microsoft'\n| summarize count(), componentVersion = max(componentVersion), appVersion = max(extensionVersion) by aadTenantId,tenantDescription, environmentType, companyName\n| project companyName, tenantDescription, componentVersion, appVersion, aadTenantId, count_",
             "id": "3b6ea8da-80f3-428e-b95d-8f3cfe5412f1",
             "usedVariables": [
                 "_CompanyFilter",
@@ -6481,19 +7600,6 @@
             "text": "allTraces\n| where isnotempty(extensionName)\n| summarize by tenantDescription, extensionName\n| summarize count() by extensionName\n| order by count_ desc ",
             "id": "66011cc7-10e0-4c13-a431-3f19d5348460",
             "usedVariables": [
-                "allTraces"
-            ]
-        },
-        {
-            "dataSource": {
-                "kind": "inline",
-                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
-            },
-            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    // , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n//SourceProcess = bottom, SlowObject = Top\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize avgElapsedtime = avg(elapsedTimeInMS) by  bin(timestamp, 1h),SourceProcess",
-            "id": "97248546-ead0-41cd-a549-5b11f357c15e",
-            "usedVariables": [
-                "_SlowObjectFilter",
-                "_sourceObjectFilter",
                 "allTraces"
             ]
         },
@@ -6546,11 +7652,9 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n//from Microsoft: analyze the stacktrace, eventually to get top and bottom line\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n//SourceProcess = bottom, SlowObject = Top\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| project timestamp\n    , eventId\n    , message\n    , componentVersion\n    , tenantDescription\n    // , companyName\n    , extensionName\n    , extensionPublisher\n    , splitStacktrace\n    , SourceProcess\n    , SlowObject\n    , alObjectType\n    , alObjectName\n    , alObjectId\n    , elapsedTimeInMS\n    , customDimensions\n    , sqlStatement\n| summarize avg(elapsedTimeInMS) by bin(timestamp, 1h), tenantDescription",
+            "text": "allTraces\n| where isnotempty( customDimensions.sqlStatement) //Anything with sqlStatement\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| summarize avg(elapsedTimeInMS) by bin(timestamp, 3h), tenantDescription",
             "id": "53e53c0a-81f9-40e6-8647-9ab885987397",
             "usedVariables": [
-                "_SlowObjectFilter",
-                "_sourceObjectFilter",
                 "allTraces"
             ]
         },
@@ -6737,7 +7841,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "traces\n| extend aadTenantId = tostring(customDimensions.aadTenantId)\n        , environmentName = tostring(customDimensions.environmentName)\n        , companyName = tostring(customDimensions.companyName)\n| extend IsSaas  = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),false,true)\n| where IsSaas in (_IsSaaS)\n| where message contains _MessageFilter\n| where aadTenantId has_any (_entraTenantId)\n| where customDimensions has _customDimensionsContains\n| where environmentName in (_environmentName)\n| where companyName contains _CompanyFilter\n| join kind=leftouter entraTenantIdDescriptions on $left.aadTenantId == $right.entraTenantId\n| where tenantDescription has_any (_TenantDescription)\n| where timestamp >= ago(10d)\n| where customDimensions.eventId == \"ALIFCTLM0007\" //Daily Installed app report\n| extend \n    AppVersion = tostring(customDimensions.alAppVersion)\n    ,UserRole = tostring(customDimensions.alUserRole)\n    ,AppId = tostring(customDimensions.alAppId)\n    ,AppName = tostring(customDimensions.alAppName)\n    ,AppPublisher = tostring(customDimensions.alAppPublisher)\n| where AppName has_any (_extensionName)\n| where AppPublisher has_any (_extensionPublisher)\n| where AppPublisher startswith _componentVersionFilter\n| summarize max(AppVersion) by tenantDescription, AppId, AppPublisher, AppName\n| project tenantDescription, AppName, AppPublisher, max_AppVersion, AppId\n| order by tenantDescription, AppPublisher, AppName asc \n    ",
+            "text": "traces\n| extend aadTenantId = tostring(customDimensions.aadTenantId)\n        , environmentName = tostring(customDimensions.environmentName)\n        , companyName = tostring(customDimensions.companyName)\n| extend IsSaas  = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),false,true)\n| where IsSaas in (_IsSaaS)\n| where message contains _MessageFilter\n| where aadTenantId has_any (_entraTenantId)\n| where customDimensions has _customDimensionsContains\n| where environmentName in (_environmentName)\n| where companyName contains _CompanyFilter\n| join kind=leftouter entraTenantIdDescriptions on $left.aadTenantId == $right.entraTenantId\n| where tenantDescription has_any (_TenantDescription)\n| where timestamp >= ago(10d)\n| where customDimensions.eventId == \"ALIFCTLM0007\" //Daily Installed app report\n| extend \n    AppVersion = tostring(customDimensions.alAppVersion)\n    ,UserRole = tostring(customDimensions.alUserRole)\n    ,AppId = tostring(customDimensions.alAppId)\n    ,AppName = tostring(customDimensions.alAppName)\n    ,AppPublisher = tostring(customDimensions.alAppPublisher)\n| where AppName has_any (_extensionName)\n| where AppPublisher has_any (_extensionPublisher)\n| where AppPublisher startswith _componentVersionFilter\n| summarize max(AppVersion) by tenantDescription, aadTenantId, AppId, AppPublisher, AppName\n| project tenantDescription, aadTenantId, AppName, AppPublisher, max_AppVersion, AppId\n| order by tenantDescription, aadTenantId, AppPublisher, AppName asc \n    ",
             "id": "92d795de-d0d3-4e33-b884-2bb1292b9609",
             "usedVariables": [
                 "_CompanyFilter",
@@ -6844,7 +7948,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "allTraces\n| where customDimensions has 'RT0013'\n| where customDimensions.eventId == 'RT0013'\n| project timestamp\n, aadTenantId = tostring(customDimensions.aadTenantId)\n, environmentType = tostring(customDimensions.environmentType)\n, environmentName = tostring(customDimensions.environmentName)\n, companyName = tostring(customDimensions.companyName)\n, snapshotId = tostring(customDimensions.snapshotId)\n, clientTypeHoldingLock = tostring(customDimensions.clientType)\n, alObjectTypeHoldingLock = tostring(customDimensions.alObjectType)\n, alObjectIdHoldingLock = tostring(customDimensions.alObjectId)\n, alObjectNameHoldingLock = tostring(customDimensions.alObjectName)\n, alStackTraceHoldingLock = tostring(customDimensions.alStackTrace)\n, extensionNameHoldingLock = tostring(customDimensions.extensionName)\n, extensionIdHoldingLock = tostring(customDimensions.extensionId)\n, extensionVersionHoldingLock = tostring(customDimensions.extensionVersion)\n, extensionPublisherHoldingLock = tostring(customDimensions.extensionPublisher)\n, sqlTableLocked = tostring(customDimensions.sqlTableName)\n, sqlLockResourceType = tostring(customDimensions.sqlLockResourceType)\n, sqlLockRequestMode = tostring(customDimensions.sqlLockRequestMode)\n, sqlLockRequestStatus = tostring(customDimensions.sqlLockRequestStatus)\n, sqlServerSessionId = tostring(customDimensions.sqlServerSessionId)\n, alSessionIdHoldingLock = tostring(customDimensions.sessionId)\n| summarize by snapshotId, alObjectTypeHoldingLock, alObjectNameHoldingLock, alStackTraceHoldingLock\n| summarize count() by alObjectTypeHoldingLock, alObjectNameHoldingLock, alStackTraceHoldingLock \n| order by count_ desc ",
+            "text": "allTraces\n| where customDimensions has 'RT0013'\n| where customDimensions.eventId == 'RT0013'\n| project timestamp\n, aadTenantId = tostring(customDimensions.aadTenantId)\n, environmentType = tostring(customDimensions.environmentType)\n, environmentName = tostring(customDimensions.environmentName)\n, companyName = tostring(customDimensions.companyName)\n, snapshotId = tostring(customDimensions.snapshotId)\n, clientTypeHoldingLock = tostring(customDimensions.clientType)\n, alObjectTypeHoldingLock = tostring(customDimensions.alObjectType)\n, alObjectIdHoldingLock = tostring(customDimensions.alObjectId)\n, alObjectNameHoldingLock = tostring(customDimensions.alObjectName)\n, alStackTraceHoldingLock = tostring(customDimensions.alStackTrace)\n, extensionNameHoldingLock = tostring(customDimensions.extensionName)\n, extensionIdHoldingLock = tostring(customDimensions.extensionId)\n, extensionVersionHoldingLock = tostring(customDimensions.extensionVersion)\n, extensionPublisherHoldingLock = tostring(customDimensions.extensionPublisher)\n, sqlTableLocked = tostring(customDimensions.sqlTableName)\n, sqlLockResourceType = tostring(customDimensions.sqlLockResourceType)\n, sqlLockRequestMode = tostring(customDimensions.sqlLockRequestMode)\n, sqlLockRequestStatus = tostring(customDimensions.sqlLockRequestStatus)\n, sqlServerSessionId = tostring(customDimensions.sqlServerSessionId)\n, alSessionIdHoldingLock = tostring(customDimensions.sessionId)\n| summarize by snapshotId, alObjectTypeHoldingLock, alObjectNameHoldingLock, alStackTraceHoldingLock\n| summarize count() by alStackTraceHoldingLock \n| order by count_ desc ",
             "id": "36ae9368-3592-4b87-a4ec-bbc26b0d2af0",
             "usedVariables": [
                 "allTraces"
@@ -6913,6 +8017,260 @@
             "text": "allTraces\n| where eventId in (\n    \"LC0028\",  //AppSource submission validation request started: {validationRequestId}\n    \"LC0038\",  //Diagnostic reported on AppSource submission validation request: {validationRequestId}\n    \"LC0030\",  //(Version, country-region) validation started: version {version}, country/region {countryRegion}\n    \"LC0032\",  //Extension validation started: version {version}, country/region {countryRegion} for extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})\n    \"LC0034\",  //Validation diagnostic reported: version {version}, country/region {countryRegion} for extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})\n    \"LC0033\",  //Extension validation completed successfully: version {version}, country/region {countryRegion} for extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})\n    \"LC0037\",  //Extension validation completed with failures: version {version}, country-region {countryRegion} for extension {extensionName} version {extensionVersion} by {extensionPublisher} ({extensionId})\n    \"LC0031\",  //(Version, country-region) validation completed successfully: version {version}, country/region {countryRegion}\n    \"LC0036\",  //(Version, country-region) validation completed with failures: version {version}, country-region {countryRegion}\n    \"LC0029\",  //AppSource submission validation request completed successfully: {validationRequestId}\n    \"LC0035\")  //AppSource submission validation request completed with failures: {validationRequestId}\n| order by timestamp desc \n| take 1000\n| project\n    timestamp\n    , eventId\n    , status = iif(message has_any (\"successfully\", \"started\"),\"Success\",\"Fail\")\n    , message = substring(eventDescription, 0, indexof(eventDescription,\":\"))\n    , extensionName\n    , extensionPublisher\n    , extensionVersion\n    , customDimensions\n| summarize count() by eventId, message",
             "id": "7c4ebec2-e163-48b3-968d-31f065e36747",
             "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where eventId == 'RT0008'\n| extend endpoint = tostring(customDimensions.endpoint)\n, ObjectName = tostring(customDimensions.alObjectName)\n, serverExecutionTimeInMS = toreal(totimespan(customDimensions.serverExecutionTime))/10000 //the datatype for executionTime is timespan \n, totalTimeInMS = toreal(totimespan(customDimensions.totalTime))/10000 //the datatype for executionTime is timespan \n| where ObjectName contains _sourceObjectFilter\n| summarize avg(serverExecutionTimeInMS) by bin(timestamp, 1h), endpoint, tenantDescription //put endpoint and customer in the graph\n",
+            "id": "b12fb281-9fac-4881-a19e-15af69700849",
+            "usedVariables": [
+                "_sourceObjectFilter",
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where eventId == 'RT0018'\n| where isnotempty( customDimensions.alStackTrace)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n    , componentVersion = tostring(customDimensions.componentVersion)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize count(), toint(avg(elapsedTimeInMS)) by bin(timestamp, 1h), SourceProcess\n| extend totalTime = count_ * avg_elapsedTimeInMS\n| project timestamp, SourceProcess, count_\n| order by count_\n| take 75\n",
+            "id": "35e1ae29-3692-48b1-ab2e-8c639eac7104",
+            "usedVariables": [
+                "_SlowObjectFilter",
+                "_sourceObjectFilter",
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where eventId == 'RT0018'\n| where isnotempty( customDimensions.alStackTrace)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n    , componentVersion = tostring(customDimensions.componentVersion)\n| parse kind=regex sqlStatement with selectPart: string \"FROM \\\"SQLDATABASE\\\".dbo.\\\"CURRENTCOMPANY\\\\$\" tablename: string \"\\\\$\" space: string\n| extend splitStacktrace = split(customDimensions.alStackTrace, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend topOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, topOfStackline)\n| extend topOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, topOfStackline)\n| extend topOfStackLineNumber = extract(' line (\\\\d+)', 1, topOfStackline)\n| extend topOfStackExtensionName = case (\n    isnotempty(topOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, topOfStackline),\n    extract(' - (.+) by', 1, topOfStackline)\n    )\n| extend topOfStackPublisher = extract('.+ by (.+)', 1, topOfStackline)\n| extend topOfStackWhatWasCalled = case(\n    isnotempty(topOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, topOfStackline),\n    isnotempty(topOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, topOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, topOfStackline)\n    )\n| extend bottomOfStackObjectName = extract('\\\\\\\"?([^\\\\\\\"]+)\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectType = extract('\\\\(([a-zA-Z]+) \\\\d+\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackObjectId = extract('\\\\([a-zA-Z]+ (\\\\d+)\\\\)', 1, bottomOfStackline)\n| extend bottomOfStackLineNumber = extract(' line (\\\\d+)', 1, bottomOfStackline)\n| extend bottomOfStackExtensionName = case (\n    isnotempty(bottomOfStackLineNumber), extract('line \\\\d+ - (.+) by', 1, bottomOfStackline),\n    extract(' - (.+) by', 1, bottomOfStackline)\n    )\n| extend bottomOfStackPublisher = extract('.+ by (.+)', 1, bottomOfStackline)\n| extend bottomOfStackWhatWasCalled = case(\n    isnotempty(bottomOfStackLineNumber), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) line', 1, bottomOfStackline),\n    isnotempty(bottomOfStackExtensionName), extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+) -(.+) by (.+)', 1, bottomOfStackline),\n    extract('\\\\\\\"?[^\\\\\\\"]+\\\\\\\"?\\\\([a-zA-Z]+ \\\\d+\\\\).(.+)', 1, bottomOfStackline)\n    )\n| extend SourceProcess = strcat(bottomOfStackWhatWasCalled , \" - \", bottomOfStackObjectType, \" \", bottomOfStackObjectId, \" \", bottomOfStackObjectName, \" (\", bottomOfStackExtensionName, \")\")\n    , SlowObject = strcat(topOfStackWhatWasCalled , \" - \", topOfStackObjectType, \" \", topOfStackObjectId, \" \", topOfStackObjectName, \" (\", topOfStackExtensionName, \")\")\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend SlowObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where SlowObject contains _SlowObjectFilter\n| summarize count(), toint(avg(elapsedTimeInMS)) by bin(timestamp, 1h), SourceProcess\n| project timestamp, SourceProcess, avg_elapsedTimeInMS\n| order by avg_elapsedTimeInMS\n| take 75\n",
+            "id": "5942b83f-de64-4960-b3c0-471170339111",
+            "usedVariables": [
+                "_SlowObjectFilter",
+                "_sourceObjectFilter",
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where isnotempty(extensionName)\n| summarize by aadTenantId, extensionName, extensionPublisher\n| summarize count() by extensionName, extensionPublisher\n| order by count_ desc ",
+            "id": "1e0bb7a9-5441-4e88-8365-913d8027e73d",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "traces\n| extend aadTenantId = tostring(customDimensions.aadTenantId)\n        , environmentName = tostring(customDimensions.environmentName)\n        , companyName = tostring(customDimensions.companyName)\n| extend IsSaas  = iff(isempty(environmentName) or environmentName in ('common','null','default','undefined'),false,true)\n| where message contains _MessageFilter\n| where aadTenantId has_any (_entraTenantId)\n| where customDimensions has _customDimensionsContains\n| where environmentName in (_environmentName)\n| where companyName contains _CompanyFilter\n| join kind=leftouter entraTenantIdDescriptions on $left.aadTenantId == $right.entraTenantId\n| where tenantDescription has_any (_TenantDescription)\n| where timestamp >= ago(10d)\n| where customDimensions.eventId == \"ALIFCTLM0007\" //Daily Installed app report\n| extend \n    AppVersion = tostring(customDimensions.alAppVersion)\n    ,UserRole = tostring(customDimensions.alUserRole)\n    ,AppId = tostring(customDimensions.alAppId)\n    ,AppName = tostring(customDimensions.alAppName)\n    ,AppPublisher = tostring(customDimensions.alAppPublisher)\n| where AppName has_any (_extensionName)\n| where AppPublisher has_any (_extensionPublisher)\n| where AppPublisher startswith _componentVersionFilter\n| order by timestamp desc \n| project timestamp, tenantDescription, companyName, AppName, AppPublisher, AppVersion, customDimensions\n\n\n\n",
+            "id": "bbc5099c-b14d-4e54-aaa3-f9b679d9603e",
+            "usedVariables": [
+                "_CompanyFilter",
+                "_MessageFilter",
+                "_TenantDescription",
+                "_componentVersionFilter",
+                "_customDimensionsContains",
+                "_entraTenantId",
+                "_environmentName",
+                "_extensionName",
+                "_extensionPublisher",
+                "entraTenantIdDescriptions"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces \n| where message contains \"Job queue entry\"\n| extend eventId = tostring(customDimensions.eventId)\n| extend shortMessage = iif(substring(message, 0, 4) == \"Task\", \"Task Executed\", \n                    iif(eventId == \"AL0000JRG\", \"Job Queue Error\",\n                        iff(indexof(message, \":\") <= 0, message, substring(message, 0, indexof(message, \":\")))))\n| extend status = case(\n    eventId == \"AL0000E25\", \"Started\",\n    eventId == \"AL0000E24\", \"Enqueued\",\n    eventId == \"AL0000E26\", \"Finished\",\n    eventId == \"AL0000KZV\", \"Canceled\",\n    eventId == \"AL0000HE7\", \"Failed\",\n    eventId == \"AL0000JRG\", \"Failed\",\n    \"Unknown\"\n)\n| summarize count() by eventId, status, shortMessage",
+            "id": "8145cc87-908c-4657-af3f-5c8a738a951e",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "let allJobQueuesPreviousWeek = \ntraces //we don't want to have the default filters, therefore NO base query\n| where timestamp between (_endTime - 30d .. _endTime)\n| extend eventId = tostring(customDimensions.eventId)\n    , aadTenantId = tostring(customDimensions.aadTenantId)\n    , extensionName = tostring(customDimensions.extensionName)\n| where eventId has_any (_eventId)\n| join kind=leftouter entraTenantIdDescriptions on $left.aadTenantId == $right.entraTenantId\n| where tenantDescription has_any (_TenantDescription)\n| where customDimensions.eventId in ('AL0000E25', 'AL0000E24', 'AL0000I49')\n| summarize by jobQueueNamePreviously = tostring(customDimensions.alJobQueueObjectName)\n;\nlet allJobQueuesCurrentWeek = \nallTraces\n| summarize by jobQueueNameCurrent = tostring(customDimensions.alJobQueueObjectName)\n;\nallJobQueuesPreviousWeek\n| join kind=leftouter allJobQueuesCurrentWeek on $left.jobQueueNamePreviously  == $right.jobQueueNameCurrent\n| where isempty(jobQueueNameCurrent)\n| project NotRunningJobQueue = tostring(jobQueueNamePreviously)",
+            "id": "87b7d2f8-dde0-41b2-83e7-c4ab117d232f",
+            "usedVariables": [
+                "_TenantDescription",
+                "_endTime",
+                "_eventId",
+                "allTraces",
+                "entraTenantIdDescriptions"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces \n| where eventId in ('AL0000E25', 'AL0000E26')\n| where tostring(customDimensions.alJobQueueIsRecurring) == \"Yes\"\n| extend jobTaskId = tostring(customDimensions.alJobQueueScheduledTaskId), \n    JobQueueObjectDescription = tostring(customDimensions.alJobQueueObjectDescription)\n| summarize startTime = minif(timestamp, customDimensions.eventId == \"AL0000E25\"), endTime = maxif(timestamp, customDimensions.eventId == \"AL0000E26\") by jobTaskId, JobQueueObjectDescription\n| extend processingTime = endTime - startTime\n| summarize avgProcessingTime = avg(processingTime) by JobQueueObjectDescription\n| order by avgProcessingTime desc \n| where isnotempty(JobQueueObjectDescription)",
+            "id": "cf42eed6-133d-4402-96ba-c4be86292877",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "let job_queue_errors = \nallTraces\n| where customDimensions has_any ('AL0000HE7','AL0000FNY','AL0000JRG')\n| project timestamp\n, tenantDescription\n, ObjectName = customDimensions.alJobQueueObjectName\n, ObjectDescription = customDimensions.alJobQueueObjectDescription\n, TaskId = tostring( customDimensions.alJobQueueScheduledTaskId )\n, stackTrace = customDimensions.alJobQueueStacktrace\n;\nlet task_scheduler_errors = \nallTraces\n| where customDimensions.eventId == 'LC0045'\n| project TaskId = tostring( customDimensions.taskId )\n, failureReason = tostring(customDimensions.failureReason)\n;\njob_queue_errors\n| join kind=leftouter task_scheduler_errors on $left.TaskId == $right.TaskId\n| summarize count = count() by tostring(ObjectDescription), tostring(ObjectName), tostring(failureReason), tostring(stackTrace)\n| where isnotempty(ObjectDescription)\n| order by count desc \n",
+            "id": "285cd3d0-0d8f-4bd2-9b17-d6277545cb54",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "let allLastOccurences = \nallTraces\n| where customDimensions contains 'LC0101'\n| summarize max(timestamp) by tenantDescription, environmentType, environmentName\n;\nallTraces\n| where customDimensions contains 'LC0101'\n| join kind=inner allLastOccurences \n\ton $left.timestamp == $right.max_timestamp, \n\t\t$left.tenantDescription == $right.tenantDescription, \n\t\t$left.environmentType == $right.environmentType, \n\t\t$left.environmentName == $right.environmentName\n| project \n    timestamp,\n\ttenantDescription,\n    environmentType = tostring(customDimensions.environmentType),\n\tenvironmentName = tostring(customDimensions.environmentName),\n\tenvironmentVersion = tostring(customDimensions.environmentVersion),\n\tcountryCode = tostring(customDimensions.countryCode),\n\tregisteredForUpdateOnOrAfterDateUtc = format_datetime(todatetime(customDimensions.registeredForUpdateOnOrAfterDateUtc),\"dd-MM-yyyy\"),\n\tsourceVersion = tostring(customDimensions.sourceVersion),\n\tdestinationVersion = tostring(customDimensions.destinationVersion),\n\tupdatePeriodStartDateUtc = format_datetime(todatetime(customDimensions.updatePeriodStartDateUtc),\"dd-MM-yyyy\"),\n\tupdatePeriodEndDateUtc = format_datetime(todatetime(customDimensions.updatePeriodEndDateUtc),\"dd-MM-yyyy\"),\n\tupdateWindowStartTimeUtc = customDimensions.updateWindowStartTimeUtc,\n\tupdateWindowEndTimeUtc = customDimensions.updateWindowEndTimeUtc,\n\tignoreUpdateWindow = tostring(customDimensions.ignoreUpdateWindow),\n\tupdateDateSelectedByPartner = tostring(customDimensions.updateDateSelectedByPartner),\n\tcanPartnerReschedule = tostring(customDimensions.canPartnerReschedule),\n\tcustomDimensions",
+            "id": "2abb5755-ccc2-46b0-b322-fa0fdc04ecfb",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where eventId == \"RT0019\"\n| extend authenticationMethod = tostring(customDimensions.alAuthenticationMethod)\n, httpTimeout = tostring(customDimensions.alHttpTimeout)\n,  endpoint = tostring(customDimensions.endpoint)\n, objectName = tostring(customDimensions.alObjectName)\n| project timestamp,tenantDescription, companyName, extensionName, extensionVersion, extensionPublisher,  endpoint, objectName, toint(elapsedTimeInMS), authenticationMethod, httpTimeout, customDimensions\n| summarize count() by bin(timestamp, 1h), endpoint\n| order by timestamp desc\n| take 1000\n",
+            "id": "c286083d-559b-4e83-a6ec-99144997f030",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where customDimensions.eventId == 'ALIFCTLM0002'\n| extend Duration = toint(customDimensions.alDuration)\n    , NoOfSqlStatements = toint(customDimensions.alNoSqlStatements)\n    , MeasuredFunction = tostring(message)\n    , TenantMeasuredFunction = strcat(tenantDescription,\".\",message)\n| where MeasuredFunction contains _MeasuredFunction\n| summarize count(), avgDuration = toint(avg(Duration)), avgNoSqlStatements = toint(avg(NoOfSqlStatements)) by TenantMeasuredFunction, bin(timestamp, 1h)",
+            "id": "29bc714e-918a-48fd-aed2-419402e575ad",
+            "usedVariables": [
+                "_MeasuredFunction",
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "// Lock Timeouts - By Day\n\nallTraces\n| where eventId == 'RT0012'\n| where customDimensions.alObjectId != '0'\n| where isnotempty(customDimensions.alObjectId)\n| extend ObjectType = tostring(customDimensions.alObjectType)\n    , ObjectId = tostring(customDimensions.alObjectId)\n    , ObjectName = tostring(customDimensions.alObjectName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n    , stackTrace = tostring(customDimensions.alStackTrace)\n    , userId = user_Id\n| where ObjectName contains _sourceObjectFilter\n| summarize count = count() by bin(timestamp, 1h), tenantDescription\n",
+            "id": "ded4b26f-83e2-4bc8-9956-655b5e3300b7",
+            "usedVariables": [
+                "_sourceObjectFilter",
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where customDimensions.eventId contains \"ALIFCTLM0011\"\n| extend ApplyToAllRecords = tostring(customDimensions.alRetentionApplyToAllRecords)\n| extend Manual = tostring(customDimensions.alRetentionManual)\n| extend Enabled = tostring(customDimensions.alRetentionEnabled)\n| extend DateFieldName = tostring(customDimensions.alRetentionDateFieldName)\n| extend TableName = tostring(customDimensions.alRetentionTableName)\n| extend TableId = tostring(customDimensions.alRetentionTableId)\n| extend DateFieldNo = tostring(customDimensions.alRetentionDateFieldNo)\n| project timestamp\n    , aadTenantId\n    , tenantDescription\n    , companyName\n    , TableId\n    , TableName\n    , Enabled\n    , Manual\n    , DateFieldNo\n    , DateFieldName\n    , ApplyToAllRecords\n| summarize by tenantDescription, companyName, TableName, Enabled, Manual, DateFieldName, ApplyToAllRecords\n| order by tenantDescription, companyName, TableName",
+            "id": "08e7cacf-71ac-4927-ac9c-438d55bfd12a",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where customDimensions has 'RT0013'\n| where customDimensions.eventId == 'RT0013'\n| project timestamp\n, aadTenantId = tostring(customDimensions.aadTenantId)\n, environmentType = tostring(customDimensions.environmentType)\n, snapshotId = tostring(customDimensions.snapshotId)\n, clientTypeHoldingLock = tostring(customDimensions.clientType)\n, alObjectTypeHoldingLock = tostring(customDimensions.alObjectType)\n, alObjectIdHoldingLock = tostring(customDimensions.alObjectId)\n, alObjectNameHoldingLock = tostring(customDimensions.alObjectName)\n, alStackTraceHoldingLock = tostring(customDimensions.alStackTrace)\n, extensionNameHoldingLock = tostring(customDimensions.extensionName)\n, extensionIdHoldingLock = tostring(customDimensions.extensionId)\n, extensionVersionHoldingLock = tostring(customDimensions.extensionVersion)\n, extensionPublisherHoldingLock = tostring(customDimensions.extensionPublisher)\n, sqlTableLocked = tostring(customDimensions.sqlTableName)\n, sqlLockResourceType = tostring(customDimensions.sqlLockResourceType)\n, sqlLockRequestMode = tostring(customDimensions.sqlLockRequestMode)\n, sqlLockRequestStatus = tostring(customDimensions.sqlLockRequestStatus)\n, sqlServerSessionId = tostring(customDimensions.sqlServerSessionId)\n, alSessionIdHoldingLock = tostring(customDimensions.sessionId)\n, customDimensions\n// | summarize by snapshotId, bin(timestamp,1h), sqlServerSessionId, alObjectTypeHoldingLock, alObjectNameHoldingLock, alStackTraceHoldingLock\n// | summarize count() by alObjectTypeHoldingLock, alObjectNameHoldingLock, alStackTraceHoldingLock \n| order by timestamp desc \n| take 100",
+            "id": "9b006a62-69d4-4c4d-a6b2-943cb7895561",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where isnotempty( customDimensions.requestQueueTime)\n| extend endpoint = tostring(customDimensions.endpoint)\n, ObjectName = tostring(customDimensions.alObjectName)\n, serverExecutionTimeInMS = toreal(totimespan(customDimensions.serverExecutionTime))/10000 \n, totalTimeInMS = toreal(totimespan(customDimensions.totalTime))/10000 \n, requestQueueTimeInMS = toreal(totimespan(customDimensions.requestQueueTime))/10000\n| where requestQueueTimeInMS > 0\n| where ObjectName contains _sourceObjectFilter\n| summarize count(), avg(requestQueueTimeInMS) by bin(timestamp, 1h), endpoint, tenantDescription //put endpoint and customer in the graph\n\n\n// traces\n// | where isnotempty( customDimensions.requestQueueTime)\n// | extend decentMessage = iif(indexof(message, \":\") <= 0, message, substring(message, 0, indexof(message, \":\")))\n// , endpoint = tostring(customDimensions.endpoint)\n// , alObjectName = tostring(customDimensions.alObjectName)\n// , serverExecutionTime = tostring(customDimensions.serverExecutionTime)\n// , serverExecutionTimeInMS = toreal(totimespan(customDimensions.serverExecutionTime))/10000 \n// , totalTime = tostring(customDimensions.totalTime)\n// , totalTimeInMS = toreal(totimespan(customDimensions.totalTime))/10000 \n// , requestQueueTimeInMS = toreal(totimespan(customDimensions.requestQueueTime))/10000\n// | summarize count = count(), avgServerExecutionTimeInMS = avg(serverExecutionTimeInMS), avgTotalTimeInMs = avg(totalTimeInMS), avgRequestQueueTimeInMS = avg(requestQueueTimeInMS) by alObjectName \n// | project \n//     alObjectName\n//     , ['count']\n//     , avgServerExecutionTimeInMS = round(avgServerExecutionTimeInMS,0)\n//     , avgTotalTimeInMs = round(avgTotalTimeInMs, 0)\n//     , ApproxTime = round(['count'] * avgServerExecutionTimeInMS,0)\n// | order by ApproxTime desc \n// | take 100",
+            "id": "fec3e770-e41e-4fc1-a287-d738d4e563ce",
+            "usedVariables": [
+                "_sourceObjectFilter",
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces \n| where message contains \"Job queue entry\"\n| extend eventId = tostring(customDimensions.eventId)\n| extend shortMessage = iif(substring(message, 0, 4) == \"Task\", \"Task Executed\", \n                    iif(eventId == \"AL0000JRG\", \"Job Queue Error\",\n                        iff(indexof(message, \":\") <= 0, message, substring(message, 0, indexof(message, \":\")))))\n| extend status = case(\n    eventId == \"AL0000E25\", \"Started\",\n    eventId == \"AL0000E24\", \"Enqueued\",\n    eventId == \"AL0000E26\", \"Finished\",\n    eventId == \"AL0000KZV\", \"Canceled\",\n    eventId == \"AL0000HE7\", \"Failed\",\n    eventId == \"AL0000JRG\", \"Failed\",\n    \"Unknown\"\n)\n| summarize count() by bin(timestamp, 1h), eventId, status, shortMessage",
+            "id": "6cf67486-f9a4-47c6-b8ba-0bf27e37d861",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces \n| where eventId in ('AL0000E25', 'AL0000E26')\n| where tostring(customDimensions.alJobQueueIsRecurring) == \"Yes\"\n| extend jobTaskId = tostring(customDimensions.alJobQueueScheduledTaskId), \n    JobQueueObjectDescription = tostring(customDimensions.alJobQueueObjectDescription)\n| summarize startTime = minif(timestamp, customDimensions.eventId == \"AL0000E25\"), endTime = maxif(timestamp, customDimensions.eventId == \"AL0000E26\") by jobTaskId, JobQueueObjectDescription\n| extend processingTimeInMS = toreal(totimespan(endTime - startTime))/10000\n| where isnotempty( startTime)\n| summarize avgProcessingTimeInMS = avg(processingTimeInMS) by bin(startTime, 1h), JobQueueObjectDescription\n// | order by avgProcessingTime desc \n// | where isnotempty(JobQueueObjectDescription)",
+            "id": "1f8c63b9-4045-40ae-b34d-77fb3ff4dcf9",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where eventId == 'RT0018'\n| where isnotempty( customDimensions.alStackTrace) //Anything with a stacktrace (Actionable)\n| where isnotempty( elapsedTimeInMS)\n| extend alObjectName = tostring(customDimensions.alObjectName)\n    , alObjectType = tostring(customDimensions.alObjectType)\n    , alObjectId = tostring(customDimensions.alObjectId)\n    , extensionPublisher = tostring(customDimensions.extensionPublisher)\n    , companyName = tostring(customDimensions.companyName)\n    , sqlStatement = tostring(customDimensions.sqlStatement)\n| summarize avg(elapsedTimeInMS) by bin(timestamp, 3h), tenantDescription",
+            "id": "695ba804-52f3-49f8-b5cd-e9f41bf3c6d9",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where isnotempty( clientType)\n| summarize by bin(timestamp, 1h), session_Id, clientType\n| summarize count() by bin(timestamp, 1h), clientType",
+            "id": "43af85e9-b3d0-44ac-a125-89c684f6b07e",
+            "usedVariables": [
+                "allTraces"
+            ]
+        },
+        {
+            "dataSource": {
+                "kind": "inline",
+                "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
+            },
+            "text": "allTraces\n| where customDimensions has 'RT0013'\n| where customDimensions.eventId == 'RT0013' //Look into the snapshot of the lock\n| project timestamp\n, operation_Id\n, session_Id\n, user_Id\n, aadTenantId = tostring(customDimensions.aadTenantId)\n, environmentType = tostring(customDimensions.environmentType)\n, environmentName = tostring(customDimensions.environmentName)\n, companyName = tostring(customDimensions.companyName)\n, snapshotId = tostring(customDimensions.snapshotId)\n, clientTypeHoldingLock = tostring(customDimensions.clientType)\n, alObjectTypeHoldingLock = tostring(customDimensions.alObjectType)\n, alObjectIdHoldingLock = tostring(customDimensions.alObjectId)\n, alObjectNameHoldingLock = tostring(customDimensions.alObjectName)\n, alStackTraceHoldingLock = tostring(customDimensions.alStackTrace)\n, extensionNameHoldingLock = tostring(customDimensions.extensionName)\n, extensionIdHoldingLock = tostring(customDimensions.extensionId)\n, extensionVersionHoldingLock = tostring(customDimensions.extensionVersion)\n, extensionPublisherHoldingLock = tostring(customDimensions.extensionPublisher)\n, sqlTableLocked = tostring(customDimensions.sqlTableName)\n, sqlLockResourceType = tostring(customDimensions.sqlLockResourceType)\n, sqlLockRequestMode = tostring(customDimensions.sqlLockRequestMode)\n, sqlLockRequestStatus = tostring(customDimensions.sqlLockRequestStatus)\n, sqlServerSessionId = tostring(customDimensions.sqlServerSessionId)\n, alSessionIdHoldingLock = tostring(customDimensions.sessionId)\n, customDimensions\n| where isnotempty( alStackTraceHoldingLock)\n| extend splitStacktrace = split(alStackTraceHoldingLock, \"\\n\")\n| extend lengthStacktrace = array_length(splitStacktrace)\n| extend\n    topOfStackline = iif(tostring(splitStacktrace[0]) contains \"ObjectType\", tostring(splitStacktrace[2]), tostring(splitStacktrace[0]))\n    , bottomOfStackline = tostring(splitStacktrace[lengthStacktrace - 1])\n| extend SourceProcess = replace_string(bottomOfStackline,'AL CallStack: ','')\n    , SlowObject = split(replace_string(topOfStackline,'AL CallStack: ',''),'line')[0]\n| extend SourceProcess = iif(strlen( SourceProcess) >= 10, SourceProcess, trim(@\"[^\\w]+\",strcat(splitStacktrace[0], \" \", splitStacktrace[1])))\n| extend LockingObject = iif(strlen( SlowObject) >= 10, SlowObject, SourceProcess)\n| where SourceProcess contains _sourceObjectFilter\n| where LockingObject contains _SlowObjectFilter\n| summarize count() by SourceProcess, LockingObject",
+            "id": "a1a55452-a416-48af-887b-3edb086faba2",
+            "usedVariables": [
+                "_SlowObjectFilter",
+                "_sourceObjectFilter",
                 "allTraces"
             ]
         },
