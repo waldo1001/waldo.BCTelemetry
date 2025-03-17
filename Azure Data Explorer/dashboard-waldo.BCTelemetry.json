@@ -1,9 +1,10 @@
 {
     "$schema": "https://dataexplorer.azure.com/static/d/schema/60/dashboard.json",
     "id": "01e92ba5-117b-496c-ad7e-37f2eacc037b",
-    "eTag": "a237cc40-71d8-4271-8285-6ab604b0e58c",
+    "eTag": "63d6e51f-8776-42d6-87ee-644ea76197d4",
     "schema_version": "60",
     "title": "waldo's BCTelemetry Dashboard",
+    "pagesNavWidth": 223,
     "tiles": [
         {
             "id": "58a9d2a6-ef15-45a7-a081-8bd645783134",
@@ -8304,7 +8305,7 @@
                 "kind": "inline",
                 "dataSourceId": "05ae5610-5603-45ac-9458-616539c1c150"
             },
-            "text": "externaldata(entraTenantId :string, tenantDescription:string)\n        [h@'https://raw.githubusercontent.com/waldo1001/waldo.BCTelemetry/master/Azure%20Data%20Explorer/ExternalData/entraTenantId.json']\n            with(format='multijson')",
+            "text": "datatable(entraTenantId :string, tenantDescription:string)\r\n[\r\n        \"<GUID>\",\"<CustomerName>\"    \r\n]",
             "usedVariables": []
         },
         {
