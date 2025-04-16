@@ -185,6 +185,16 @@
         "eventDescription": "Web service metadata error: The record with name '{entityName}' was skipped."
     },
     {
+        "eventId": "RT0052",
+        "eventArea": "Outgoing Web service requests",
+        "eventDescription": "HTTP server certificate validation failed when calling endpoint: {endpoint}"
+    },
+    {
+        "eventId": "RT0053",
+        "eventArea": "Incoming Web service requests",
+        "eventDescription": "Deprecated endpoint called: {endpoint}"
+    },
+    {
         "eventId": "AL0000E24",
         "eventArea": "Job Queue Lifecycle",
         "eventDescription": "Job queue entry enqueued: {alJobQueueId}"
