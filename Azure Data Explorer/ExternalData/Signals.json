@@ -1343,5 +1343,30 @@
         "eventId": "AL0000CST",
         "eventArea": "Feature Lifecycle",
         "eventDescription": "Purchase Document Posted"
+    },
+    {
+        "eventId": "AL0000JIL",
+        "eventArea": "Master Data Management",
+        "eventDescription": "Feature Master Data Management is Set up"
+    },
+    {
+        "eventId": "AL0000JIP",
+        "eventArea": "Master Data Management",
+        "eventDescription": "Feature Master Data Management is Used"
+    },
+    {
+        "eventId": "AL0000JIQ",
+        "eventArea": "Master Data Management",
+        "eventDescription": "Feature Master Data Management is Used"
+    },
+    {
+        "eventId": "AL0000JIR",
+        "eventArea": "Master Data Management",
+        "eventDescription": "Feature Master Data Management is Used"
+    },
+    {
+        "eventId": "AL0000JIV",
+        "eventArea": "Master Data Management",
+        "eventDescription": "Feature Master Data Managemen is Discovered"
     }
 ]
